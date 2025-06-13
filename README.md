@@ -1,54 +1,147 @@
-# safe_news_crawlTool_RSS
+# 📰 Safe News Crawler & Analyzer 🛡️
 
-## Môi trường chạy python trên máy (Setup vào lagaron)
-/e/Lenovo/laragon/bin/python/python-3.10/python.exe -m pip install beautifulsoup4
+Một công cụ Python để thu thập tin tức từ các nguồn RSS của VNExpress, phân tích cảm xúc và độc tính của bài viết, sau đó lưu trữ chúng vào Firebase.
 
+## ✨ Tính năng nổi bật
 
+* 📰 **Thu thập RSS Feed:** Lấy tin tức từ nhiều nguồn RSS của VNExpress.
+* 😊 **Phân tích Cảm xúc:** Xác định nội dung bài viết là Tích cực, Tiêu cực hay Trung tính (sử dụng model `wonrax/phobert-base-vietnamese-sentiment`).
+* 🚫 **Phát hiện Độc tính:** Nhận diện nội dung bài viết có độc hại hay không (sử dụng model `naot97/vietnamese-toxicity-detection_1`).
+* 🔥 **Tích hợp Firebase:** Lưu trữ các bài viết đã xử lý cùng với điểm cảm xúc và độc tính vào Firebase Realtime Database.
+* ⏰ **Lập lịch Tự động:** Tự động chạy mỗi giờ để thu thập và xử lý các bài viết mới.
 
-## File: news_filter.py
+## 📡 Nguồn RSS (VNExpress)
 
-Dự án này được thiết kế để phân tích văn bản tiếng Việt nhằm xác định tình cảm (tích cực, tiêu cực, trung tính) và phát hiện nội dung độc hại. Nó sử dụng các mô hình học máy đã được huấn luyện trước từ thư viện Hugging Face Transformers.
+* <https://vnexpress.net/rss/tin-moi-nhat.rss>
+* <https://vnexpress.net/rss/tin-xem-nhieu.rss>
+* <https://vnexpress.net/rss/the-gioi.rss>
+* <https://vnexpress.net/rss/thoi-su.rss>
+* <https://vnexpress.net/rss/kinh-doanh.rss>
+* <https://vnexpress.net/rss/startup.rss>
+* <https://vnexpress.net/rss/giai-tri.rss>
+* <https://vnexpress.net/rss/the-thao.rss>
+* <https://vnexpress.net/rss/phap-luat.rss>
+* <https://vnexpress.net/rss/giao-duc.rss>
+* <https://vnexpress.net/rss/suc-khoe.rss>
+* <https://vnexpress.net/rss/gia-dinh.rss>
+* <https://vnexpress.net/rss/du-lich.rss>
+* <https://vnexpress.net/rss/khoa-hoc-cong-nghe.rss>
+* <https://vnexpress.net/rss/oto-xe-may.rss>
+* <https://vnexpress.net/rss/y-kien.rss>
+* <https://vnexpress.net/rss/tam-su.rss>
+* <https://vnexpress.net/rss/cuoi.rss>
 
-Quy trình hoạt động chính:
+## 🛠️ Công nghệ sử dụng
 
-Tải và Khởi tạo Mô hình:
+* 🐍 Python 3.10+
+* 🤖 Transformers (Hugging Face)
+* 🔥 PyTorch
+* ☁️ Firebase Admin SDK
+* 📄 BeautifulSoup4
+* 📰 Feedparser
+* ⏰ Schedule
 
-Thư viện: Mã nguồn sử dụng transformers để dễ dàng tải các mô hình và tokenizer, và torch (PyTorch) làm nền tảng cho các tính toán của mô hình.
-Sentiment Analysis (Phân tích Tình cảm):
-sentiment_model_name = "wonrax/phobert-base-vietnamese-sentiment": Định danh của một mô hình PhoBERT đã được tinh chỉnh (fine-tuned) cho tác vụ phân tích tình cảm tiếng Việt, được lưu trữ trên Hugging Face Model Hub.
-sentiment_tokenizer = AutoTokenizer.from_pretrained(sentiment_model_name): Tải tokenizer tương ứng với mô hình sentiment. Tokenizer có nhiệm vụ chuyển đổi văn bản thô thành một định dạng (các token ID) mà mô hình có thể hiểu.
-sentiment_model = AutoModelForSequenceClassification.from_pretrained(sentiment_model_name): Tải chính mô hình phân loại tình cảm. AutoModelForSequenceClassification là một lớp chung có thể tải nhiều kiến trúc mô hình khác nhau phù hợp cho tác vụ phân loại chuỗi (ví dụ: phân loại văn bản).
-Toxicity Detection (Phát hiện Độc tính):
-toxicity_model_name = "naot97/vietnamese-toxicity-detection_1": Định danh của mô hình phát hiện độc tính cho tiếng Việt.
-toxicity_tokenizer = AutoTokenizer.from_pretrained(toxicity_model_name): Tải tokenizer cho mô hình độc tính.
-toxicity_model = AutoModelForSequenceClassification.from_pretrained(toxicity_model_name): Tải mô hình phát hiện độc tính.
-Hàm analyze_sentiment(text) (Phân tích Tình cảm):
+## ⚙️ Cài đặt và Thiết lập
 
-Tokenization:
-inputs = sentiment_tokenizer(text, return_tensors="pt", truncation=True, max_length=512):
-Văn bản đầu vào (text) được đưa qua sentiment_tokenizer.
-return_tensors="pt": Yêu cầu tokenizer trả về kết quả dưới dạng PyTorch tensors.
-truncation=True: Nếu văn bản dài hơn max_length, nó sẽ được cắt ngắn.
-max_length=512: Giới hạn độ dài tối đa của chuỗi token đầu vào.
-Dự đoán (Inference):
-with torch.no_grad():: Context manager này của PyTorch vô hiệu hóa việc tính toán gradient. Điều này quan trọng trong quá trình inference (khi chỉ sử dụng mô hình để dự đoán, không phải huấn luyện) vì nó giúp tiết kiệm bộ nhớ và tăng tốc độ xử lý.
-outputs = sentiment_model(**inputs): Dữ liệu đã được tokenize (inputs) được truyền vào sentiment_model. Toán tử** giải nén dictionary inputs thành các đối số cho mô hình.
-Xử lý Kết quả:
-logits = outputs.logits: Lấy ra logits từ kết quả của mô hình. Logits là các điểm số thô (chưa được chuẩn hóa) mà mô hình gán cho mỗi lớp tình cảm (ví dụ: tiêu cực, tích cực, trung tính).
-probabilities = torch.softmax(logits, dim=-1): Áp dụng hàm softmax lên logits để chuyển đổi chúng thành xác suất. Hàm softmax đảm bảo rằng tổng các xác suất của tất cả các lớp là 1. dim=-1 chỉ định rằng softmax được áp dụng trên chiều cuối cùng của tensor (chiều của các lớp).
-return probabilities.argmax().item():
-probabilities.argmax(): Tìm chỉ số (index) của lớp có xác suất cao nhất.
-.item(): Chuyển đổi tensor kết quả (chỉ chứa một giá trị là chỉ số lớp) thành một số Python tiêu chuẩn.
-Kết quả trả về là một số nguyên: 0 (Tiêu cực - NEG), 1 (Tích cực - POS), hoặc 2 (Trung tính - NEU).
-Hàm detect_toxicity(text) (Phát hiện Độc tính):
+1. **Clone repository (Tải mã nguồn):**
 
-Tokenization và Dự đoán: Tương tự như hàm analyze_sentiment, nhưng sử dụng toxicity_tokenizer và toxicity_model.
-Xử lý Kết quả:
-logits = outputs.logits
-probabilities = torch.softmax(logits, dim=-1)
-return probabilities[0][1].item() > 0.5:
-Mô hình này có vẻ trả về xác suất cho hai lớp: không độc hại (thường là index 0) và độc hại (thường là index 1).
-probabilities[0][1] truy cập vào xác suất của lớp "độc hại" (index 1) cho mẫu đầu vào đầu tiên (index 0, vì inputs có thể là một batch, nhưng ở đây ta xử lý từng text một).
-.item(): Chuyển đổi tensor xác suất thành số Python.
-> 0.5: So sánh xác suất này với một ngưỡng (0.5). Nếu xác suất văn bản là độc hại lớn hơn 0.5, hàm trả về True (độc hại), ngược lại trả về False (không độc hại).
-Tóm lại: Dự án này cung cấp hai công cụ: một để đánh giá tình cảm của văn bản tiếng Việt và một để kiểm tra xem văn bản đó có chứa nội dung độc hại hay không. Cả hai công cụ đều dựa trên việc tải các mô hình ngôn ngữ đã được huấn luyện trước, xử lý văn bản đầu vào thông qua tokenization, sau đó đưa vào mô hình để nhận dự đoán và cuối cùng là diễn giải kết quả đầu ra của mô hình.
+   ```bash
+   git clone <your-repository-url>
+   cd safe_news_crawlTool_RSS
+   ```
+
+2. **Môi trường Python:**
+
+   Dự án này được cấu hình để chạy với Python 3.10. Nếu bạn sử dụng Laragon, hãy đảm bảo môi trường Python của bạn trỏ đến đúng phiên bản:
+   Ví dụ: `/e/Lenovo/laragon/bin/python/python-3.10/python.exe`
+
+3. **Cài đặt các thư viện cần thiết:**
+
+   Bạn nên tạo một tệp `requirements.txt`. Hiện tại, bạn có thể cài đặt từng gói bằng môi trường Python đã chỉ định ở trên:
+
+   ```bash
+   # Thay thế 'python.exe' bằng đường dẫn thực thi Python 3.10 của bạn nếu khác
+   /e/Lenovo/laragon/bin/python/python-3.10/python.exe -m pip install beautifulsoup4 feedparser schedule transformers torch firebase-admin
+   ```
+
+   *(Lưu ý: Việc cài đặt `torch` có thể yêu cầu các lệnh cụ thể tùy thuộc vào phiên bản CUDA của bạn nếu bạn dự định sử dụng GPU. Đối với CPU, cài đặt pip tiêu chuẩn thường là đủ.)*
+
+4. **Thiết lập Firebase:**
+
+   * Đặt tệp `serviceAccountKey.json` của bạn vào thư mục gốc của dự án.
+   * Đảm bảo Firebase Realtime Database hoặc Firestore đã được thiết lập trong dự án Firebase của bạn.
+   * **Quan trọng:** Đừng quên thêm `serviceAccountKey.json` vào tệp `.gitignore` của bạn để tránh đưa key này lên repository công khai.
+
+## ▶️ Cách chạy dự án
+
+Thực thi tệp `main.py` bằng trình thông dịch Python 3.10 của bạn:
+
+```bash
+/e/Lenovo/laragon/bin/python/python-3.10/python.exe main.py
+```
+
+Script sẽ khởi động, lập lịch công việc chạy hàng giờ và thực hiện lần chạy đầu tiên ngay lập tức.
+
+## 📁 Cấu trúc thư mục dự án
+
+```text
+safe_news_crawlTool_RSS/
+│
+├── main.py                 # Script chính để chạy crawler và scheduler
+├── README.md               # Tệp README này
+├── serviceAccountKey.json  # Key của Firebase service account (❗Thêm vào .gitignore!)
+├── utils/
+│   ├── rss_crawler.py      # Module thu thập và phân tích RSS feeds
+│   ├── news_filter.py      # Module phân tích cảm xúc và độc tính
+│   └── firebase_handler.py # Module xử lý các thao tác với Firebase
+└── ... (các tệp khác như .gitignore, LICENSE nếu có)
+```
+
+## 🔍 Giải thích các Module
+
+### `main.py` 🚀
+
+* Đây là điểm khởi đầu của ứng dụng.
+* Import các module cần thiết từ thư mục `utils`.
+* Định nghĩa hàm `job()` thực hiện toàn bộ quy trình:
+  * Lấy danh sách các RSS feed.
+  * Với mỗi feed, lấy các bài viết.
+  * Với mỗi bài viết, kết hợp tiêu đề và mô tả để phân tích.
+  * Gọi `analyze_sentiment` và `detect_toxicity` từ `news_filter.py`.
+  * Lưu trữ kết quả vào Firebase thông qua `store_news` từ `firebase_handler.py`.
+* Sử dụng thư viện `schedule` để chạy hàm `job()` mỗi giờ.
+* Thực hiện một lần chạy `job()` ngay khi khởi động.
+* Vòng lặp `while True` để giữ cho scheduler hoạt động.
+
+### `utils/news_filter.py` 🧐
+
+Module này chịu trách nhiệm phân tích cảm xúc và độc tính của văn bản tiếng Việt.
+
+* **Chức năng cốt lõi:**
+  * Sử dụng các mô hình đã được huấn luyện trước từ Hugging Face Transformers.
+  * **Phân tích Cảm xúc (Sentiment Analysis):**
+    * Model: `wonrax/phobert-base-vietnamese-sentiment`
+    * Đầu ra: `0` (Tiêu cực - NEG), `1` (Tích cực - POS), `2` (Trung tính - NEU).
+  * **Phát hiện Độc tính (Toxicity Detection):**
+    * Model: `naot97/vietnamese-toxicity-detection_1`
+    * Đầu ra: `True` (Độc hại), `False` (Không độc hại).
+* **Quy trình hoạt động:**
+  1. **Tokenization:** Văn bản đầu vào được chuyển đổi thành định dạng mà mô hình có thể hiểu (tokens).
+  2. **Dự đoán (Inference):** Dữ liệu đã tokenize được đưa vào mô hình tương ứng. `torch.no_grad()` được sử dụng để tối ưu hóa bộ nhớ và tốc độ khi dự đoán.
+  3. **Xử lý Kết quả:** Kết quả đầu ra của mô hình (logits) được chuyển đổi thành xác suất bằng hàm softmax. Lớp có xác suất cao nhất (cho sentiment) hoặc so sánh xác suất với ngưỡng 0.5 (cho toxicity) sẽ được trả về.
+
+### `utils/rss_crawler.py` 📰
+
+* Thu thập các mục tin tức từ các URL RSS VNExpress được cung cấp bằng thư viện `feedparser`.
+* Làm sạch nội dung HTML từ mô tả bài viết bằng `BeautifulSoup`.
+* Trích xuất thông tin liên quan: tiêu đề, liên kết, ngày xuất bản, mô tả đã làm sạch và URL hình ảnh (nếu có).
+* Trả về một danh sách các dictionary, mỗi dictionary chứa thông tin của một bài viết.
+
+### `utils/firebase_handler.py` 🔥
+
+* Khởi tạo Firebase Admin SDK bằng tệp `serviceAccountKey.json`.
+* Cung cấp hàm `store_news` để lưu trữ các bài viết đã được xử lý (bao gồm tiêu đề, liên kết, mô tả, danh mục, cảm xúc và trạng thái độc tính) vào Firebase Realtime Database dưới một key duy nhất cho mỗi bài viết (thường là ID được tạo tự động hoặc dựa trên link).
+
+---
+
+*README này được cập nhật lần cuối vào ngày 13 tháng 06 năm 2025.*

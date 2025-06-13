@@ -19,7 +19,7 @@ def fetch_rss(rss_url):
             clean_description = soup.get_text(strip=True)
 
             # Lấy URL ảnh từ enclosure (nếu có)
-            image_url = None
+            image_url = 'N/A'
             for enclosure in item.get("enclosures", []):
                 if enclosure.get("type", "").startswith("image/"):
                     image_url = enclosure.get("url")

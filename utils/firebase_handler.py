@@ -12,9 +12,10 @@ def store_news(entry, sentiment, is_toxic):
         f"Checking article: {entry['title']}, Sentiment: {sentiment}, Toxic: {is_toxic}")
     if sentiment == 1 and not is_toxic:
         print("Saving to Firebase...")
-        doc_ref = db.collection('news-template').document()
+        doc_ref = db.collection('news-crawler').document()
         doc_ref.set({
             'title': entry['title'],
+            'category': entry['category'],
             'link': entry['link'],
             'description': entry['description'],
             'published': entry['pubDate'],
