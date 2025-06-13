@@ -6,6 +6,7 @@ from utils.firebase_handler import store_news
 
 print("Starting safe_news program...")
 
+
 def job():
     print("Starting RSS crawl at", time.ctime())
     rss_url = "https://vnexpress.net/rss/doi-song.rss"
@@ -13,13 +14,17 @@ def job():
         entries = fetch_rss(rss_url)
         print(f"Fetched {len(entries)} articles")
         for entry in entries:
-            text = entry.description or entry.title
-            sentiment = analyze_sentiment(text)
-            is_toxic = detect_toxicity(text)
-            print(f"Title: {entry.title}, Sentiment: {sentiment}, Toxic: {is_toxic}")
-            store_news(entry, sentiment, is_toxic)
+            text = entry["description"] or entry["title"]
+            # sentiment = analyze_sentiment(text)
+            # is_toxic = detect_toxicity(text)
+            # print(f"Title: {entry["title"]}, Sentiment: {sentiment}, Toxic: {is_toxic}")
+            # store_news(entry, sentiment, is_toxic)
+            print(entry)
+            print(f"Title: {entry['title']}, Link: {entry['link']}, Description: {entry['description']}, Published: {entry['pubDate']}, Image URL: {entry['image_url'] if entry['image_url'] else 'N/A'}")
+            print("============================================\n")
     except Exception as e:
         print(f"Error in job: {e}")
+
 
 print("Scheduling job every hour...")
 schedule.every().hour.do(job)
