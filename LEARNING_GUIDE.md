@@ -24,6 +24,7 @@ pip install google-generativeai firebase-admin feedparser requests schedule
 ```
 
 **File cần có:**
+
 - `serviceAccountKey.json` (Firebase)
 - Gemini API key trong code
 
@@ -52,6 +53,7 @@ def fetch_rss(url):
 ```
 
 **Học được gì:**
+
 - `feedparser` parse RSS XML thành Python dict
 - Extract các field cần thiết
 - Handle missing fields với `getattr()`
@@ -87,6 +89,7 @@ class ResultCache:
 ```
 
 **Học được gì:**
+
 - SQLite làm cache để tiết kiệm API quota
 - MD5 hash content làm unique key
 - `INSERT OR REPLACE` để update cache
@@ -127,6 +130,7 @@ def rate_limit_decorator(max_calls_per_minute=10):
 ```
 
 **Học được gì:**
+
 - Python decorator pattern
 - Rate limiting logic với sliding window
 - `@wraps` preserve function metadata
@@ -186,6 +190,7 @@ Trả về JSON: {{"sentiment": "POSITIVE/NEGATIVE/NEUTRAL", "toxicity": false, 
 ```
 
 **Học được gì:**
+
 - REST API call với `requests`
 - JSON parsing và error handling
 - Smart fallback strategy: Cache → Rule → API
@@ -234,6 +239,7 @@ def store_news(entry, sentiment, is_toxic):
 ```
 
 **Học được gì:**
+
 - Firebase Admin SDK
 - Document-based NoSQL operations
 - Unique ID generation với MD5
@@ -294,6 +300,7 @@ if __name__ == "__main__":
 ```
 
 **Học được gì:**
+
 - `schedule` library cho cron jobs
 - Error handling và logging
 - Statistics tracking
@@ -302,6 +309,7 @@ if __name__ == "__main__":
 ## 🎯 Tối ưu hóa đã áp dụng
 
 ### 1. **Performance Optimization**
+
 ```python
 # Trước: Load local ML models (chậm, tốn RAM)
 sentiment_model = pipeline("sentiment-analysis")  # 2GB RAM, 10s/bài
@@ -311,6 +319,7 @@ api_result = requests.post(gemini_endpoint)  # 100MB RAM, 1s/bài
 ```
 
 ### 2. **Cost Optimization**
+
 ```python
 # Smart caching - 90% cache hit rate
 def analyze_news(title, content):
@@ -327,6 +336,7 @@ def analyze_news(title, content):
 ```
 
 ### 3. **Reliability Optimization**
+
 ```python
 # Rate limiting + retry logic
 @rate_limit_decorator(max_calls_per_minute=10)
@@ -361,6 +371,7 @@ python main.py
 ```
 
 **Logs để theo dõi:**
+
 - Console: Real-time progress
 - `news_crawler.log`: Chi tiết logs
 - `analysis_cache.db`: Cache statistics
@@ -378,6 +389,7 @@ python main.py
 6. **Modular Design**: Tách biệt concerns, dễ test/debug
 
 **Project này demo được:**
+
 - REST API integration
 - Database operations
 - Caching strategies  
