@@ -1,11 +1,5 @@
-# import feedparser
-
-# def fetch_rss(url):
-#     feed = feedparser.parse(url)
-#     return feed.entries
-
 import feedparser
-from bs4 import BeautifulSoup  # type: ignore
+from bs4 import BeautifulSoup  
 
 
 def fetch_rss(rss_url):

@@ -193,4 +193,9 @@ cython_debug/
 .cursorignore
 .cursorindexingignore
 
+# Project specific files
 serviceAccountKey.json
+analysis_cache.db
+crawl_state.json
+news_crawler.log
+*.log

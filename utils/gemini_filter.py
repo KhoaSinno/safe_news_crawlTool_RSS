@@ -1,7 +1,7 @@
 """
-Gemini News Filter - Optimized Version 
+Gemini Safe News Handling
 Tối ưu hóa cho Gemini 2.0 Flash API với rate limiting, caching và fallback
-Author: AI Assistant
+Author: Sinoo colab Claude
 Version: 2.0
 """
 
@@ -80,7 +80,7 @@ class GeminiNewsFilter:
 
         # Limits và counters
         self.request_count = 0
-        self.daily_limit = 1500  # Free tier limit
+        self.daily_limit = 1500 
         self.minute_limit = 10
 
         # Khởi tạo cache và backup model
@@ -101,14 +101,14 @@ class GeminiNewsFilter:
 
         # Prompt tối ưu hóa
         prompt = f"""
-Phân tích ngắn gọn: "{text[:600]}"
+    Phân tích ngắn gọn: "{text}"
 
-Trả về JSON:
-{{"sentiment": "POSITIVE/NEGATIVE/NEUTRAL", "toxicity": false, "confidence": 0.8}}
+    Trả về JSON:
+    {{"sentiment": "POSITIVE/NEGATIVE/NEUTRAL", "toxicity": false, "confidence": 0.8}}
 
-Positive: vui, thành công, hạnh phúc, cưới, giải thưởng
-Negative: tai nạn, chết, bệnh, tham nhũng, tội phạm
-"""
+    Positive: vui, thành công, hạnh phúc, cưới, giải thưởng
+    Negative: tai nạn, chết, bệnh, tham nhũng, tội phạm
+    """
 
         payload = {
             "contents": [{"parts": [{"text": prompt}]}],
@@ -447,7 +447,7 @@ def test_gemini_filter():
         }
     ]
 
-    print("=== TEST GEMINI 2.0 FLASH API (OPTIMIZED) ===")
+    print("=== TEST GEMINI 2.0 FLASH API ===")
     for i, test in enumerate(test_cases, 1):
         print(f"\n🧪 Test {i}: {test['title']}")
         result = filter_obj.analyze_news(test['title'], test['content'])
