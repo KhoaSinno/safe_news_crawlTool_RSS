@@ -17,6 +17,10 @@ from utils.gemini_filter import GeminiNewsFilter
 from utils.firebase_handler import store_news
 import json
 import os
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
 
 # Setup logging
 logging.basicConfig(
@@ -29,7 +33,11 @@ logging.basicConfig(
 )
 
 # Cấu hình
-GEMINI_API_KEY = "AIzaSyCZbOdmDcqzmzJceMKWCznm-mlp8HBrsbk"
+GEMINI_API_KEY = os.getenv('GEMINI_API_KEY')
+if not GEMINI_API_KEY:
+    raise ValueError(
+        "GEMINI_API_KEY not found in environment variables. Please check your .env file.")
+
 CRAWL_STATE_FILE = "crawl_state.json"
 
 # Khởi tạo Gemini filter

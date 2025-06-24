@@ -19,32 +19,52 @@ RSS Feeds → Parse → Cache Check → AI Analysis → Filter → Firebase
 
 ## 📦 Setup nhanh
 
+### 1. Cài đặt dependencies
+
 ```bash
-pip install google-generativeai firebase-admin feedparser requests schedule
+pip install -r requirements.txt
 ```
+
+### 2. Setup environment variables
+
+```bash
+# Copy file template
+cp .env.example .env
+
+# Chỉnh sửa .env với API key thật
+# GEMINI_API_KEY=your_actual_api_key_here
+```
+
+### 3. Lấy Gemini API Key
+
+1. Truy cập: <https://makersuite.google.com/app/apikey>
+2. Tạo API key mới
+3. Copy vào file `.env`
 
 **File cần có:**
 
-- `serviceAccountKey.json` (Firebase)
-- Gemini API key trong code
+- `.env` (chứa GEMINI_API_KEY)
+- `serviceAccountKey.json` (Firebase credentials)
 
 ## 📁 Cấu trúc thư mục
 
 ```
 safe_news_crawlTool_RSS/
-├── main.py                    # App chính
-├── requirements.txt           # Dependencies
-├── serviceAccountKey.json     # Firebase credentials
-├── analysis_cache.db          # Cache database (auto-generated)
-├── crawl_state.json          # State tracking (auto-generated)
-├── news_crawler.log          # Log file (auto-generated)
-├── README.md                 # Hướng dẫn
-├── DEBUG.md                  # Debug guide
-├── PROJECT_SUMMARY.md        # Tổng quan dự án
+├── .env                      # Environment variables (GEMINI_API_KEY)
+├── .env.example              # Template for environment variables
+├── main.py                   # App chính
+├── requirements.txt          # Dependencies
+├── serviceAccountKey.json    # Firebase credentials
+├── analysis_cache.db         # Cache database (auto-generated)
+├── crawl_state.json         # State tracking (auto-generated)
+├── news_crawler.log         # Log file (auto-generated)
+├── README.md                # Hướng dẫn
+├── DEBUG.md                 # Debug guide
+├── PROJECT_SUMMARY.md       # Tổng quan dự án
 └── utils/
-    ├── rss_crawler.py        # RSS fetcher
-    ├── gemini_filter.py      # AI analysis + cache
-    └── firebase_handler.py   # Firebase operations
+    ├── rss_crawler.py       # RSS fetcher
+    ├── gemini_filter.py     # AI analysis + cache
+    └── firebase_handler.py  # Firebase operations
 ```
 
 ## 🧠 Core Logic - Step by Step

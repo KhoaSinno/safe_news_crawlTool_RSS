@@ -15,6 +15,11 @@ from typing import Dict, Optional
 import random
 from functools import wraps
 import logging
+import os
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
 
 
 def rate_limit_decorator(max_calls_per_minute=10):
@@ -80,7 +85,7 @@ class GeminiNewsFilter:
 
         # Limits và counters
         self.request_count = 0
-        self.daily_limit = 1500 
+        self.daily_limit = 1500
         self.minute_limit = 10
 
         # Khởi tạo cache và backup model
@@ -429,7 +434,12 @@ class ResultCache:
 
 def test_gemini_filter():
     """Test function để kiểm tra Gemini API"""
-    api_key = "AIzaSyCZbOdmDcqzmzJceMKWCznm-mlp8HBrsbk"
+    api_key = os.getenv('GEMINI_API_KEY')
+    if not api_key:
+        print("❌ GEMINI_API_KEY not found in environment variables")
+        print("Please create .env file with: GEMINI_API_KEY=your_api_key")
+        return
+
     filter_obj = GeminiNewsFilter(api_key)
 
     test_cases = [
