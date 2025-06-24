@@ -58,7 +58,8 @@ safe_news_crawlTool_RSS/
 ├── analysis_cache.db         # Cache database (auto-generated)
 ├── crawl_state.json         # State tracking (auto-generated)
 ├── news_crawler.log         # Log file (auto-generated)
-├── README.md                # Hướng dẫn
+├── README.md                # Hướng dẫn chính
+├── IMPROVEMENT_GUIDE.md     # 🚀 Hướng dẫn cải tiến hệ thống
 ├── DEBUG.md                 # Debug guide
 ├── PROJECT_SUMMARY.md       # Tổng quan dự án
 └── utils/
@@ -66,6 +67,16 @@ safe_news_crawlTool_RSS/
     ├── gemini_filter.py     # AI analysis + cache
     └── firebase_handler.py  # Firebase operations
 ```
+
+## 🚀 Nâng cao
+
+📖 **[IMPROVEMENT_GUIDE.md](./IMPROVEMENT_GUIDE.md)** - Hướng dẫn chi tiết cải tiến hệ thống:
+
+- ✨ Prompt engineering nâng cao
+- 🌐 Đọc full content từ URL
+- 🎯 Xử lý plot twist content
+- 📊 Đánh giá và monitoring hệ thống
+- 💡 Tối ưu quota Gemini free tier
 
 ## 🧠 Core Logic - Step by Step
 
