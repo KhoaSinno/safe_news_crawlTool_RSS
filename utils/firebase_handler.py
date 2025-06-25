@@ -32,13 +32,64 @@ def is_article_exists(title, link):
         return False
 
 
+def store_to_firebase(firebase_data: dict, collection_name: str = 'positive_news_test') -> bool:
+    """
+    Lưu tin tức vào Firebase collection với schema chuẩn
+    Args:
+        firebase_data: Dict với Firebase schema (8 fields)
+        collection_name: Tên collection (mặc định: positive_news_test)
+    Returns:
+        bool: True nếu lưu thành công
+    """
+    try:
+        title = firebase_data.get('title', '')
+        link = firebase_data.get('link', '')
+
+        # Kiểm tra trùng lặp
+        if is_article_exists_in_collection(title, link, collection_name):
+            logging.info(f"📰 Article already exists: {title[:50]}...")
+            return False
+
+        # Tạo document ID duy nhất
+        doc_id = generate_article_id(title, link)
+
+        # Thêm timestamp
+        firebase_data_with_timestamp = {
+            **firebase_data,
+            'created_at': datetime.now().isoformat(),
+            'source': 'gemini-2.0-flash'
+        }
+
+        # Lưu vào Firebase
+        db.collection(collection_name).document(
+            doc_id).set(firebase_data_with_timestamp)
+
+        logging.info(
+            f"✅ Stored to Firebase [{collection_name}]: {title[:50]}...")
+        return True
+
+    except Exception as e:
+        logging.error(f"❌ Firebase storage error: {e}")
+        return False
+
+
+def is_article_exists_in_collection(title: str, link: str, collection_name: str) -> bool:
+    """
+    Kiểm tra xem bài báo đã tồn tại trong collection cụ thể chưa
+    """
+    article_id = generate_article_id(title, link)
+    try:
+        doc_ref = db.collection(collection_name).document(article_id)
+        doc = doc_ref.get()
+        return doc.exists
+    except Exception as e:
+        logging.error(f"Error checking article existence: {e}")
+        return False
+
+
 def store_news(entry, sentiment, is_toxic):
     """
-    Lưu tin tức tích cực vào Firebase với kiểm tra trùng lặp
-    Cấu trúc dữ liệu khớp với Firebase schema:
-    - sentiment: number (1 = POSITIVE, 0 = NEGATIVE/NEUTRAL)
-    - is_toxic: boolean
-    - Các fields khác: string
+    LEGACY FUNCTION - Giữ lại để tương thích với code cũ
     """
     title = entry.get('title', '')
     link = entry.get('link', '')

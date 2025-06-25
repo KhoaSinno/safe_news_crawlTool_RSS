@@ -1,0 +1,178 @@
+{
+  "total": 20,
+  "analyzed": 20,
+  "positive": 13,
+  "negative": 0,
+  "neutral": 0,
+  "stored": 13,
+  "errors": 0,
+  "categories": {
+    "giao-duc": 6,
+    "suc-khoe": 2,
+    "du-lich": 1,
+    "gia-dinh": 1,
+    "xa-hoi": 1,
+    "khoa-hoc-cong-nghe": 2
+  },
+  "results": [
+    {
+      "index": 1,
+      "title": "Thí sinh rạng rỡ trước kỳ thi tốt nghiệp THPT 2025",
+      "category": "giao-duc",
+      "sentiment": 1,
+      "is_toxic": false,
+      "description": "Thí sinh trên cả nước thể hiện sự tự tin và sẵn sàng trước kỳ thi tốt nghiệp THPT năm 2025 với nhiều thay đổi.",
+      "source_category": "giao-duc"
+    },
+    {
+      "index": 2,
+      "title": "TP HCM công bố điểm chuẩn lớp 10 vào tối 26/6",
+      "category": "giao-duc",
+      "sentiment": 1,
+      "is_toxic": false,
+      "description": "Sở Giáo dục và Đào tạo TP HCM sẽ công bố điểm chuẩn vào lớp 10 công lập năm học 2024-2025 vào tối ngày 26/6.",
+      "source_category": "giao-duc"
+    },
+    {
+      "index": 3,
+      "title": "Anh em sinh đôi giành ngôi thủ khoa và á khoa chuyên Lý",
+      "category": "giao-duc",
+      "sentiment": 1,
+      "is_toxic": false,
+      "description": "Hai anh em sinh đôi cùng đạt thành tích cao trong kỳ thi vào lớp 10 chuyên Lý của trường THPT chuyên Khoa học Tự nhiên.",
+      "source_category": "giao-duc"
+    },
+    {
+      "index": 4,
+      "title": "Cả nước sẵn sàng trước giờ thi tốt nghiệp THPT 2025",
+      "category": "giao-duc",
+      "sentiment": 1,
+      "is_toxic": false,
+      "description": "Các địa phương trên cả nước đã hoàn tất công tác chuẩn bị cho kỳ thi tốt nghiệp THPT năm 2025, đảm bảo kỳ thi diễn ra an toàn, nghiêm túc và đúng quy ",
+      "source_category": "giao-duc"
+    },
+    {
+      "index": 5,
+      "title": "Thủ khoa ĐH Thương mại có việc làm trước tốt nghiệp một năm",
+      "category": "giao-duc",
+      "sentiment": 1,
+      "is_toxic": false,
+      "description": "Nguyễn Khắc Huy, thủ khoa đầu vào Đại học Thương mại năm 2020, đã có việc làm đúng chuyên ngành từ trước khi tốt nghiệp một năm nhờ nỗ lực học tập và ",
+      "source_category": "giao-duc"
+    },
+    {
+      "index": 6,
+      "title": "Cứu sản phụ bệnh tim sinh con lần 5",
+      "category": "suc-khoe",
+      "sentiment": 1,
+      "is_toxic": false,
+      "description": "Các bác sĩ đã cứu sống một sản phụ mắc bệnh tim và giúp cô sinh con lần thứ 5 thành công.",
+      "source_category": "suc-khoe"
+    },
+    {
+      "index": 7,
+      "title": "Hàng chục con giòi trong gò má người đàn ông",
+      "status": "FAILED",
+      "source_category": "suc-khoe"
+    },
+    {
+      "index": 8,
+      "title": "Bệnh viện hỗ trợ con gia đình hiến tạng nghèo",
+      "category": "suc-khoe",
+      "sentiment": 1,
+      "is_toxic": false,
+      "description": "Bệnh viện Chợ Rẫy hỗ trợ chi phí học tập cho con của những gia đình nghèo đã hiến tạng người thân, thể hiện sự tri ân và giúp đỡ thiết thực.",
+      "source_category": "suc-khoe"
+    },
+    {
+      "index": 9,
+      "title": "Sa 13 cm ruột ra ngoài bởi thói quen 'ôm' điện thoại khi đi vệ sinh",
+      "status": "FAILED",
+      "source_category": "suc-khoe"
+    },
+    {
+      "index": 10,
+      "title": "Cách ăn uống giúp sĩ tử duy trì tỉnh táo, tập trung",
+      "category": "giao-duc",
+      "sentiment": 1,
+      "is_toxic": false,
+      "description": "Bài viết cung cấp lời khuyên về chế độ ăn uống giúp sĩ tử duy trì sự tỉnh táo và tập trung trong mùa thi.",
+      "source_category": "suc-khoe"
+    },
+    {
+      "index": 11,
+      "title": "Canh sườn nấu sấu - món 'huyền thoại' mùa hè miền Bắc",
+      "category": "du-lich",
+      "sentiment": 1,
+      "is_toxic": false,
+      "description": "Canh sườn nấu sấu là món ăn quen thuộc, mang hương vị chua thanh mát, giúp giải nhiệt trong những ngày hè oi bức ở miền Bắc.",
+      "source_category": "gia-dinh"
+    },
+    {
+      "index": 12,
+      "title": "Triết lý sống và tư duy làm giàu của tài phiệt Hong Kong",
+      "status": "FAILED",
+      "source_category": "gia-dinh"
+    },
+    {
+      "index": 13,
+      "title": "Dấu hiệu con bạn được nuông chiều quá mức",
+      "category": "gia-dinh",
+      "sentiment": 1,
+      "is_toxic": false,
+      "description": "Bài viết trên VnExpress chỉ ra những dấu hiệu cho thấy trẻ em đang được nuông chiều quá mức, từ đó giúp phụ huynh nhận biết và điều chỉnh cách dạy dỗ.",
+      "source_category": "gia-dinh"
+    },
+    {
+      "index": 14,
+      "title": "Cuộc đời mới của doanh nhân 8 năm ngồi tù oan",
+      "category": "xa-hoi",
+      "sentiment": 1,
+      "is_toxic": false,
+      "description": "Ông Lương Thanh Nghị, sau 8 năm ngồi tù oan, đã nỗ lực gây dựng lại sự nghiệp và cuộc sống cá nhân, trở thành một doanh nhân thành công và tích cực th",
+      "source_category": "gia-dinh"
+    },
+    {
+      "index": 15,
+      "title": "Những thiết bị chạy ngầm gây tốn điện",
+      "status": "FAILED",
+      "source_category": "gia-dinh"
+    },
+    {
+      "index": 16,
+      "title": "'Mở rộng định nghĩa, tạo ra thách thức để phát triển một ngành'",
+      "status": "FAILED",
+      "source_category": "khoa-hoc-cong-nghe"
+    },
+    {
+      "index": 17,
+      "title": "Độ phân giải màn hình iPhone 17 Air lộ diện qua iOS 26",
+      "category": "khoa-hoc-cong-nghe",
+      "sentiment": 1,
+      "is_toxic": false,
+      "description": "Thông tin về độ phân giải màn hình dự kiến của iPhone 17 Air được tiết lộ thông qua iOS 26, cho thấy sự phát triển về công nghệ màn hình của Apple.",
+      "source_category": "khoa-hoc-cong-nghe"
+    },
+    {
+      "index": 18,
+      "title": "Máy tính lượng tử đầu tiên phóng vào vũ trụ",
+      "category": "khoa-hoc-cong-nghe",
+      "sentiment": 1,
+      "is_toxic": false,
+      "description": "Máy tính lượng tử đầu tiên đã được phóng vào vũ trụ để thử nghiệm khả năng xử lý dữ liệu trong môi trường khắc nghiệt. Thí nghiệm này mở ra tiềm năng ",
+      "source_category": "khoa-hoc-cong-nghe"
+    },
+    {
+      "index": 19,
+      "title": "AI có thế chỗ Gen Z?",
+      "status": "FAILED",
+      "source_category": "khoa-hoc-cong-nghe"
+    },
+    {
+      "index": 20,
+      "title": "Bom xuyên phá hoạt động như thế nào?",
+      "status": "FAILED",
+      "source_category": "khoa-hoc-cong-nghe"
+    }
+  ]
+}

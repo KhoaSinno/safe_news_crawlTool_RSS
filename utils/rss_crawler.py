@@ -22,7 +22,7 @@ def fetch_rss(rss_url):
             entry = {
                 "title": item.get("title", ""),
                 "link": item.get("link", ""),
-                "pubDate": item.get("published", ""),
+                "published": item.get("published", ""),
                 "description": clean_description,
                 "image_url": image_url,
             }
