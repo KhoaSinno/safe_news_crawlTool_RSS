@@ -1,0 +1,311 @@
+{
+  "total": 30,
+  "analyzed": 30,
+  "positive": 13,
+  "negative": 2,
+  "neutral": 10,
+  "stored": 13,
+  "errors": 0,
+  "quota_errors": 0,
+  "categories": {
+    "giao-duc": 8,
+    "suc-khoe": 6,
+    "xa-hoi": 2,
+    "du-lich": 1,
+    "kinh-doanh": 2,
+    "gia-dinh": 1,
+    "khoa-hoc-cong-nghe": 4,
+    "quan-su": 1
+  },
+  "results": [
+    {
+      "index": 1,
+      "title": "Nam sinh cụt tứ chi muốn tự viết bài thi tốt nghiệp dù được miễn",
+      "category": "giao-duc",
+      "sentiment": 1,
+      "is_toxic": false,
+      "description": "Nam sinh cụt tứ chi giàu nghị lực, quyết tâm tự viết bài thi tốt nghiệp, thể hiện tinh thần vượt khó và khát vọng chinh phục tri thức.",
+      "source_category": "giao-duc",
+      "processing_time": 1.3191807270050049
+    },
+    {
+      "index": 2,
+      "title": "Gần 10.000 thí sinh bỏ làm thủ tục thi tốt nghiệp THPT",
+      "category": "giao-duc",
+      "sentiment": 0,
+      "is_toxic": false,
+      "description": "Kỳ thi tốt nghiệp THPT diễn ra với số lượng thí sinh đăng ký lớn, tuy nhiên vẫn có một bộ phận thí sinh vắng mặt. Điều này cho thấy sự cần thiết của việc định hướng nghề nghiệp và lựa chọn phù hợp với",
+      "source_category": "giao-duc",
+      "processing_time": 2.7703161239624023
+    },
+    {
+      "index": 3,
+      "title": "Thí sinh rạng rỡ trước kỳ thi tốt nghiệp THPT 2025",
+      "category": "giao-duc",
+      "sentiment": 1,
+      "is_toxic": false,
+      "description": "Kỳ thi tốt nghiệp THPT năm 2025 có nhiều thay đổi, thí sinh thể hiện sự tự tin và sẵn sàng đối mặt với thử thách mới. Các em đều tràn đầy hy vọng và quyết tâm đạt kết quả tốt nhất.",
+      "source_category": "giao-duc",
+      "processing_time": 2.027341604232788
+    },
+    {
+      "index": 4,
+      "title": "TP HCM công bố điểm chuẩn lớp 10 vào tối 26/6",
+      "category": "giao-duc",
+      "sentiment": 0,
+      "is_toxic": false,
+      "description": "TP.HCM công bố điểm chuẩn vào lớp 10, tạo điều kiện cho học sinh và phụ huynh nắm bắt thông tin quan trọng về kỳ thi tuyển sinh.",
+      "source_category": "giao-duc",
+      "processing_time": 1.1284914016723633
+    },
+    {
+      "index": 5,
+      "title": "Anh em sinh đôi giành ngôi thủ khoa và á khoa chuyên Lý",
+      "category": "giao-duc",
+      "sentiment": 1,
+      "is_toxic": false,
+      "description": "Hai anh em sinh đôi cùng đạt thành tích cao trong kỳ thi vào lớp 10 chuyên Lý, với một em giành ngôi thủ khoa và em còn lại đạt á khoa. Đây là một câu chuyện truyền cảm hứng về sự nỗ lực và thành công",
+      "source_category": "giao-duc",
+      "processing_time": 1.323577642440796
+    },
+    {
+      "index": 6,
+      "title": "Cả nước sẵn sàng trước giờ thi tốt nghiệp THPT 2025",
+      "category": "giao-duc",
+      "sentiment": 1,
+      "is_toxic": false,
+      "description": "Các địa phương trên cả nước đã sẵn sàng cho kỳ thi tốt nghiệp THPT năm 2025, đảm bảo một kỳ thi an toàn, nghiêm túc và công bằng cho tất cả thí sinh.",
+      "source_category": "giao-duc",
+      "processing_time": 1.4304389953613281
+    },
+    {
+      "index": 7,
+      "title": "Thủ khoa ĐH Thương mại có việc làm trước tốt nghiệp một năm",
+      "category": "giao-duc",
+      "sentiment": 1,
+      "is_toxic": false,
+      "description": "Thủ khoa Đại học Thương mại đã có việc làm trước khi tốt nghiệp một năm, cho thấy sự nỗ lực và thành công trong học tập và sự nghiệp.",
+      "source_category": "giao-duc",
+      "processing_time": 1.3827664852142334
+    },
+    {
+      "index": 8,
+      "title": "Bốn lưu ý với thí sinh thi tốt nghiệp THPT 2025",
+      "category": "giao-duc",
+      "sentiment": 0,
+      "is_toxic": false,
+      "description": "Bài viết cung cấp thông tin chi tiết về những vật dụng bị cấm mang vào phòng thi tốt nghiệp THPT, giúp thí sinh chuẩn bị tốt nhất cho kỳ thi quan trọng.",
+      "source_category": "giao-duc",
+      "processing_time": 1.2251713275909424
+    },
+    {
+      "index": 9,
+      "title": "Tử vong sau một năm bị chó cắn",
+      "category": "suc-khoe",
+      "sentiment": -1,
+      "is_toxic": true,
+      "description": "Bài viết cảnh báo về sự nguy hiểm của bệnh dại và tầm quan trọng của việc tiêm phòng sau khi bị chó cắn. Nhấn mạnh việc cần theo dõi và điều trị kịp thời để tránh hậu quả đáng tiếc.",
+      "source_category": "suc-khoe",
+      "processing_time": 1.137791395187378
+    },
+    {
+      "index": 10,
+      "title": "Cứu sản phụ bệnh tim sinh con lần 5",
+      "category": "suc-khoe",
+      "sentiment": 1,
+      "is_toxic": false,
+      "description": "Các bác sĩ đã nỗ lực cứu sống một sản phụ mắc bệnh tim nghiêm trọng và em bé khỏe mạnh chào đời. Đây là một thành công lớn của y học và mang lại niềm hạnh phúc cho gia đình.",
+      "source_category": "suc-khoe",
+      "processing_time": 1.2985594272613525
+    },
+    {
+      "index": 11,
+      "title": "Hàng chục con giòi trong gò má người đàn ông",
+      "status": "FAILED",
+      "source_category": "suc-khoe",
+      "processing_time": 0.2800297737121582
+    },
+    {
+      "index": 12,
+      "title": "Sa 13 cm ruột ra ngoài bởi thói quen 'ôm' điện thoại khi đi vệ sinh",
+      "status": "FAILED",
+      "source_category": "suc-khoe",
+      "processing_time": 0.2874627113342285
+    },
+    {
+      "index": 13,
+      "title": "Cách ăn uống giúp sĩ tử duy trì tỉnh táo, tập trung",
+      "category": "suc-khoe",
+      "sentiment": 1,
+      "is_toxic": false,
+      "description": "Bài viết cung cấp thông tin về chế độ ăn uống khoa học, giúp sĩ tử duy trì sự tỉnh táo và tập trung cao độ trong mùa thi, hỗ trợ đạt kết quả tốt nhất.",
+      "source_category": "suc-khoe",
+      "processing_time": 1.548229455947876
+    },
+    {
+      "index": 14,
+      "title": "Hàng chục nghìn tấn dầu ăn chăn nuôi bị biến thành thực phẩm cho người",
+      "category": "xa-hoi",
+      "sentiment": -1,
+      "is_toxic": true,
+      "description": "Vụ việc gian lận trong sản xuất thực phẩm gây ảnh hưởng nghiêm trọng đến sức khỏe người tiêu dùng, cần có biện pháp xử lý nghiêm minh để bảo vệ quyền lợi của người dân.",
+      "source_category": "suc-khoe",
+      "processing_time": 1.3661727905273438
+    },
+    {
+      "index": 15,
+      "title": "Dấu hiệu ung thư tuyến tiền liệt đàn ông dễ bỏ qua",
+      "category": "suc-khoe",
+      "sentiment": 0,
+      "is_toxic": false,
+      "description": "Bài viết cung cấp thông tin về các dấu hiệu ung thư tuyến tiền liệt mà nam giới thường bỏ qua, giúp phát hiện sớm và điều trị kịp thời, nâng cao cơ hội sống.",
+      "source_category": "suc-khoe",
+      "processing_time": 2.1177895069122314
+    },
+    {
+      "index": 16,
+      "title": "5 đồ uống hạ axit uric tự nhiên",
+      "category": "suc-khoe",
+      "sentiment": 1,
+      "is_toxic": false,
+      "description": "Bài viết cung cấp thông tin về 5 loại đồ uống tự nhiên có thể giúp hạ axit uric trong máu, hỗ trợ cải thiện sức khỏe cho người bệnh gút.",
+      "source_category": "suc-khoe",
+      "processing_time": 1.2051119804382324
+    },
+    {
+      "index": 17,
+      "title": "Mẹo ngủ ngon khi không có điều hòa",
+      "category": "suc-khoe",
+      "sentiment": 1,
+      "is_toxic": false,
+      "description": "Bài viết cung cấp các mẹo hữu ích giúp bạn ngủ ngon hơn trong thời tiết nóng bức khi không có điều hòa, mang lại giấc ngủ thoải mái và cải thiện sức khỏe.",
+      "source_category": "gia-dinh",
+      "processing_time": 1.2979423999786377
+    },
+    {
+      "index": 18,
+      "title": "Canh sườn nấu sấu - món 'huyền thoại' mùa hè miền Bắc",
+      "category": "du-lich",
+      "sentiment": 1,
+      "is_toxic": false,
+      "description": "Bài viết giới thiệu món canh sườn nấu sấu, một món ăn đặc trưng và được yêu thích trong mùa hè ở miền Bắc Việt Nam. Món ăn này mang đến hương vị chua thanh, giải nhiệt và gợi nhớ về những kỷ niệm gia ",
+      "source_category": "gia-dinh",
+      "processing_time": 1.3788542747497559
+    },
+    {
+      "index": 19,
+      "title": "Triết lý sống và tư duy làm giàu của tài phiệt Hong Kong",
+      "category": "kinh-doanh",
+      "sentiment": 1,
+      "is_toxic": false,
+      "description": "Bài viết chia sẻ về triết lý sống và tư duy làm giàu của các tài phiệt Hong Kong, mang đến những bài học kinh nghiệm quý báu và nguồn cảm hứng cho những ai muốn thành công trong kinh doanh.",
+      "source_category": "gia-dinh",
+      "processing_time": 1.2122952938079834
+    },
+    {
+      "index": 20,
+      "title": "Dấu hiệu con bạn được nuông chiều quá mức",
+      "category": "gia-dinh",
+      "sentiment": 0,
+      "is_toxic": false,
+      "description": "Bài viết cung cấp những dấu hiệu nhận biết trẻ được nuông chiều quá mức và gợi ý cách điều chỉnh hành vi của cha mẹ để giúp con phát triển tốt hơn.",
+      "source_category": "gia-dinh",
+      "processing_time": 1.2609856128692627
+    },
+    {
+      "index": 21,
+      "title": "Cuộc đời mới của doanh nhân 8 năm ngồi tù oan",
+      "category": "xa-hoi",
+      "sentiment": 1,
+      "is_toxic": false,
+      "description": "Doanh nhân sau 8 năm ngồi tù oan đã nỗ lực gây dựng lại cuộc sống và sự nghiệp, trở thành nguồn cảm hứng cho những người từng gặp khó khăn.",
+      "source_category": "gia-dinh",
+      "processing_time": 1.1005866527557373
+    },
+    {
+      "index": 22,
+      "title": "Những thiết bị chạy ngầm gây tốn điện",
+      "category": "kinh-doanh",
+      "sentiment": 0,
+      "is_toxic": false,
+      "description": "Bài viết cung cấp thông tin về các thiết bị điện trong gia đình có thể tiêu thụ điện năng ngay cả khi không sử dụng, giúp người đọc tiết kiệm điện và giảm chi phí sinh hoạt.",
+      "source_category": "gia-dinh",
+      "processing_time": 1.2204618453979492
+    },
+    {
+      "index": 23,
+      "title": "Di cư sang Australia vì đất nước sắp chìm xuống biển",
+      "status": "FAILED",
+      "source_category": "gia-dinh",
+      "processing_time": 0.2960703372955322
+    },
+    {
+      "index": 24,
+      "title": "'Mở rộng định nghĩa, tạo ra thách thức để phát triển một ngành'",
+      "status": "FAILED",
+      "source_category": "khoa-hoc-cong-nghe",
+      "processing_time": 0.33881044387817383
+    },
+    {
+      "index": 25,
+      "title": "Việt Nam hướng tới làm chủ công nghệ lò phản ứng hạt nhân",
+      "status": "FAILED",
+      "source_category": "khoa-hoc-cong-nghe",
+      "processing_time": 0.27828145027160645
+    },
+    {
+      "index": 26,
+      "title": "CEO Unitree: 'Khoảnh khắc ChatGPT của robot hình người chưa tới'",
+      "category": "khoa-hoc-cong-nghe",
+      "sentiment": 0,
+      "is_toxic": false,
+      "description": "CEO Unitree nhận định rằng robot hình người vẫn cần thời gian để đạt đến bước đột phá như ChatGPT đã làm trong lĩnh vực AI. Bài viết cung cấp cái nhìn sâu sắc về hiện trạng và tương lai của robot hình",
+      "source_category": "khoa-hoc-cong-nghe",
+      "processing_time": 1.4022223949432373
+    },
+    {
+      "index": 27,
+      "title": "Độ phân giải màn hình iPhone 17 Air lộ diện qua iOS 26",
+      "category": "khoa-hoc-cong-nghe",
+      "sentiment": 0,
+      "is_toxic": false,
+      "description": "Thông tin rò rỉ về độ phân giải màn hình dự kiến của iPhone 17 Air, cho thấy sự phát triển không ngừng của công nghệ màn hình trên các thiết bị di động.",
+      "source_category": "khoa-hoc-cong-nghe",
+      "processing_time": 1.3114902973175049
+    },
+    {
+      "index": 28,
+      "title": "Máy tính lượng tử đầu tiên phóng vào vũ trụ",
+      "category": "khoa-hoc-cong-nghe",
+      "sentiment": 1,
+      "is_toxic": false,
+      "description": "Máy tính lượng tử đầu tiên được phóng vào vũ trụ, mở ra kỷ nguyên mới trong việc nghiên cứu và ứng dụng công nghệ lượng tử ngoài không gian. Đây là bước tiến quan trọng trong lĩnh vực khoa học và công",
+      "source_category": "khoa-hoc-cong-nghe",
+      "processing_time": 1.2527620792388916
+    },
+    {
+      "index": 29,
+      "title": "AI có thế chỗ Gen Z?",
+      "category": "khoa-hoc-cong-nghe",
+      "sentiment": 0,
+      "is_toxic": false,
+      "description": "Bài viết thảo luận về khả năng AI thay thế Gen Z trong công việc, đồng thời nhấn mạnh tầm quan trọng của việc Gen Z cần trang bị kỹ năng để thích ứng với sự phát triển của công nghệ.",
+      "source_category": "khoa-hoc-cong-nghe",
+      "processing_time": 1.4767913818359375
+    },
+    {
+      "index": 30,
+      "title": "Bom xuyên phá hoạt động như thế nào?",
+      "category": "quan-su",
+      "sentiment": 0,
+      "is_toxic": false,
+      "description": "Bài viết cung cấp thông tin chi tiết về cấu tạo và nguyên lý hoạt động của bom xuyên phá, một loại vũ khí hiện đại được sử dụng trong quân sự. Thông tin này giúp độc giả hiểu rõ hơn về công nghệ quốc ",
+      "source_category": "khoa-hoc-cong-nghe",
+      "processing_time": 1.2802999019622803
+    }
+  ],
+  "start_time": "2025-06-25T22:10:21.338231",
+  "prompt_version": "optimized_no_icons",
+  "end_time": "2025-06-25T22:12:43.276836",
+  "total_duration": 141.938605
+}

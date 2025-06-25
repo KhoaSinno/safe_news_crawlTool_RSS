@@ -58,7 +58,7 @@ class NewsAnalyzer:
 
         # 4. Log kết quả
         sentiment = firebase_data.get('sentiment', 0)
-        if sentiment == 1 and not firebase_data.get('is_toxic', True):
+        if sentiment >= 0 and not firebase_data.get('is_toxic', True):
             logging.info(f"✅ Analysis success: {rss_data['title'][:50]}...")
         else:
             sentiment_text = "POSITIVE" if sentiment == 1 else "NEGATIVE" if sentiment == -1 else "NEUTRAL"
@@ -78,7 +78,7 @@ class NewsAnalyzer:
                 prompt,
                 generation_config={
                     'temperature': 0.1,
-                    'max_output_tokens': 150,
+                    'max_output_tokens': 200,  # Tăng từ 150 lên 200
                     'top_p': 0.8,
                     'top_k': 10
                 }
@@ -97,42 +97,85 @@ class NewsAnalyzer:
             return None
 
     def _create_firebase_prompt(self, title: str, url: str) -> str:
-        """Tạo prompt tối ưu cho Firebase schema"""
+        """Tạo prompt tối ưu token cho Firebase schema"""
         return f"""
-Phân tích bài báo tiếng Việt và trả về JSON:
+                CHUYÊN GIA PHÂN TÍCH TIN TỨC TIẾNG VIỆT
 
-URL: {url}
-Tiêu đề: "{title}"
+                NHIỆM VỤ:
+                1. Truy cập và đọc TOÀN BỘ bài báo từ URL
+                2. Phân tích cảm xúc dựa trên toàn bộ nội dung
+                3. Phân loại chủ đề và tạo mô tả ngắn
+                4. Đánh giá tính độc hại cho gia đình
+                5. Phát hiện lừa đảo tiêu đề
 
-Đọc toàn bộ nội dung và trả về:
+                BÀI BÁO:
+                URL: {url}
+                Tiêu đề: "{title}"
 
-{{
-  "category": "category-slug",
-  "description": "Tóm tắt 1-2 câu chính",
-  "is_toxic": false,
-  "sentiment": 1
-}}
+                CHỦ ĐỀ (chọn 1):
+                - giao-duc: Giáo dục, học tập, thi cử, học bổng
+                - suc-khoe: Y tế, sức khỏe, chữa bệnh, đột phá y học
+                - gia-dinh: Gia đình, hôn nhân, nuôi con, tình yêu
+                - khoa-hoc-cong-nghe: Công nghệ, khoa học, internet
+                - kinh-doanh: Kinh doanh, khởi nghiệp, tài chính
+                - van-hoa: Văn hóa, nghệ thuật, giải trí, lễ hội
+                - the-thao: Thể thao, thi đấu, Olympic
+                - du-lich: Du lịch, ẩm thực, địa điểm
+                - moi-truong: Môi trường, khí hậu, thiên nhiên
+                - xa-hoi: Xã hội, chính trị, pháp luật
 
-CATEGORY slugs:
-- khoa-hoc-cong-nghe (AI, technology, khoa học)
-- suc-khoe (y tế, sức khỏe)  
-- giao-duc (học tập, giáo dục)
-- xa-hoi (xã hội, chính trị)
-- the-thao (thể thao)
-- van-hoa (văn hóa, nghệ thuật)
-- kinh-doanh (business, tài chính)
-- du-lich (travel, ẩm thực)
-- moi-truong (môi trường)
-- gia-dinh (gia đình, hôn nhân)
+                TIN TÍCH CỰC (sentiment = 1):
+                - Thành tựu: Học bổng, giải thưởng, tốt nghiệp
+                - Niềm vui gia đình: Đám cưới, sinh con, đoàn tụ
+                - Sức khỏe: Chữa khỏi bệnh, đột phá y học
+                - Việc tốt: Từ thiện, tình nguyện, giúp đỡ
+                - Sáng tạo: Công nghệ tích cực, khám phá khoa học
+                - Cảm hứng: Lễ hội văn hóa, thành tựu nghệ thuật
+                - Vượt khó: Khuyết tật thành công, chuyển đổi tích cực
+                - Thành công: Kinh doanh phát triển, khởi nghiệp
 
-SENTIMENT: 1 (positive), 0 (neutral), -1 (negative)
-IS_TOXIC: true (độc hại), false (an toàn)
+                TIN TIÊU CỰC (sentiment = -1):
+                - Tử vong, tai nạn, thảm họa
+                - Tội phạm, bạo lực, khủng bố
+                - Dịch bệnh, đau khổ, bi kịch
+                - Ly hôn, chia tay, mất mát
+                - Phá sản, thất nghiệp, khủng hoảng
+                - Tham nhũng, lừa đảo, bê bối
 
-Chỉ tin TÍCH CỰC: thành công, học bổng, cưới hỏi, khỏe mạnh, từ thiện, innovation
-Loại bỏ: tử vong, tai nạn, tội phạm, bệnh tật, ly hôn
+                TRUNG TÍNH (sentiment = 0):
+                - Thống kê, báo cáo không cảm xúc
+                - Hướng dẫn kỹ thuật
+                - Thông báo trung tính
 
-Chỉ trả JSON, không giải thích.
-"""
+                LỪA ĐẢO TIÊU ĐỀ:
+                CHÚ Ý: Tiêu đề tích cực nhưng nội dung tiêu cực
+                VD: "Sinh viên nhận học bổng" nhưng phát hiện gian lận
+
+                BƯỚC PHÂN TÍCH:
+                1. Đọc TOÀN BỘ nội dung từ URL
+                2. KHÔNG chỉ dựa vào tiêu đề
+                3. Phân tích toàn bộ nội dung cho cảm xúc chính xác
+                4. Xác định chủ đề phù hợp
+                5. Kiểm tra lừa đảo tiêu đề
+                6. Đánh giá tính độc hại
+                7. Tạo mô tả ngắn, tích cực
+
+                TRẢ VỀ JSON:
+                {{
+                "category": "chu-de-slug",
+                "description": "Mô tả tích cực 1-2 câu tiếng Việt",
+                "is_toxic": false,
+                "sentiment": 1
+                }}
+
+                QUY TẮC:
+                - sentiment: 1 (tích cực), 0 (trung tính), -1 (tiêu cực)
+                - is_toxic: true nếu không phù hợp trẻ em/gia đình
+                - description: Ngắn gọn, tích cực, tiếng Việt
+                - category: Chọn chính xác từ 10 chủ đề
+
+                CHỈ trả JSON, không giải thích.
+            """
 
     def _parse_json_response(self, response_text: str) -> Optional[Dict]:
         """Parse JSON từ Gemini response"""
