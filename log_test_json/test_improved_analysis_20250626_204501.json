@@ -1,0 +1,62 @@
+[
+  {
+    "title": "Thí sinh sốc vì đề Toán thi tốt nghiệp khó",
+    "link": "https://vnexpress.net/thi-sinh-soc-vi-de-toan-thi-tot-nghiep-kho-4760885.html",
+    "old_classification": "negative (-1), not toxic",
+    "new_sentiment": 0,
+    "new_is_toxic": false,
+    "new_category": "giao-duc",
+    "new_description": "Bài viết phản ánh về sự khó khăn của đề thi Toán tốt nghiệp THPT năm 2024, ghi nhận ý kiến của thí sinh và giáo viên về mức độ phân loại của đề. Thông tin này giúp phụ huynh và học sinh có cái nhìn tổ",
+    "improvement": "neutral"
+  },
+  {
+    "title": "Ngộ độc do ăn con so biển",
+    "link": "https://vnexpress.net/ngo-doc-do-an-con-so-bien-4760842.html",
+    "old_classification": "negative (-1), not toxic",
+    "new_sentiment": 0,
+    "new_is_toxic": false,
+    "new_category": "suc-khoe",
+    "new_description": "Bài viết cảnh báo về nguy cơ ngộ độc do ăn con so biển, cung cấp thông tin về độc tố và khuyến cáo người dân không nên sử dụng loại hải sản này để đảm bảo an toàn sức khỏe.",
+    "improvement": "neutral"
+  },
+  {
+    "title": "Hỏng gần như hai lá phổi sau khi bị Whitmore tấn công",
+    "link": "https://vnexpress.net/hong-gan-nhu-hai-la-phoi-sau-khi-bi-whitmore-tan-cong-4760812.html",
+    "old_classification": "negative (-1), not toxic",
+    "new_sentiment": 0,
+    "new_is_toxic": false,
+    "new_category": "suc-khoe",
+    "new_description": "Bài viết cung cấp thông tin về trường hợp bệnh nhân bị nhiễm Whitmore gây tổn thương phổi nghiêm trọng, đồng thời cảnh báo về sự nguy hiểm và cách phòng tránh căn bệnh này.",
+    "improvement": "neutral"
+  },
+  {
+    "title": "Nỗi khổ trong những căn hộ nhỏ như hộp giày",
+    "link": "https://vnexpress.net/noi-kho-trong-nhung-can-ho-nho-nhu-hop-giay-4760807.html",
+    "old_classification": "negative (-1), not toxic",
+    "new_sentiment": 0,
+    "new_is_toxic": false,
+    "new_category": "xa-hoi",
+    "new_description": "Bài viết phản ánh thực trạng và những khó khăn mà người dân gặp phải khi sống trong những căn hộ có diện tích nhỏ hẹp tại các thành phố lớn, đồng thời đưa ra một số giải pháp để cải thiện chất lượng c",
+    "improvement": "neutral"
+  },
+  {
+    "title": "Hoang mang giữa 'ma trận' hàng giả",
+    "link": "https://vnexpress.net/hoang-mang-giua-ma-tran-hang-gia-4760794.html",
+    "old_classification": "negative (-1), not toxic",
+    "new_sentiment": 0,
+    "new_is_toxic": false,
+    "new_category": "kinh-doanh",
+    "new_description": "Bài viết phản ánh thực trạng hàng giả, hàng nhái tràn lan trên thị trường, gây hoang mang cho người tiêu dùng. Thông tin giúp người đọc nâng cao cảnh giác và có biện pháp phòng tránh khi mua sắm.",
+    "improvement": "neutral"
+  },
+  {
+    "title": "Shadow AI - mặt tối của thời dùng AI không kiểm soát",
+    "link": "https://vnexpress.net/shadow-ai-mat-toi-cua-thoi-dung-ai-khong-kiem-soat-4760780.html",
+    "old_classification": "negative (-1), not toxic",
+    "new_sentiment": 0,
+    "new_is_toxic": false,
+    "new_category": "khoa-hoc-cong-nghe",
+    "new_description": "Bài viết cảnh báo về những rủi ro và mặt tối của việc sử dụng trí tuệ nhân tạo (AI) một cách thiếu kiểm soát, đồng thời nhấn mạnh tầm quan trọng của việc quản lý và giám sát AI để đảm bảo an toàn và t",
+    "improvement": "neutral"
+  }
+]

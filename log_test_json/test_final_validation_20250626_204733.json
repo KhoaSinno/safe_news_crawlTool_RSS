@@ -1,0 +1,56 @@
+[
+  {
+    "title": "Top 15 trường lấy điểm chuẩn lớp 10 cao nhất TP HCM",
+    "link": "https://vnexpress.net/top-15-truong-co-diem-chuan-lop-10-cao-nhat-tp-hcm-nam-2025-4906552.html",
+    "sentiment": 0,
+    "is_toxic": false,
+    "category": "giao-duc",
+    "description": "Bài viết cung cấp thông tin về top 15 trường trung học phổ thông có điểm chuẩn lớp 10 cao nhất tại TP.HCM năm 2025, giúp phụ huynh và học sinh có cái nhìn tổng quan về kỳ thi tuyển sinh và lựa chọn tr",
+    "processing_time": 1.47
+  },
+  {
+    "title": "Thí sinh sốc vì đề Toán thi tốt nghiệp khó",
+    "link": "https://vnexpress.net/thi-sinh-soc-vi-de-toan-thi-tot-nghiep-kho-4906735.html",
+    "sentiment": 0,
+    "is_toxic": false,
+    "category": "giao-duc",
+    "description": "Bài viết phản ánh về mức độ khó của đề thi Toán tốt nghiệp THPT năm nay, gây ra nhiều ý kiến trái chiều từ thí sinh và giáo viên. Thông tin này giúp phụ huynh và học sinh có cái nhìn tổng quan về kỳ t",
+    "processing_time": 1.51
+  },
+  {
+    "title": "15 trường tăng, giảm điểm chuẩn lớp 10 mạnh nhất TP HCM",
+    "link": "https://vnexpress.net/bien-dong-diem-chuan-vao-lop-10-tp-hcm-nam-2025-4906757.html",
+    "sentiment": 0,
+    "is_toxic": false,
+    "category": "giao-duc",
+    "description": "Bài viết cung cấp thông tin về biến động điểm chuẩn vào lớp 10 tại TP HCM năm 2025, giúp phụ huynh và học sinh có cái nhìn tổng quan và chuẩn bị tốt hơn cho kỳ thi.",
+    "processing_time": 1.47
+  },
+  {
+    "title": "Ngộ độc do ăn con so biển",
+    "link": "https://vnexpress.net/ngo-doc-do-an-con-so-bien-4906588.html",
+    "sentiment": 0,
+    "is_toxic": false,
+    "category": "suc-khoe",
+    "description": "Bài viết cảnh báo về nguy cơ ngộ độc do ăn con so biển, cung cấp thông tin về độc tố và cách phòng tránh để bảo vệ sức khỏe cộng đồng.",
+    "processing_time": 1.26
+  },
+  {
+    "title": "Máy CT giảm tia xạ, chụp toàn thân siêu nhanh trong một giây",
+    "link": "https://vnexpress.net/may-ct-giam-tia-xa-chup-toan-than-sieu-nhanh-trong-mot-giay-4906643.html",
+    "sentiment": 1,
+    "is_toxic": false,
+    "category": "suc-khoe",
+    "description": "Bài viết giới thiệu về máy CT mới có khả năng giảm tia xạ và chụp toàn thân siêu nhanh, mang lại lợi ích cho việc chẩn đoán và điều trị bệnh.",
+    "processing_time": 1.3
+  },
+  {
+    "title": "Món luộc hay hấp ngon hơn?",
+    "link": "https://vnexpress.net/mon-luoc-hay-hap-ngon-hon-4906505.html",
+    "sentiment": 0,
+    "is_toxic": false,
+    "category": "du-lich",
+    "description": "Bài viết so sánh ưu và nhược điểm của hai phương pháp chế biến món ăn là luộc và hấp, đồng thời đưa ra gợi ý về cách lựa chọn phù hợp với từng loại thực phẩm để đảm bảo hương vị và dinh dưỡng.",
+    "processing_time": 1.62
+  }
+]

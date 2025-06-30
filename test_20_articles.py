@@ -137,6 +137,7 @@ def test_exactly_20_articles():
                 article_result = {
                     'index': i,
                     'title': title[:80],
+                    'link': article.get('link', ''),
                     'category': category,
                     'sentiment': sentiment,
                     'is_toxic': result.get('is_toxic', False),
@@ -170,6 +171,7 @@ def test_exactly_20_articles():
                 stats['results'].append({
                     'index': i,
                     'title': title[:80],
+                    'link': article.get('link', ''),
                     'status': 'FAILED',
                     'source_category': article['source_category']
                 })

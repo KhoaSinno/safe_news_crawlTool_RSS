@@ -97,7 +97,7 @@ class NewsAnalyzer:
             return None
 
     def _create_firebase_prompt(self, title: str, url: str) -> str:
-        """Tạo prompt tối ưu token cho Firebase schema"""
+        """Tạo prompt tối ưu token cho Firebase schema với phân biệt rõ ràng negative vs toxic"""
         return f"""
                 CHUYÊN GIA PHÂN TÍCH TIN TỨC TIẾNG VIỆT
 
@@ -124,6 +124,8 @@ class NewsAnalyzer:
                 - moi-truong: Môi trường, khí hậu, thiên nhiên
                 - xa-hoi: Xã hội, chính trị, pháp luật
 
+                PHÂN LOẠI SENTIMENT (CHÚ Ý: NEGATIVE khác TOXIC):
+
                 TIN TÍCH CỰC (sentiment = 1):
                 - Thành tựu: Học bổng, giải thưởng, tốt nghiệp
                 - Niềm vui gia đình: Đám cưới, sinh con, đoàn tụ
@@ -134,18 +136,41 @@ class NewsAnalyzer:
                 - Vượt khó: Khuyết tật thành công, chuyển đổi tích cực
                 - Thành công: Kinh doanh phát triển, khởi nghiệp
 
-                TIN TIÊU CỰC (sentiment = -1):
-                - Tử vong, tai nạn, thảm họa
-                - Tội phạm, bạo lực, khủng bố
-                - Dịch bệnh, đau khổ, bi kịch
-                - Ly hôn, chia tay, mất mát
-                - Phá sản, thất nghiệp, khủng hoảng
-                - Tham nhũng, lừa đảo, bê bối
+                TIN TRUNG TÍNH (sentiment = 0) - ƯU TIÊN CHO TIN CẢNH BÁO/GIÁO DỤC:
+                - Thống kê, báo cáo khách quan
+                - Hướng dẫn kỹ thuật, thủ tục
+                - Thông tin giáo dục, cảnh báo an toàn
+                - Phản ánh vấn đề xã hội để cải thiện
+                - Tin tức thông tin không mang cảm xúc mạnh
+                - Cảnh báo sức khỏe có tính giáo dục
+                - Phân tích khó khăn với mục đích thông tin
 
-                TRUNG TÍNH (sentiment = 0):
-                - Thống kê, báo cáo không cảm xúc
-                - Hướng dẫn kỹ thuật
-                - Thông báo trung tính
+                TIN TIÊU CỰC (sentiment = -1) - CHỈ KHI THỰC SỰ BẤT HẠN:
+                - Tử vong, tai nạn, thảm họa NGHIÊM TRỌNG
+                - Tội phạm, bạo lực, khủng bố
+                - Dịch bệnh, đau khổ, bi kịch NẶNG NỀ
+                - Mất mát nghiêm trọng về sức khỏe/cơ thể (mất chức năng sống, hỏng hoặc cắt bỏ bộ phận cơ thể, di chứng nặng nề)
+                - Nội dung mô tả hậu quả kinh dị, gây ám ảnh, mất mát lớn về thể chất hoặc tinh thần
+                - Ly hôn, chia tay, mất mát lớn
+                - Phá sản, thất nghiệp, khủng hoảng
+                - Tham nhũng, lừa đảo, bê bối nghiêm trọng
+
+                 PHÂN BIỆT: NEGATIVE NEWS vs TOXIC CONTENT 
+
+                NEGATIVE NEWS (sentiment = -1, is_toxic = false):
+                - Cảnh báo ngộ độc thực phẩm (có giá trị giáo dục)
+                - Thông tin về khó khăn nhà ở (phản ánh thực trạng)
+                - Cảnh báo hàng giả (bảo vệ người tiêu dùng)
+                - Phản ánh khó khăn thi cử (thông tin hữu ích)
+                → GIỮ is_toxic = false vì có giá trị thông tin/cảnh báo
+
+                TOXIC CONTENT (is_toxic = true):
+                - Kích động thù hận, phân biệt chủng tộc
+                - Bạo lực đồ họa, nội dung 18+
+                - Tin giả có hại, lừa đảo trực tiếp
+                - Ngôn từ xúc phạm, chửi bới
+                - Kích động bạo lực, tự tử
+                → CHỈ ĐÁT is_toxic = true khi THỰC SỰ có hại
 
                 LỪA ĐẢO TIÊU ĐỀ:
                 CHÚ Ý: Tiêu đề tích cực nhưng nội dung tiêu cực
@@ -154,24 +179,23 @@ class NewsAnalyzer:
                 BƯỚC PHÂN TÍCH:
                 1. Đọc TOÀN BỘ nội dung từ URL
                 2. KHÔNG chỉ dựa vào tiêu đề
-                3. Phân tích toàn bộ nội dung cho cảm xúc chính xác
-                4. Xác định chủ đề phù hợp
-                5. Kiểm tra lừa đảo tiêu đề
-                6. Đánh giá tính độc hại
-                7. Tạo mô tả ngắn, tích cực
+                3. Ưu tiên giá trị thông tin/giáo dục của bài viết
+                4. Cân nhắc sentiment = 0 cho tin cảnh báo/giáo dục
+                5. Chỉ đánh is_toxic = true nếu THỰC SỰ có hại
+                6. Tạo mô tả tích cực, tập trung vào giá trị thông tin
 
                 TRẢ VỀ JSON:
                 {{
                 "category": "chu-de-slug",
                 "description": "Mô tả tích cực 1-2 câu tiếng Việt",
                 "is_toxic": false,
-                "sentiment": 1
+                "sentiment": 0
                 }}
 
                 QUY TẮC:
-                - sentiment: 1 (tích cực), 0 (trung tính), -1 (tiêu cực)
-                - is_toxic: true nếu không phù hợp trẻ em/gia đình
-                - description: Ngắn gọn, tích cực, tiếng Việt
+                - sentiment: 1 (tích cực), 0 (trung tính - ưu tiên), -1 (tiêu cực thật sự)
+                - is_toxic: true CHỈ khi nội dung THỰC SỰ có hại, không phù hợp gia đình
+                - description: Tập trung vào giá trị thông tin, giáo dục của bài
                 - category: Chọn chính xác từ 10 chủ đề
 
                 CHỈ trả JSON, không giải thích.
