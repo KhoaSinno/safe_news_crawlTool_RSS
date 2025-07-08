@@ -49,15 +49,20 @@ def test_30_articles():
     analyzer = NewsAnalyzer(api_key)
 
     # RSS feeds để lấy bài báo
+    # rss_feeds = [
+    #     {"url": "https://vnexpress.net/rss/giao-duc.rss",
+    #         "category": "giao-duc", "count": 8},
+    #     {"url": "https://vnexpress.net/rss/suc-khoe.rss",
+    #         "category": "suc-khoe", "count": 8},
+    #     {"url": "https://vnexpress.net/rss/gia-dinh.rss",
+    #         "category": "gia-dinh", "count": 7},
+    #     {"url": "https://vnexpress.net/rss/khoa-hoc-cong-nghe.rss",
+    #         "category": "khoa-hoc-cong-nghe", "count": 7},
+    # ]
+
     rss_feeds = [
-        {"url": "https://vnexpress.net/rss/giao-duc.rss",
-            "category": "giao-duc", "count": 8},
-        {"url": "https://vnexpress.net/rss/suc-khoe.rss",
-            "category": "suc-khoe", "count": 8},
-        {"url": "https://vnexpress.net/rss/gia-dinh.rss",
-            "category": "gia-dinh", "count": 7},
-        {"url": "https://vnexpress.net/rss/khoa-hoc-cong-nghe.rss",
-            "category": "khoa-hoc-cong-nghe", "count": 7},
+        {"url": "https://vnexpress.net/rss/tin-moi-nhat.rss",
+            "category": "tin-moi-nhat", "count": 25},
     ]
 
     print("📡 Collecting 30 articles from RSS feeds...")
@@ -201,7 +206,7 @@ def test_30_articles():
                 # Lưu vào Firebase nếu positive hoặc neutral và không toxic
                 if sentiment >= 0 and not result.get('is_toxic', True):
                     try:
-                        if store_to_firebase(result, collection_name='test_30_articles'):
+                        if store_to_firebase(result, collection_name='test_30_articles_new'):
                             stats['stored'] += 1
                             print(f"   💾 ✅ Stored to Firebase")
                             logging.info(

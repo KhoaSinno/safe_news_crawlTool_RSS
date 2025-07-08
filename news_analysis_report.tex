@@ -1,0 +1,195 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[vietnamese]{babel}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{url}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\usepackage{ragged2e}
+\usepackage{hyphenat}
+
+% Thiết lập margin nhỏ hơn để có thêm không gian
+\geometry{margin=1.5cm}
+
+% Định nghĩa màu sắc
+\definecolor{headercolor}{RGB}{52, 73, 94}
+\definecolor{savedcolor}{RGB}{39, 174, 96}
+\definecolor{notsavedcolor}{RGB}{231, 76, 60}
+
+% Định nghĩa kiểu cho URL
+\urlstyle{same}
+\def\UrlBreaks{\do\/\do-\do_\do.\do=\do&}
+
+% Định nghĩa cột mới với justify và line break
+\newcolumntype{P}[1]{>{\RaggedRight\arraybackslash}p{#1}}
+\newcolumntype{L}[1]{>{\RaggedRight\arraybackslash\hspace{0pt}}p{#1}}
+
+\title{Báo cáo Phân tích 30 Tin tức}
+\author{Safe News Crawler Tool}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Tổng quan}
+Báo cáo này trình bày kết quả phân tích 30 bài tin tức được thu thập và xử lý bởi hệ thống Safe News Crawler Tool. Mỗi bài viết được đánh giá về sentiment, độ an toàn và quyết định lưu trữ.
+
+\section{Thống kê tổng quan}
+\begin{itemize}
+    \item Tổng số bài phân tích: 30
+    \item Số bài được lưu: 25 (83.3\%)
+    \item Số bài không lưu: 5 (16.7\%)
+    \item Phân loại sentiment:
+    \begin{itemize}
+        \item Tích cực: 4 bài
+        \item Trung tính: 19 bài
+        \item Tiêu cực: 7 bài
+    \end{itemize}
+\end{itemize}
+
+\section{Chi tiết từng bài viết}
+
+\begin{longtable}{|p{0.04\textwidth}|L{0.45\textwidth}|L{0.42\textwidth}|p{0.06\textwidth}|}
+\hline
+\rowcolor{headercolor}
+\textcolor{white}{\textbf{STT}} & \textcolor{white}{\textbf{Tên bài báo}} & \textcolor{white}{\textbf{Mô tả}} & \textcolor{white}{\textbf{Kết quả}} \\
+\hline
+\endfirsthead
+
+\hline
+\rowcolor{headercolor}
+\textcolor{white}{\textbf{STT}} & \textcolor{white}{\textbf{Tên bài báo}} & \textcolor{white}{\textbf{Mô tả}} & \textcolor{white}{\textbf{Kết quả}} \\
+\hline
+\endhead
+
+\hline
+\multicolumn{4}{r}{\textit{Tiếp tục trang sau...}} \\
+\endfoot
+
+\hline
+\endlastfoot
+
+1 & \textbf{Kỷ lục gần 23.000 thí sinh tranh suất vào trường Công an} \newline {\small \url{https://vnexpress.net/ky-luc-gan-23-000-thi-sinh-tranh-suat-vao-truong-cong-an-4910506.html}} & Số lượng thí sinh đăng ký vào các trường công an năm nay tăng kỷ lục, cho thấy sức hút lớn của ngành này. & \cellcolor{savedcolor}\textcolor{white}{\textbf{Lưu}} \\
+\hline
+
+2 & \textbf{Điều chỉnh giá tính lệ phí trước bạ của gần 450 ôtô, xe máy} \newline {\small \url{https://vnexpress.net/dieu-chinh-gia-tinh-le-phi-truoc-ba-cua-gan-450-oto-xe-may-4910538.html}} & Bài viết cung cấp thông tin về việc điều chỉnh giá tính lệ phí trước bạ cho gần 450 loại ôtô và xe máy. & \cellcolor{savedcolor}\textcolor{white}{\textbf{Lưu}} \\
+\hline
+
+3 & \textbf{Phi công B-2 không kích Iran được mời tới Nhà Trắng} \newline {\small \url{https://vnexpress.net/phi-cong-b-2-khong-kich-iran-duoc-moi-toi-nha-trang-4910474.html}} & Bài viết đưa tin về việc một phi công lái máy bay ném bom B-2 tham gia chiến dịch không kích Iran được mời đến Nhà Trắng. & \cellcolor{savedcolor}\textcolor{white}{\textbf{Lưu}} \\
+\hline
+
+4 & \textbf{Có nên ăn cà chua sống mỗi ngày?} \newline {\small \url{https://vnexpress.net/co-nen-an-ca-chua-song-moi-ngay-4890723.html}} & Bài viết cung cấp thông tin về lợi ích và cách ăn cà chua sống đúng cách để hấp thụ tối đa dinh dưỡng. & \cellcolor{savedcolor}\textcolor{white}{\textbf{Lưu}} \\
+\hline
+
+5 & \textbf{Học viện Công nghệ Bưu chính Viễn thông dùng 'coin' thúc đẩy xanh} \newline {\small \url{https://vnexpress.net/hoc-vien-cong-nghe-buu-chinh-vien-thong-dung-coin-thuc-day-xanh-4910528.html}} & Học viện sử dụng hệ thống 'coin' nội bộ để khuyến khích sinh viên và giảng viên tham gia các hoạt động bảo vệ môi trường. & \cellcolor{savedcolor}\textcolor{white}{\textbf{Lưu}} \\
+\hline
+
+6 & \textbf{Enrique: 'PSG sẽ chết nếu không thay đổi'} \newline {\small \url{https://vnexpress.net/enrique-psg-se-chet-neu-khong-thay-doi-4910560.html}} & HLV Luis Enrique nhấn mạnh sự cần thiết phải thay đổi trong lối chơi của PSG để đạt được thành công. & \cellcolor{savedcolor}\textcolor{white}{\textbf{Lưu}} \\
+\hline
+
+7 & \textbf{6 lợi ích khi ăn món hấp thường xuyên} \newline {\small \url{https://vnexpress.net/6-loi-ich-khi-an-mon-hap-thuong-xuyen-4910456.html}} & Bài viết cung cấp thông tin về 6 lợi ích sức khỏe khi thường xuyên ăn các món hấp. & \cellcolor{savedcolor}\textcolor{white}{\textbf{Lưu}} \\
+\hline
+
+8 & \textbf{Tay vợt Wimbledon muốn mặc áo bóng đá tưởng nhớ Jota} \newline {\small \url{https://vnexpress.net/tay-vot-wimbledon-muon-mac-ao-bong-da-tuong-nho-jota-4910516.html}} & Tay vợt người Anh Ryan Peniston bày tỏ mong muốn mặc áo đấu của Diogo Jota khi thi đấu tại Wimbledon. & \cellcolor{savedcolor}\textcolor{white}{\textbf{Lưu}} \\
+\hline
+
+9 & \textbf{Vì sao Wimbledon lập kỷ lục hạt giống bị loại?} \newline {\small \url{https://vnexpress.net/vi-sao-wimbledon-lap-ky-luc-hat-giong-bi-loai-4910503.html}} & Bài viết phân tích nguyên nhân dẫn đến việc nhiều hạt giống hàng đầu bị loại sớm tại giải quần vợt Wimbledon 2024. & \cellcolor{savedcolor}\textcolor{white}{\textbf{Lưu}} \\
+\hline
+
+10 & \textbf{Thu nhập bình quân của lao động quý II/2025 giảm} \newline {\small \url{https://vnexpress.net/thu-nhap-binh-quan-cua-lao-dong-quy-ii-2025-giam-4910451.html}} & Bài viết cung cấp thông tin về sự thay đổi trong thu nhập bình quân của người lao động. & \cellcolor{savedcolor}\textcolor{white}{\textbf{Lưu}} \\
+\hline
+
+11 & \textbf{Tìm cách xóa ảnh trên Google Street View vì lo ngại riêng tư} \newline {\small \url{https://vnexpress.net/tim-cach-xoa-anh-tren-google-street-view-vi-lo-ngai-rieng-tu-4910185.html}} & Bài viết hướng dẫn người dùng cách xóa ảnh của mình trên Google Street View để bảo vệ quyền riêng tư. & \cellcolor{savedcolor}\textcolor{white}{\textbf{Lưu}} \\
+\hline
+
+12 & \textbf{'Kỳ vọng 9,5 điểm Tiếng Anh tốt nghiệp THPT nhưng giờ chỉ mong được 6'} \newline {\small \url{https://vnexpress.net/ky-vong-9-5-diem-tieng-anh-tot-nghiep-thpt-nhung-gio-chi-mong-duoc-6-4910543.html}} & Bài viết phản ánh thực tế về sự thay đổi trong mục tiêu điểm số môn tiếng Anh của học sinh lớp 12. & \cellcolor{savedcolor}\textcolor{white}{\textbf{Lưu}} \\
+\hline
+
+13 & \textbf{Mexico phát hiện gần 400 thi thể chất đống trong lò hỏa táng} \newline {\small \url{https://vnexpress.net/mexico-phat-hien-gan-400-thi-the-chat-dong-trong-lo-hoa-tang-4910554.html}} & Nhà chức trách Mexico phát hiện gần 400 thi thể bị bỏ lại trong một lò hỏa táng bỏ hoang. & \cellcolor{notsavedcolor}\textcolor{white}{\textbf{Không lưu}} \\
+\hline
+
+14 & \textbf{Cách làm món sườn kho dứa} \newline {\small \url{https://vnexpress.net/cach-lam-mon-suon-kho-dua-4910548.html}} & Bài viết hướng dẫn chi tiết cách làm món sườn kho dứa thơm ngon, đậm đà hương vị. & \cellcolor{savedcolor}\textcolor{white}{\textbf{Lưu}} \\
+\hline
+
+15 & \textbf{Đàm phán thương mại Mỹ - EU vẫn gặp nhiều thách thức} \newline {\small \url{https://vnexpress.net/dam-phan-thuong-mai-my-eu-van-gap-nhieu-thach-thuc-4910441.html}} & Bài viết phân tích những thách thức trong đàm phán thương mại giữa Mỹ và EU. & \cellcolor{savedcolor}\textcolor{white}{\textbf{Lưu}} \\
+\hline
+
+16 & \textbf{Tình bạn 30 năm của Jennifer Aniston và Courteney Cox} \newline {\small \url{https://vnexpress.net/tinh-ban-30-nam-cua-jennifer-aniston-va-courteney-cox-4909281.html}} & Bài viết ca ngợi tình bạn kéo dài 30 năm giữa hai nữ diễn viên Jennifer Aniston và Courteney Cox. & \cellcolor{savedcolor}\textcolor{white}{\textbf{Lưu}} \\
+\hline
+
+17 & \textbf{Ông Trump nói có thể áp thuế nhập khẩu tới 70\%} \newline {\small \url{https://vnexpress.net/ong-trump-noi-co-the-ap-thue-nhap-khau-toi-70-4910527.html}} & Ông Trump đề xuất áp thuế nhập khẩu cao, có thể lên đến 70\%, gây lo ngại về tác động đến thương mại. & \cellcolor{savedcolor}\textcolor{white}{\textbf{Lưu}} \\
+\hline
+
+18 & \textbf{Tình cảm bạn gái thất thường khiến tôi mệt mỏi} \newline {\small \url{https://vnexpress.net/tinh-cam-ban-gai-that-thuong-khien-toi-met-moi-4910176.html}} & Bài viết chia sẻ về những khó khăn trong mối quan hệ tình cảm với bạn gái có tính cách thất thường. & \cellcolor{savedcolor}\textcolor{white}{\textbf{Lưu}} \\
+\hline
+
+19 & \textbf{1.000 quả pháo hoa 'thắp sáng' bầu trời Hạ Long} \newline {\small \url{https://vnexpress.net/1-000-qua-phao-hoa-thap-sang-bau-troi-ha-long-4910541.html}} & Hàng nghìn người dân và du khách đã được chiêm ngưỡng màn trình diễn pháo hoa đặc sắc tại Hạ Long. & \cellcolor{savedcolor}\textcolor{white}{\textbf{Lưu}} \\
+\hline
+
+20 & \textbf{Các bệnh thường gặp ở thai phụ} \newline {\small \url{https://vnexpress.net/cac-benh-thuong-gap-o-thai-phu-4910533.html}} & Bài viết cung cấp thông tin về các bệnh thường gặp ở thai phụ như ốm nghén, tiểu đường thai kỳ. & \cellcolor{savedcolor}\textcolor{white}{\textbf{Lưu}} \\
+\hline
+
+21 & \textbf{Xét nghiệm đậu thai sau chuyển phôi thụ tinh ống nghiệm như thế nào} \newline {\small \url{https://vnexpress.net/xet-nghiem-dau-thai-sau-chuyen-phoi-thu-tinh-ong-nghiem-nhu-the-nao-4910531.html}} & Bài viết cung cấp thông tin chi tiết về các xét nghiệm cần thiết sau chuyển phôi trong quá trình thụ tinh ống nghiệm. & \cellcolor{savedcolor}\textcolor{white}{\textbf{Lưu}} \\
+\hline
+
+22 & \textbf{Ưu điểm của trẻ hóa da bằng ánh sáng LED} \newline {\small \url{https://vnexpress.net/uu-diem-cua-tre-hoa-da-bang-anh-sang-led-4909962.html}} & Bài viết cung cấp thông tin về phương pháp trẻ hóa da bằng ánh sáng LED, bao gồm ưu điểm và cơ chế hoạt động. & \cellcolor{savedcolor}\textcolor{white}{\textbf{Lưu}} \\
+\hline
+
+23 & \textbf{Chủ quán game hành hung hai thiếu niên bằng nhiều vật dụng} \newline {\small \url{https://vnexpress.net/chu-quan-game-hanh-hung-hai-thieu-nien-bang-nhieu-vat-dung-4910508.html}} & Chủ quán game ở Bình Dương bị tố hành hung hai thiếu niên vì nghi ngờ trộm cắp. & \cellcolor{notsavedcolor}\textcolor{white}{\textbf{Không lưu}} \\
+\hline
+
+24 & \textbf{Tập đoàn Aeon ra mắt chương trình điểm thành viên Waon Point} \newline {\small \url{https://vnexpress.net/tap-doan-aeon-ra-mat-chuong-trinh-diem-thanh-vien-waon-point-4910213.html}} & Tập đoàn Aeon giới thiệu chương trình điểm thưởng Waon Point, mang lại lợi ích cho khách hàng. & \cellcolor{savedcolor}\textcolor{white}{\textbf{Lưu}} \\
+\hline
+
+25 & \textbf{Ông Trump đề cập khả năng siết lệnh trừng phạt Nga} \newline {\small \url{https://vnexpress.net/ong-trump-de-cap-kha-nang-siet-lenh-trung-phat-nga-4910537.html}} & Cựu Tổng thống Mỹ Donald Trump đề cập đến khả năng siết chặt các lệnh trừng phạt đối với Nga. & \cellcolor{savedcolor}\textcolor{white}{\textbf{Lưu}} \\
+\hline
+
+26 & \textbf{Điểm tin 6h: Cháy cư xá ở TP HCM, 8 người chết | Hàn Quốc sắp phát tiền cho người dân} \newline {\small \url{https://vnexpress.net/diem-tin-6h-chay-cu-xa-o-tp-hcm-8-nguoi-chet-han-quoc-sap-phat-tien-cho-nguoi-dan-4910877.html}} & Điểm tin tổng hợp về vụ cháy cư xá nghiêm trọng tại TP HCM gây nhiều thương vong. & \cellcolor{notsavedcolor}\textcolor{white}{\textbf{Không lưu}} \\
+\hline
+
+27 & \textbf{Người cha bị tạm giữ vì bạo hành con trai} \newline {\small \url{https://vnexpress.net/nguoi-cha-bi-tam-giu-vi-bao-hanh-con-trai-4910815.html}} & Người cha ở Cần Thơ bị tạm giữ để điều tra hành vi bạo hành con trai ruột. & \cellcolor{notsavedcolor}\textcolor{white}{\textbf{Không lưu}} \\
+\hline
+
+28 & \textbf{Nhân chứng lũ quét Texas: 'Không gì thảm khốc hơn thế này'} \newline {\small \url{https://vnexpress.net/nhan-chung-lu-quet-texas-khong-gi-tham-khoc-hon-the-nay-4910811.html}} & Bài viết ghi lại lời kể của những người dân Texas về trận lũ quét kinh hoàng. & \cellcolor{notsavedcolor}\textcolor{white}{\textbf{Không lưu}} \\
+\hline
+
+29 & \textbf{Mexico phát hiện gần 400 thi thể chất đống trong lò hỏa táng} \newline {\small \url{https://vnexpress.net/mexico-phat-hien-gan-400-thi-the-chat-dong-trong-lo-hoa-tang-4910554.html}} & Nhà chức trách Mexico phát hiện gần 400 thi thể bị bỏ lại trong một lò hỏa táng bỏ hoang. & \cellcolor{savedcolor}\textcolor{white}{\textbf{Lưu}} \\
+\hline
+
+30 & \textbf{Ôtô đâm 8 xe máy ở Hậu Giang, một người chết} \newline {\small \url{https://vnexpress.net/oto-dam-8-xe-may-o-hau-giang-mot-nguoi-chet-4908392.html}} & Vụ tai nạn giao thông nghiêm trọng ở Hậu Giang khiến một người tử vong và nhiều người bị thương. & \cellcolor{notsavedcolor}\textcolor{white}{\textbf{Không lưu}} \\
+\hline
+
+\end{longtable}
+
+\section{Phân tích kết quả}
+
+\subsection{Phân loại theo chủ đề}
+\begin{itemize}
+    \item Giáo dục: 3 bài
+    \item Kinh doanh: 5 bài  
+    \item Xã hội: 4 bài
+    \item Sức khỏe: 5 bài
+    \item Thể thao: 3 bài
+    \item Khoa học - Công nghệ: 1 bài
+    \item Du lịch: 2 bài
+    \item Văn hóa: 1 bài
+    \item Gia đình: 1 bài
+\end{itemize}
+
+\subsection{Lý do không lưu}
+Các bài viết không được lưu chủ yếu do có sentiment tiêu cực (-1) và liên quan đến:
+\begin{itemize}
+    \item Tử vong, tai nạn nghiêm trọng
+    \item Bạo lực, hành hung
+    \item Thảm họa thiên nhiên
+    \item Các vụ việc gây shock, kinh dị
+\end{itemize}
+
+\subsection{Kết luận}
+Hệ thống Safe News Crawler Tool đã hoạt động hiệu quả với tỷ lệ lưu trữ 83.3\%, đảm bảo chỉ các nội dung tích cực và an toàn được đưa vào cơ sở dữ liệu. Điều này giúp bảo vệ người dùng khỏi các nội dung có thể gây tổn hại tâm lý hoặc không phù hợp.
+
+\end{document}
