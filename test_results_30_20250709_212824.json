@@ -1,0 +1,280 @@
+{
+  "total": 25,
+  "analyzed": 25,
+  "positive": 4,
+  "negative": 0,
+  "neutral": 14,
+  "stored": 18,
+  "errors": 0,
+  "quota_errors": 0,
+  "categories": {
+    "suc-khoe": 1,
+    "xa-hoi": 6,
+    "the-thao": 2,
+    "giao-duc": 3,
+    "gia-dinh": 3,
+    "khoa-hoc-cong-nghe": 1,
+    "van-hoa": 1,
+    "du-lich": 1
+  },
+  "results": [
+    {
+      "index": 1,
+      "title": "Suýt chết khi đang ngủ do mắc hội chứng ít gặp",
+      "link": "https://vnexpress.net/suyt-chet-khi-dang-ngu-do-mac-hoi-chung-it-gap-4912202.html",
+      "category": "suc-khoe",
+      "sentiment": 0,
+      "is_toxic": false,
+      "description": "Bài viết cung cấp thông tin về hội chứng ngưng thở khi ngủ, một tình trạng ít gặp nhưng có thể gây nguy hiểm đến tính mạng. Câu chuyện cá nhân giúp nâng cao nhận thức về hội chứng này và tầm quan trọn",
+      "source_category": "tin-moi-nhat",
+      "processing_time": 2.0112295150756836
+    },
+    {
+      "index": 2,
+      "title": "Việt Nam mời Nga, Trung Quốc tham gia diễu binh dịp 2/9",
+      "link": "https://vnexpress.net/viet-nam-moi-nga-trung-quoc-tham-gia-dieu-binh-dip-2-9-4912204.html",
+      "category": "xa-hoi",
+      "sentiment": 0,
+      "is_toxic": false,
+      "description": "Việt Nam dự kiến mời đại diện quân đội từ Nga và Trung Quốc tham gia diễu binh kỷ niệm 2/9, thể hiện sự hợp tác quốc tế và tăng cường mối quan hệ hữu nghị.",
+      "source_category": "tin-moi-nhat",
+      "processing_time": 4.151918172836304
+    },
+    {
+      "index": 3,
+      "title": "Tẩm tiết lên thịt lợn bệnh để 'phù phép' thành hàng tươi ngon",
+      "link": "https://vnexpress.net/tam-tiet-len-thit-lon-benh-de-phu-phep-thanh-hang-tuoi-ngon-4912185.html",
+      "category": "xa-hoi",
+      "sentiment": 0,
+      "is_toxic": false,
+      "description": "Phản ánh tình trạng gian lận trong kinh doanh thực phẩm, khi thịt lợn bệnh được tẩm tiết để biến thành hàng tươi ngon, gây nguy hại cho sức khỏe người tiêu dùng. Cảnh báo về vấn đề an toàn thực phẩm v",
+      "source_category": "tin-moi-nhat",
+      "processing_time": 5.231705904006958
+    },
+    {
+      "index": 4,
+      "title": "Ôtô lật ngửa sau tai nạn trên cao tốc",
+      "link": "https://vnexpress.net/oto-lat-ngua-sau-tai-nan-tren-cao-toc-4912207.html",
+      "category": "xa-hoi",
+      "sentiment": 0,
+      "is_toxic": false,
+      "description": "Vụ tai nạn giao thông trên cao tốc khiến một ôtô bị lật ngửa. Vụ việc đang được điều tra để làm rõ nguyên nhân và đảm bảo an toàn giao thông.",
+      "source_category": "tin-moi-nhat",
+      "processing_time": 1.4215402603149414
+    },
+    {
+      "index": 5,
+      "title": "Đồ ăn hỏng khiến Mbappe nhập viện và sụt 5 kg",
+      "link": "https://vnexpress.net/do-an-hong-khien-mbappe-nhap-vien-va-sut-5-kg-4912153.html",
+      "category": "the-thao",
+      "sentiment": 0,
+      "is_toxic": false,
+      "description": "Bài viết thông tin về việc cầu thủ Mbappe phải nhập viện và sụt cân do ngộ độc thực phẩm, ảnh hưởng đến quá trình chuẩn bị cho Euro 2024. Cung cấp thông tin về tình hình sức khỏe của vận động viên.",
+      "source_category": "tin-moi-nhat",
+      "processing_time": 6.698397636413574
+    },
+    {
+      "index": 6,
+      "title": "Ousmane Dembele và những 'tiền đạo cánh ảo' của Luis Enrique",
+      "link": "https://vnexpress.net/ousmane-dembele-va-nhung-tien-dao-canh-ao-cua-luis-enrique-4911574.html",
+      "category": "the-thao",
+      "sentiment": 0,
+      "is_toxic": false,
+      "description": "Bài viết phân tích về vai trò của Ousmane Dembele và các tiền đạo cánh trong chiến thuật của huấn luyện viên Luis Enrique, tập trung vào khả năng thích ứng và sự linh hoạt của các cầu thủ.",
+      "source_category": "tin-moi-nhat",
+      "processing_time": 1.8740839958190918
+    },
+    {
+      "index": 7,
+      "title": "Giải mật thể thao: Sự biến ảo của Real dưới thời Xabi Alonso",
+      "link": "https://vnexpress.net/giai-mat-the-thao-su-bien-ao-cua-real-duoi-thoi-xabi-alonso-4912208.html",
+      "status": "FAILED",
+      "source_category": "tin-moi-nhat",
+      "processing_time": 4.583489894866943
+    },
+    {
+      "index": 8,
+      "title": "Cách dạy cháu tôi thành học sinh xuất sắc",
+      "link": "https://vnexpress.net/cach-day-chau-toi-thanh-hoc-sinh-xuat-sac-4912176.html",
+      "status": "FAILED",
+      "source_category": "tin-moi-nhat",
+      "processing_time": 0.42148804664611816
+    },
+    {
+      "index": 9,
+      "title": "Một số trường chất lượng cao giảm sức hút",
+      "link": "https://vnexpress.net/mot-so-truong-chat-luong-cao-giam-suc-hut-4910847.html",
+      "category": "giao-duc",
+      "sentiment": 0,
+      "is_toxic": false,
+      "description": "Bài viết phản ánh thực trạng một số trường chất lượng cao tại Hà Nội gặp khó khăn trong việc tuyển sinh do nhiều yếu tố như chỉ tiêu giảm, học phí tăng, và sự cạnh tranh từ các trường tư thục. Thông t",
+      "source_category": "tin-moi-nhat",
+      "processing_time": 2.092615842819214
+    },
+    {
+      "index": 10,
+      "title": "Bánh quy sữa D-Maxx Marie giúp mẹ chăm bé mê ăn vặt",
+      "link": "https://vnexpress.net/banh-quy-sua-d-maxx-marie-giup-me-cham-be-me-an-vat-4912187.html",
+      "category": "gia-dinh",
+      "sentiment": 0,
+      "is_toxic": false,
+      "description": "Bài viết giới thiệu về bánh quy sữa D-Maxx Marie như một lựa chọn ăn vặt tiện lợi và bổ dưỡng cho mẹ và bé, giúp mẹ có thêm thời gian chăm sóc con cái.",
+      "source_category": "tin-moi-nhat",
+      "processing_time": 6.51146674156189
+    },
+    {
+      "index": 11,
+      "title": "Chuỗi sự kiện mùa hè cho học sinh, phụ huynh toàn quốc của FPTU",
+      "link": "https://vnexpress.net/chuoi-su-kien-mua-he-cho-hoc-sinh-phu-huynh-toan-quoc-cua-fptu-4912084.html",
+      "category": "giao-duc",
+      "sentiment": 1,
+      "is_toxic": false,
+      "description": "FPTU tổ chức chuỗi sự kiện hè trên toàn quốc, tạo cơ hội cho học sinh và phụ huynh trải nghiệm môi trường đại học, khám phá các ngành học và định hướng nghề nghiệp tương lai.",
+      "source_category": "tin-moi-nhat",
+      "processing_time": 13.803256273269653
+    },
+    {
+      "index": 12,
+      "title": "Du lịch Singapore tự túc với sự đồng hành từ KetnoiSingapore",
+      "link": "https://vnexpress.net/du-lich-singapore-tu-tuc-voi-su-dong-hanh-tu-ketnoisingapore-4912073.html",
+      "status": "FAILED",
+      "source_category": "tin-moi-nhat",
+      "processing_time": 1.9838132858276367
+    },
+    {
+      "index": 13,
+      "title": "Các hãng giao hàng Thái Lan chuyển hướng sang thị trường mới",
+      "link": "https://vnexpress.net/cac-hang-giao-hang-thai-lan-chuyen-huong-sang-thi-truong-moi-4911004.html",
+      "status": "FAILED",
+      "source_category": "tin-moi-nhat",
+      "processing_time": 2.5362679958343506
+    },
+    {
+      "index": 14,
+      "title": "Phó thủ tướng đề nghị Mỹ sớm công nhận Việt Nam là nền kinh tế thị trường",
+      "link": "https://vnexpress.net/pho-thu-tuong-de-nghi-my-som-cong-nhan-viet-nam-la-nen-kinh-te-thi-truong-4912205.html",
+      "status": "FAILED",
+      "source_category": "tin-moi-nhat",
+      "processing_time": 0.531444787979126
+    },
+    {
+      "index": 15,
+      "title": "Bốn bến cảng gần 25.000 tỷ đồng tại Hải Phòng được chấp thuận đầu tư",
+      "link": "https://vnexpress.net/bon-ben-cang-gan-25-000-ty-dong-tai-hai-phong-duoc-chap-thuan-dau-tu-4912137.html",
+      "status": "FAILED",
+      "source_category": "tin-moi-nhat",
+      "processing_time": 0.3806009292602539
+    },
+    {
+      "index": 16,
+      "title": "Gia Lai phát cảnh báo nhằm bảo vệ đàn cá voi",
+      "link": "https://vnexpress.net/gia-lai-phat-canh-bao-nham-bao-ve-dan-ca-voi-4912139.html",
+      "status": "FAILED",
+      "source_category": "tin-moi-nhat",
+      "processing_time": 0.4911322593688965
+    },
+    {
+      "index": 17,
+      "title": "Tây Ninh sẽ bàn giao xong mặt bằng cao tốc TP HCM - Mộc Bài giữa tháng 8",
+      "link": "https://vnexpress.net/tay-ninh-se-ban-giao-xong-mat-bang-cao-toc-tp-hcm-moc-bai-giua-thang-8-4912190.html",
+      "category": "xa-hoi",
+      "sentiment": 0,
+      "is_toxic": false,
+      "description": "Tỉnh Tây Ninh cam kết bàn giao mặt bằng dự án cao tốc TP HCM - Mộc Bài vào giữa tháng 8, tạo điều kiện thuận lợi cho việc triển khai dự án giao thông quan trọng này.",
+      "source_category": "tin-moi-nhat",
+      "processing_time": 2.218236207962036
+    },
+    {
+      "index": 18,
+      "title": "Pin mặt trời siêu mỏng có thể mang trên người",
+      "link": "https://vnexpress.net/pin-mat-troi-sieu-mong-co-the-mang-tren-nguoi-4911351.html",
+      "category": "khoa-hoc-cong-nghe",
+      "sentiment": 1,
+      "is_toxic": false,
+      "description": "Các nhà khoa học phát triển pin mặt trời siêu mỏng, nhẹ, có thể dán lên quần áo hoặc vật dụng cá nhân, mở ra tiềm năng ứng dụng rộng rãi trong việc cung cấp năng lượng di động và linh hoạt.",
+      "source_category": "tin-moi-nhat",
+      "processing_time": 2.1243996620178223
+    },
+    {
+      "index": 19,
+      "title": "Đưa con vào rừng sống kiểu hoang dã",
+      "link": "https://vnexpress.net/dua-con-vao-rung-song-kieu-hoang-da-4911895.html",
+      "category": "gia-dinh",
+      "sentiment": 0,
+      "is_toxic": false,
+      "description": "Bài viết kể về một gia đình quyết định đưa con vào rừng sinh sống để con được hòa mình vào thiên nhiên và học hỏi những kỹ năng sinh tồn. Họ mong muốn con có một tuổi thơ tự do và khám phá.",
+      "source_category": "tin-moi-nhat",
+      "processing_time": 1.6469552516937256
+    },
+    {
+      "index": 20,
+      "title": "Ba Lan báo động phòng không cao nhất khi Nga tập kích Ukraine",
+      "link": "https://vnexpress.net/ba-lan-bao-dong-phong-khong-cao-nhat-khi-nga-tap-kich-ukraine-4912191.html",
+      "category": "xa-hoi",
+      "sentiment": 0,
+      "is_toxic": false,
+      "description": "Ba Lan đã kích hoạt hệ thống phòng không ở mức cao nhất để đảm bảo an toàn không phận trong bối cảnh Nga tăng cường các cuộc tấn công vào Ukraine. Hành động này nhằm đối phó với nguy cơ tên lửa hoặc m",
+      "source_category": "tin-moi-nhat",
+      "processing_time": 1.6969821453094482
+    },
+    {
+      "index": 21,
+      "title": "Tìm bạn đời giản dị và thấu hiểu",
+      "link": "https://vnexpress.net/tim-ban-doi-gian-di-va-thau-hieu-4912040.html",
+      "category": "gia-dinh",
+      "sentiment": 1,
+      "is_toxic": false,
+      "description": "Bài viết chia sẻ những quan điểm và mong muốn về việc tìm kiếm bạn đời, nhấn mạnh tầm quan trọng của sự giản dị, thấu hiểu và đồng điệu trong tâm hồn để xây dựng một mối quan hệ bền vững.",
+      "source_category": "tin-moi-nhat",
+      "processing_time": 1.9305636882781982
+    },
+    {
+      "index": 22,
+      "title": "Những kiểu mặc sao Việt chuộng ngày hè",
+      "link": "https://vnexpress.net/nhung-kieu-mac-sao-viet-chuong-ngay-he-4911981.html",
+      "category": "van-hoa",
+      "sentiment": 0,
+      "is_toxic": false,
+      "description": "Bài viết giới thiệu các phong cách thời trang được ưa chuộng bởi các ngôi sao Việt trong mùa hè, mang đến gợi ý phối đồ đa dạng và phù hợp với thời tiết.",
+      "source_category": "tin-moi-nhat",
+      "processing_time": 3.323218584060669
+    },
+    {
+      "index": 23,
+      "title": "Tỉnh nào có nhiều trường chuyên nhất sau sáp nhập?",
+      "link": "https://vnexpress.net/tinh-nao-co-nhieu-truong-chuyen-nhat-sau-sap-nhap-4911935.html",
+      "category": "giao-duc",
+      "sentiment": 0,
+      "is_toxic": false,
+      "description": "Bài viết thống kê số lượng trường chuyên tại các tỉnh thành Việt Nam sau quá trình sáp nhập, cung cấp thông tin hữu ích về hệ thống giáo dục chuyên biệt.",
+      "source_category": "tin-moi-nhat",
+      "processing_time": 5.028318881988525
+    },
+    {
+      "index": 24,
+      "title": "Điểm đến yêu thích của khách Hàn, Nhật, Mỹ tại Việt Nam",
+      "link": "https://vnexpress.net/diem-den-yeu-thich-cua-khach-han-nhat-my-tai-viet-nam-4911731.html",
+      "category": "du-lich",
+      "sentiment": 1,
+      "is_toxic": false,
+      "description": "Bài viết giới thiệu về các điểm đến du lịch yêu thích của du khách Hàn Quốc, Nhật Bản và Mỹ tại Việt Nam, bao gồm các thành phố lớn và các điểm đến ven biển nổi tiếng.",
+      "source_category": "tin-moi-nhat",
+      "processing_time": 6.478654623031616
+    },
+    {
+      "index": 25,
+      "title": "Tôi bỏ 100.000 đồng bắt taxi về nhà thay vì cố lái xe khi mệt mỏi",
+      "link": "https://vnexpress.net/tai-nan-tran-dai-nghia-tai-nan-lien-hoan-nga-tu-dai-la-tran-dai-nghia-toi-bo-100-000-dong-bat-taxi-ve-nha-thay-vi-co-lai-xe-khi-met-moi-4912052.html",
+      "category": "xa-hoi",
+      "sentiment": 0,
+      "is_toxic": false,
+      "description": "Bài viết chia sẻ câu chuyện về một người tham gia giao thông lựa chọn đi taxi thay vì tự lái xe khi cảm thấy mệt mỏi, nhấn mạnh tầm quan trọng của việc đảm bảo an toàn khi lái xe và tránh gây tai nạn.",
+      "source_category": "tin-moi-nhat",
+      "processing_time": 1.4691543579101562
+    }
+  ],
+  "start_time": "2025-07-09T21:28:26.624368",
+  "prompt_version": "optimized_no_icons",
+  "end_time": "2025-07-09T21:31:31.234210",
+  "total_duration": 184.609842
+}
