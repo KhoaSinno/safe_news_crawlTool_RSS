@@ -2,207 +2,42 @@
 
 start
 
-:Hệ thống Safe News Crawler khởi động;
-' note right
-' **INPUT:**
-' - rss_feeds: list of RSS URLs
-' - crawl_interval: int (30 minutes)
-' - target_collection: string (positive_news_test)
+:⏰ Chạy định kỳ mỗi 30 phút;
 
-' **PSEUDOCODE:**
-' ```
-' FUNCTION main_crawl_cycle():
-'     // Khởi tạo hệ thống
-'     news_analyzer = NewsAnalyzer(GEMINI_API_KEY)
-'     rss_feeds = load_rss_sources()
-'     
-'     WHILE system_running:
-'         // Phase 1: RSS Collection
-'         all_articles = []
-'         FOR each feed IN rss_feeds:
-'             TRY:
-'                 articles = fetch_rss(feed.url)
-'                 cleaned_articles = clean_html_content(articles)
-'                 all_articles.extend(cleaned_articles)
-'             CATCH TimeoutException:
-'                 log_error("RSS timeout: " + feed.url)
-'                 CONTINUE
-'         END FOR
-'         
-'         // Phase 2: AI Analysis & Filtering
-'         positive_articles = []
-'         FOR each article IN all_articles:
-'             // Check cache first
-'             cache_key = generate_cache_key(article.title, article.link)
-'             IF cache_exists(cache_key):
-'                 analysis_result = get_from_cache(cache_key)
-'             ELSE:
-'                 // Rate limiting
-'                 wait_for_rate_limit()
-'                 
-'                 // AI Analysis
-'                 TRY:
-'                     analysis_result = analyze_with_gemini(article.title, article.link)
-'                     save_to_cache(cache_key, analysis_result)
-'                 CATCH APILimitException:
-'                     log_error("API limit reached, pausing crawl")
-'                     BREAK
-'                 CATCH NetworkException:
-'                     log_error("Network error, skipping article")
-'                     CONTINUE
-'             END IF
-'             
-'             // Filter positive news only
-'             IF analysis_result.is_positive == true:
-'                 firebase_data = transform_to_firebase_schema(article, analysis_result)
-'                 positive_articles.append(firebase_data)
-'             END IF
-'         END FOR
-'         
-'         // Phase 3: Storage
-'         stored_count = 0
-'         FOR each positive_article IN positive_articles:
-'             // Check duplicates
-'             IF NOT is_article_exists(positive_article.title, positive_article.link):
-'                 TRY:
-'                     store_to_firebase(positive_article, "positive_news_test")
-'                     stored_count += 1
-'                 CATCH FirebaseException:
-'                     log_error("Firebase storage failed")
-'                     retry_with_backoff(3)
-'             ELSE:
-'                 log_info("Article already exists, skipping")
-'             END IF
-'         END FOR
-'         
-'         // Statistics & Cleanup
-'         log_statistics(all_articles.count, positive_articles.count, stored_count)
-'         cleanup_memory_cache()
-'         
-'         // Wait for next cycle
-'         sleep(crawl_interval)
-'     END WHILE
-' END FUNCTION
-' ```
-' end note
+:📡 Crawl RSS từ nguồn VNExpress;
 
-:⏰ Scheduler chạy định kỳ (30 phút);
+:🧹 Làm sạch HTML và tổng hợp dữ liệu;
 
-:📡 Bắt đầu crawl RSS từ VNExpress;
-
-while (Còn RSS nào để crawl?) is (Có)
+while (Còn bài báo cần phân tích?) is (Có)
     
-    :📥 Fetch RSS từ nguồn;
+    :🔍 Kiểm tra cache;
     
-    if (Fetch RSS thành công?) then (Có)
-        :🧹 Làm sạch HTML content;
-        :📋 Thêm vào danh sách;
-    else (Lỗi timeout/network)
-        :📝 Log lỗi;
-    endif
-    
-endwhile (Hết)
-
-:📊 Tổng hợp tất cả bài báo từ nguồn;
-
-while (Còn báo để phân tích?) is (Có)
-    
-    :🔍 Tạo cache key (title + link);
-    
-    if (Cache tồn tại?) then (Có)
-        :📋 Lấy kết quả từ cache;
-        note right
-        **Cache Structure:**
-        - cache_key: MD5 hash
-        - analysis_result: JSON
-        - created_at: timestamp
-        - expires_at: 24h later
-        end note
+    if (Có kết quả cache?) then (Có)
+        :📋 Sử dụng cache;
     else (Không)
-        :⚡ Kiểm tra rate limiting (1s);
-        
-        :🤖 Gọi Gemini AI phân tích;
-        note right
-        **Gemini Analysis:**
-        Input: title + URL
-        Output: {
-          "is_positive": boolean,
-          "summary": "2-3 câu tóm tắt",
-          "sentiment_score": 0.0-1.0,
-          "keywords": ["array"],
-          "reasoning": "lý do phân tích"
-        }
-        end note
-        
-        if (AI call thành công?) then (Có)
-            :💾 Lưu kết quả vào cache;
-        else (Lỗi API/Network)
-            if (API Limit?) then (Có)
-                :⏸️ Tạm dừng crawl cycle;
-                stop
-            else (Network error)
-                :📝 Log lỗi, bỏ qua article;
-            endif
-        endif
+        :🤖 Phân tích với Gemini AI;
+        :💾 Lưu kết quả vào cache;
     endif
     
-    if (Tin tức tích cực?) then (is_positive = true)
-        :🔄 Transform sang Firebase schema;
-        note right
-        **Firebase Schema (8 fields):**
-        - title: string
-        - link: string  
-        - summary: string
-        - image_url: string
-        - published: timestamp
-        - sentiment_score: float
-        - keywords: array
-        - reasoning: string
-        end note
+    if (Tin tức tích cực?) then (Có)
+        :🔄 Chuyển đổi sang Firebase schema;
         
-        :🔍 Kiểm tra trùng lặp bài báo;
-        
-        if (Bài báo đã tồn tại?) then (Không)
-            :💾 Lưu vào Firebase collection;
-            
-            if (Lưu Firebase thành công?) then (Có)
-                :✅ Tăng counter success;
-            else (Lỗi Firebase)
-                :🔄 Retry 3 lần với backoff;
-                
-                if (Retry thành công?) then (Có)
-                    :✅ Tăng counter success;
-                else (Vẫn lỗi)
-                    :❌ Log lỗi Firebase;
-                endif
-            endif
-        else (Đã tồn tại)
-            :📋 Log: Article already exists;
+        if (Chưa tồn tại?) then (Có)
+            :✅ Lưu vào Firebase;
+        else (Đã có)
+            :Bỏ qua tin trùng;
         endif
         
-    else (is_positive = false)
+    else (Không)
         :❌ Bỏ qua tin tiêu cực;
     endif
     
 endwhile (Hết)
 
-:📊 Tính toán và log thống kê;
-note right
-**Statistics:**
-- Tổng articles crawled
-- Số tin tích cực found  
-- Số tin stored thành công
-- Cache hit rate
-- API calls made
-- Error count
-end note
-
-:🧹 Cleanup memory cache;
-
-:💤 Sleep đến chu kỳ tiếp theo (30 phút);
+:💤 Chờ chu kỳ tiếp theo (30 phút);
 
 stop
 
 @enduml
 
-' Thuật toán Safe News Crawler tự động thu thập và phân tích tin tức tích cực từ các nguồn RSS uy tín. Hệ thống hoạt động theo chu kỳ 30 phút, crawl từ 4 nguồn RSS (VnExpress, TienPhong, TuoiTre, Dantri) với focus vào các chuyên mục tích cực như giáo dục, sức khỏe, gia đình. Sử dụng Gemini AI để phân tích và lọc chỉ những tin tức có sentiment tích cực, sau đó transform sang Firebase schema chuẩn và lưu trữ với duplicate detection. Hệ thống tối ưu hiệu suất với cache in-memory, rate limiting cho API calls, và error handling thông minh cho các tình huống như RSS timeout, API limit, hoặc Firebase connection issues. Monitoring đầy đủ với structured logging và statistics tracking đảm bảo hệ thống vận hành ổn định và có thể scale trong tương lai.
+' Safe News Crawler tự động crawl tin tức tích cực từ RSS feeds, sử dụng Gemini AI để phân tích sentiment và lưu trữ vào Firebase. Hệ thống chạy định kỳ 30 phút với cache tối ưu và duplicate detection.
