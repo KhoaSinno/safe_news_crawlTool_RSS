@@ -26,7 +26,7 @@ class NewsAnalyzer:
         self.model = genai.GenerativeModel('gemini-2.0-flash-exp')
         self.cache = {}  # Simple in-memory cache
         self.last_call_time = 0
-        self.min_call_interval = 1.0  # Minimum 1 second between calls
+        self.min_call_interval = 2.0  # Minimum 2 seconds between calls
 
     def analyze_and_transform(self, rss_data: Dict) -> Optional[Dict]:
         """

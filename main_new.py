@@ -1,5 +1,5 @@
 """
-Safe News Crawler - New Implementation
+Safe News Crawler
 Sử dụng NewsAnalyzer mới với Firebase integration tối ưu
 Features:
 - Simple title + URL analysis with Gemini
