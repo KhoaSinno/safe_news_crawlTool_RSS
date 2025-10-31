@@ -88,7 +88,7 @@ def test_30_articles():
                         "summary": entry.get('description', ''),
                         "image_url": entry.get('image_url', ''),
                         "published": entry.get('published', ''),
-                        "source_category": feed['category']
+                        "category": feed['category']  # Fix: đổi từ source_category → category
                     }
                     all_articles.append(article)
                 print(f"   ✅ Added {len(selected)} articles")
@@ -132,18 +132,18 @@ def test_30_articles():
         title = article['title']
         print(f"\n📝 [{i:2d}/30] {title[:70]}...")
         print(f"🔗 {article['link']}")
-        print(f"📂 Source: {article['source_category']}")
+        print(f"📂 Source: {article['category']}")
 
         logging.info(f"📝 [{i:2d}/30] Processing: {title}")
         logging.info(f"🔗 URL: {article['link']}")
-        logging.info(f"📂 Source category: {article['source_category']}")
+        logging.info(f"📂 Source category: {article['category']}")
 
         try:
             # Rate limiting - đợi 3 giây giữa các requests
             if i > 1:
                 print("⏳ Waiting 3 seconds (rate limiting)...")
                 logging.info("⏳ Rate limiting: waiting 3 seconds...")
-                time.sleep(3)
+                time.sleep(6)
 
             # Ghi log trước khi phân tích
             logging.info(f"🤖 Calling Gemini API for article {i}")
@@ -182,7 +182,7 @@ def test_30_articles():
                     'sentiment': sentiment,
                     'is_toxic': result.get('is_toxic', False),
                     'description': result.get('description', '')[:200],
-                    'source_category': article['source_category'],
+                    'source_category': article['category'],
                     'processing_time': processing_time
                 }
                 stats['results'].append(article_result)
@@ -206,11 +206,11 @@ def test_30_articles():
                 # Lưu vào Firebase nếu positive hoặc neutral và không toxic
                 if sentiment >= 0 and not result.get('is_toxic', True):
                     try:
-                        if store_to_firebase(result, collection_name='test_30_articles_new'):
+                        if store_to_firebase(result, collection_name='positive_news'):
                             stats['stored'] += 1
                             print(f"   💾 ✅ Stored to Firebase")
                             logging.info(
-                                f"   💾 ✅ Stored to Firebase collection: test_30_articles")
+                                f"   💾 ✅ Stored to Firebase collection: positive_news")
                         else:
                             print(f"   💾 ❌ Failed to store")
                             logging.warning(
@@ -230,7 +230,7 @@ def test_30_articles():
                     'title': title[:100],
                     'link': article.get('link', ''),
                     'status': 'FAILED',
-                    'source_category': article['source_category'],
+                    'source_category': article['category'],
                     'processing_time': processing_time
                 })
 
@@ -252,7 +252,7 @@ def test_30_articles():
                     'title': title[:100],
                     'status': 'ERROR',
                     'error': error_msg,
-                    'source_category': article['source_category']
+                    'source_category': article['category']
                 })
 
     # Finalize stats
@@ -353,7 +353,7 @@ if __name__ == "__main__":
     print("This will test 30 articles with the token-optimized prompt")
     print("Make sure you have sufficient Gemini API quota (30 requests needed)")
 
-    input("\nPress Enter to start the test...")
+    # input("\nPress Enter to start the test...")  # Auto-start for background runs
 
     success = test_30_articles()
 

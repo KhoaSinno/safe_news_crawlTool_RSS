@@ -23,10 +23,11 @@ class NewsAnalyzer:
     def __init__(self, api_key: str):
         """Khởi tạo với Gemini API key"""
         genai.configure(api_key=api_key)
-        self.model = genai.GenerativeModel('gemini-2.0-flash-exp')
+        # Dùng gemini-2.0-flash thay vì 2.5 vì safety filter ít nghiêm ngặt hơn
+        self.model = genai.GenerativeModel('gemini-2.0-flash')
         self.cache = {}  # Simple in-memory cache
         self.last_call_time = 0
-        self.min_call_interval = 2.0  # Minimum 2 seconds between calls
+        self.min_call_interval = 6.0  # Minimum 6 seconds between calls
 
     def analyze_and_transform(self, rss_data: Dict) -> Optional[Dict]:
         """
@@ -71,6 +72,8 @@ class NewsAnalyzer:
 
     def _call_gemini(self, title: str, url: str) -> Optional[Dict]:
         """Gọi Gemini API với prompt đơn giản"""
+        from google.generativeai.types import HarmCategory, HarmBlockThreshold
+
         prompt = self._create_firebase_prompt(title, url)
 
         try:
@@ -78,11 +81,30 @@ class NewsAnalyzer:
                 prompt,
                 generation_config={
                     'temperature': 0.1,
-                    'max_output_tokens': 200,  # Tăng từ 150 lên 200
+                    'max_output_tokens': 200,
                     'top_p': 0.8,
                     'top_k': 10
+                },
+                safety_settings={
+                    HarmCategory.HARM_CATEGORY_HARASSMENT: HarmBlockThreshold.BLOCK_NONE,
+                    HarmCategory.HARM_CATEGORY_HATE_SPEECH: HarmBlockThreshold.BLOCK_NONE,
+                    HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT: HarmBlockThreshold.BLOCK_NONE,
+                    HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT: HarmBlockThreshold.BLOCK_NONE,
                 }
             )
+
+            # Check if response was blocked by safety filters
+            if not response.candidates or not response.candidates[0].content.parts:
+                finish_reason = response.candidates[0].finish_reason if response.candidates else 'UNKNOWN'
+                logging.warning(
+                    f"⚠️ Response blocked by safety filter (reason={finish_reason}): {title[:50]}...")
+                # Return default negative/toxic for blocked content - will be filtered out
+                return {
+                    'category': 'news',
+                    'description': 'Content blocked by safety filters',
+                    'is_toxic': True,
+                    'sentiment': -1
+                }
 
             result = self._parse_json_response(response.text)
 
@@ -205,8 +227,8 @@ class NewsAnalyzer:
         if not result:
             return False
 
-        # Check required fields
-        required_fields = ['category', 'description', 'is_toxic', 'sentiment']
+        # Check required fields - Gemini chỉ trả về 3 fields, không có category
+        required_fields = ['description', 'is_toxic', 'sentiment']
         if not all(field in result for field in required_fields):
             return False
 

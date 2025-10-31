@@ -1,0 +1,261 @@
+{
+  "total": 25,
+  "analyzed": 25,
+  "positive": 5,
+  "negative": 3,
+  "neutral": 6,
+  "stored": 11,
+  "errors": 0,
+  "quota_errors": 0,
+  "categories": {
+    "tin-moi-nhat": 14
+  },
+  "results": [
+    {
+      "index": 1,
+      "title": "Vietjet ký hợp đồng 3,8 tỷ USD mua động cơ Rolls-Royce Trent 7000",
+      "link": "https://vnexpress.net/vietjet-ky-hop-dong-3-8-ty-usd-mua-dong-co-rolls-royce-trent-7000-4958466.html",
+      "category": "tin-moi-nhat",
+      "sentiment": 1,
+      "is_toxic": false,
+      "description": "Vietjet ký kết hợp đồng trị giá 3,8 tỷ USD với Rolls-Royce để mua động cơ Trent 7000 và các dịch vụ liên quan, nhằm nâng cao hiệu quả hoạt động và mở rộng đội bay.",
+      "source_category": "tin-moi-nhat",
+      "processing_time": 2.4144937992095947
+    },
+    {
+      "index": 2,
+      "title": "HAGL khiến Nam Định không thắng sáu trận liền ở V-League",
+      "link": "https://vnexpress.net/hagl-khien-nam-dinh-khong-thang-sau-tran-lien-o-v-league-4958474.html",
+      "status": "FAILED",
+      "source_category": "tin-moi-nhat",
+      "processing_time": 16.175660371780396
+    },
+    {
+      "index": 3,
+      "title": "'Thủ phạm' gây đau đầu nhưng dễ bị chẩn đoán nhầm",
+      "link": "https://vnexpress.net/thu-pham-gay-dau-dau-nhung-de-bi-chan-doan-nham-4958479.html",
+      "category": "tin-moi-nhat",
+      "sentiment": 0,
+      "is_toxic": false,
+      "description": "Bài viết cung cấp thông tin về chứng đau đầu do lạm dụng thuốc giảm đau, một tình trạng thường bị chẩn đoán nhầm. Nội dung tập trung vào việc nâng cao nhận thức về nguyên nhân và cách phòng ngừa chứng",
+      "source_category": "tin-moi-nhat",
+      "processing_time": 6.6769750118255615
+    },
+    {
+      "index": 4,
+      "title": "Vụ nổ trên ruộng lúa ở Quảng Trị",
+      "link": "https://vnexpress.net/vu-no-tren-ruong-lua-o-quang-tri-4958472.html",
+      "status": "FAILED",
+      "source_category": "tin-moi-nhat",
+      "processing_time": 0.7304184436798096
+    },
+    {
+      "index": 5,
+      "title": "Phán quyết vụ 7 cầu thủ nhập tịch Malaysia có thể đến trễ",
+      "link": "https://vnexpress.net/phan-quyet-vu-7-cau-thu-nhap-tich-malaysia-co-the-den-tre-4958483.html",
+      "status": "FAILED",
+      "source_category": "tin-moi-nhat",
+      "processing_time": 1.475801706314087
+    },
+    {
+      "index": 6,
+      "title": "Con gái 10 tuổi của Hà Kiều Anh",
+      "link": "https://vnexpress.net/con-gai-10-tuoi-cua-ha-kieu-anh-4957409.html",
+      "status": "FAILED",
+      "source_category": "tin-moi-nhat",
+      "processing_time": 5.0760908126831055
+    },
+    {
+      "index": 7,
+      "title": "Mở đường tiếp tế 1.700 người bị cô lập 4 ngày do lở núi",
+      "link": "https://vnexpress.net/mo-duong-tiep-te-1-700-nguoi-bi-co-lap-4-ngay-do-lo-nui-4958473.html",
+      "category": "tin-moi-nhat",
+      "sentiment": 0,
+      "is_toxic": false,
+      "description": "Bài viết thông tin về việc mở đường tiếp tế cho 1.700 người dân bị cô lập do lở núi, tập trung vào nỗ lực khắc phục hậu quả thiên tai và đảm bảo nhu yếu phẩm cho người dân.",
+      "source_category": "tin-moi-nhat",
+      "processing_time": 11.67196273803711
+    },
+    {
+      "index": 8,
+      "title": "Nơi mưa nhiều nhất Việt Nam thuộc tỉnh, thành nào?",
+      "link": "https://vnexpress.net/noi-mua-nhieu-nhat-viet-nam-thuoc-tinh-thanh-nao-4958268.html",
+      "category": "tin-moi-nhat",
+      "sentiment": 0,
+      "is_toxic": false,
+      "description": "Bài viết cung cấp thông tin về địa phương có lượng mưa trung bình năm cao nhất Việt Nam, giúp độc giả hiểu rõ hơn về đặc điểm khí hậu của đất nước.",
+      "source_category": "tin-moi-nhat",
+      "processing_time": 2.5581750869750977
+    },
+    {
+      "index": 9,
+      "title": "Diễn viên Trương Ngọc Ánh bị bắt",
+      "link": "https://vnexpress.net/dien-vien-truong-ngoc-anh-bi-bat-4958475.html",
+      "category": "tin-moi-nhat",
+      "sentiment": 0,
+      "is_toxic": false,
+      "description": "Thông tin về việc một trang Facebook giả mạo lan truyền tin đồn sai sự thật về việc diễn viên Trương Ngọc Ánh bị bắt, gây hoang mang dư luận. Bài viết cảnh báo về tình trạng tin giả và kêu gọi người đ",
+      "source_category": "tin-moi-nhat",
+      "processing_time": 11.060717582702637
+    },
+    {
+      "index": 10,
+      "title": "Kỹ sư Việt phát triển bản đồ số",
+      "link": "https://vnexpress.net/ky-su-viet-phat-trien-ban-do-so-4958446.html",
+      "category": "tin-moi-nhat",
+      "sentiment": 1,
+      "is_toxic": false,
+      "description": "Kỹ sư Việt phát triển bản đồ số giúp người dùng tìm kiếm địa điểm, tối ưu hóa lộ trình và khám phá thông tin hữu ích về các địa điểm xung quanh. Ứng dụng này hứa hẹn mang lại trải nghiệm tiện lợi và h",
+      "source_category": "tin-moi-nhat",
+      "processing_time": 4.586121082305908
+    },
+    {
+      "index": 11,
+      "title": "28 người chết do mưa lũ miền Trung",
+      "link": "https://vnexpress.net/28-nguoi-chet-do-mua-lu-mien-trung-4958467.html",
+      "status": "FAILED",
+      "source_category": "tin-moi-nhat",
+      "processing_time": 0.6042752265930176
+    },
+    {
+      "index": 12,
+      "title": "Quyết định xây nhà khác người giúp tôi thoát trận lụt kỷ lục ở Huế",
+      "link": "https://vnexpress.net/quyet-dinh-xay-nha-khac-nguoi-giup-toi-thoat-tran-lut-ky-luc-o-hue-4958302.html",
+      "status": "FAILED",
+      "source_category": "tin-moi-nhat",
+      "processing_time": 0.6118385791778564
+    },
+    {
+      "index": 13,
+      "title": "Ngôn ngữ cơ thể của ông Trump trong cuộc gặp ông Tập ở Busan",
+      "link": "https://vnexpress.net/ngon-ngu-co-the-cua-ong-trump-trong-cuoc-gap-ong-tap-o-busan-4958263.html",
+      "status": "FAILED",
+      "source_category": "tin-moi-nhat",
+      "processing_time": 0.6755950450897217
+    },
+    {
+      "index": 14,
+      "title": "Du lịch Việt tăng trưởng, nỗi lo 'chặt chém' vẫn còn",
+      "link": "https://vnexpress.net/du-lich-viet-tang-truong-noi-lo-chat-chem-van-con-4958222.html",
+      "status": "FAILED",
+      "source_category": "tin-moi-nhat",
+      "processing_time": 6.829964876174927
+    },
+    {
+      "index": 15,
+      "title": "Phụ huynh trông chờ con được học Tiếng Anh từ lớp 1",
+      "link": "https://vnexpress.net/phu-huynh-trong-cho-con-duoc-hoc-tieng-anh-tu-lop-1-4957956.html",
+      "status": "FAILED",
+      "source_category": "tin-moi-nhat",
+      "processing_time": 0.8058595657348633
+    },
+    {
+      "index": 16,
+      "title": "'Giáp lông nhím' giúp xe tăng Nga chống chịu hàng chục drone Ukraine",
+      "link": "https://vnexpress.net/giap-long-nhim-giup-xe-tang-nga-chong-chiu-hang-chuc-drone-ukraine-4957255.html",
+      "status": "FAILED",
+      "source_category": "tin-moi-nhat",
+      "processing_time": 13.78166675567627
+    },
+    {
+      "index": 17,
+      "title": "Đề xuất 5 giải pháp AIoT giúp TP HCM giảm kẹt xe, ngập lụt",
+      "link": "https://vnexpress.net/de-xuat-5-giai-phap-aiot-giup-tp-hcm-giam-ket-xe-ngap-lut-4957831.html",
+      "category": "tin-moi-nhat",
+      "sentiment": 0,
+      "is_toxic": false,
+      "description": "Bài viết đề xuất 5 giải pháp ứng dụng AIoT để giải quyết các vấn đề giao thông và ngập lụt tại TP HCM, bao gồm hệ thống thu thập dữ liệu, nền tảng phân tích và dự báo, và các ứng dụng điều khiển giao ",
+      "source_category": "tin-moi-nhat",
+      "processing_time": 8.184745788574219
+    },
+    {
+      "index": 18,
+      "title": "Carlsberg Việt Nam hỗ trợ 1,5 tỷ đồng khắc phục hậu quả mưa lụt",
+      "link": "https://vnexpress.net/carlsberg-viet-nam-ho-tro-1-5-ty-dong-khac-phuc-hau-qua-mua-lut-4958465.html",
+      "category": "tin-moi-nhat",
+      "sentiment": 1,
+      "is_toxic": false,
+      "description": "Carlsberg Việt Nam hỗ trợ 1,5 tỷ đồng để giúp người dân miền Trung khắc phục hậu quả do mưa lũ gây ra, thể hiện trách nhiệm xã hội của doanh nghiệp.",
+      "source_category": "tin-moi-nhat",
+      "processing_time": 6.31609034538269
+    },
+    {
+      "index": 19,
+      "title": "Vietjet tăng doanh thu, chia cổ tức 20% bằng cổ phiếu",
+      "link": "https://vnexpress.net/vietjet-tang-doanh-thu-chia-co-tuc-20-bang-co-phieu-4958437.html",
+      "category": "tin-moi-nhat",
+      "sentiment": 1,
+      "is_toxic": false,
+      "description": "Vietjet công bố kết quả kinh doanh tích cực với doanh thu tăng trưởng và kế hoạch chia cổ tức 20% bằng cổ phiếu, thể hiện sự phát triển ổn định của hãng hàng không.",
+      "source_category": "tin-moi-nhat",
+      "processing_time": 1.4548566341400146
+    },
+    {
+      "index": 20,
+      "title": "Nam giới chịu được mấy 'hiệp'?",
+      "link": "https://vnexpress.net/nam-gioi-chiu-duoc-may-hiep-4958380.html",
+      "category": "tin-moi-nhat",
+      "sentiment": 0,
+      "is_toxic": false,
+      "description": "Bài viết cung cấp thông tin về khả năng và các yếu tố ảnh hưởng đến tần suất quan hệ tình dục của nam giới, đồng thời đưa ra lời khuyên từ chuyên gia để duy trì sức khỏe tình dục.",
+      "source_category": "tin-moi-nhat",
+      "processing_time": 3.2858963012695312
+    },
+    {
+      "index": 21,
+      "title": "Thực đơn fine dining tiệc cuối năm tại Vietnam House Restaurant",
+      "link": "https://vnexpress.net/thuc-don-fine-dining-tiec-cuoi-nam-tai-vietnam-house-restaurant-4958311.html",
+      "category": "tin-moi-nhat",
+      "sentiment": 1,
+      "is_toxic": false,
+      "description": "Bài viết giới thiệu thực đơn fine dining đặc biệt dành cho tiệc cuối năm tại nhà hàng Vietnam House Restaurant, mang đến trải nghiệm ẩm thực cao cấp và sang trọng.",
+      "source_category": "tin-moi-nhat",
+      "processing_time": 5.0142271518707275
+    },
+    {
+      "index": 22,
+      "title": "Hàng trăm tấn cá điêu hồng chết kín rạch ở Cần Thơ",
+      "link": "https://vnexpress.net/hang-tram-tan-ca-dieu-hong-chet-kin-rach-o-can-tho-4958457.html",
+      "category": "tin-moi-nhat",
+      "sentiment": -1,
+      "is_toxic": false,
+      "description": "Hàng trăm tấn cá điêu hồng chết hàng loạt tại Cần Thơ do thiếu oxy và ô nhiễm môi trường, gây thiệt hại lớn cho người nuôi. Vụ việc này gióng lên hồi chuông cảnh báo về vấn đề quản lý môi trường và nu",
+      "source_category": "tin-moi-nhat",
+      "processing_time": 7.487699508666992
+    },
+    {
+      "index": 23,
+      "title": "Dùng chất nổ cướp công ty kim loại quý ở Pháp",
+      "link": "https://vnexpress.net/dung-chat-no-cuop-cong-ty-kim-loai-quy-o-phap-4958442.html",
+      "category": "tin-moi-nhat",
+      "sentiment": -1,
+      "is_toxic": false,
+      "description": "Vụ cướp táo tợn xảy ra tại một công ty kim loại quý ở Pháp, khi nhóm tội phạm sử dụng chất nổ để đột nhập và lấy đi một lượng lớn kim loại. Vụ việc đang được điều tra để truy bắt những kẻ gây án.",
+      "source_category": "tin-moi-nhat",
+      "processing_time": 7.046732187271118
+    },
+    {
+      "index": 24,
+      "title": "Những hộ dân mất tiền tỷ trong lũ",
+      "link": "https://vnexpress.net/nhung-ho-dan-mat-tien-ty-trong-lu-4958402.html",
+      "category": "tin-moi-nhat",
+      "sentiment": -1,
+      "is_toxic": false,
+      "description": "Bài viết phản ánh thực trạng người dân miền Trung gánh chịu thiệt hại lớn về kinh tế do lũ lụt, nhấn mạnh những khó khăn và mất mát mà họ phải đối mặt. Thông tin này giúp nâng cao nhận thức về tác độn",
+      "source_category": "tin-moi-nhat",
+      "processing_time": 1.6141865253448486
+    },
+    {
+      "index": 25,
+      "title": "Nhà kho giữa khu dân cư ở TP HCM cháy ngùn ngụt",
+      "link": "https://vnexpress.net/nha-kho-giua-khu-dan-cu-o-tp-hcm-chay-ngun-ngut-4958461.html",
+      "status": "FAILED",
+      "source_category": "tin-moi-nhat",
+      "processing_time": 3.4109573364257812
+    }
+  ],
+  "start_time": "2025-10-31T22:05:48.530918",
+  "prompt_version": "optimized_no_icons",
+  "end_time": "2025-10-31T22:10:38.210423",
+  "total_duration": 289.679505
+}
