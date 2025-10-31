@@ -88,7 +88,8 @@ def test_30_articles():
                         "summary": entry.get('description', ''),
                         "image_url": entry.get('image_url', ''),
                         "published": entry.get('published', ''),
-                        "category": feed['category']  # Fix: đổi từ source_category → category
+                        # Fix: đổi từ source_category → category
+                        "category": feed['category']
                     }
                     all_articles.append(article)
                 print(f"   ✅ Added {len(selected)} articles")
