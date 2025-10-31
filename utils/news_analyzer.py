@@ -101,27 +101,16 @@ class NewsAnalyzer:
                 BẠN LÀ MỘT CHUYÊN GIA PHÂN TÍCH TIN TỨC TIẾNG VIỆT
 
                 NHIỆM VỤ:
-                1. Truy cập và đọc TOÀN BỘ bài báo từ URL (CHỈ QUAN TÂM ĐOẠN TEXT - CONTENT, KHÔNG QUAN TÂM HTML)
+                1. Truy cập và đọc TOÀN BỘ bài báo từ URL (CHỈ QUAN TÂM ĐOẠN TEXT - CONTENT bài báo, KHÔNG QUAN TÂM CODE)
                 2. Phân tích cảm xúc dựa trên toàn bộ nội dung
-                3. Phân loại chủ đề và tạo mô tả ngắn
-                4. Đánh giá tính độc hại cho gia đình
+                3. Phân loại chủ đề để tập trung khi phân tích, tạo mô tả ngắn
+                4. Đánh giá tính độc hại nội dung bài báo
                 5. Phát hiện đánh lừa bởi tiêu đề
 
                 BÀI BÁO:
                 URL: {url}
                 Tiêu đề: "{title}"
 
-                CHỦ ĐỀ (chọn 1):
-                - giao-duc: Giáo dục, học tập, thi cử, học bổng
-                - suc-khoe: Y tế, sức khỏe, chữa bệnh, đột phá y học
-                - gia-dinh: Gia đình, hôn nhân, nuôi con, tình yêu
-                - khoa-hoc-cong-nghe: Công nghệ, khoa học, internet
-                - kinh-doanh: Kinh doanh, khởi nghiệp, tài chính
-                - van-hoa: Văn hóa, nghệ thuật, giải trí, lễ hội
-                - the-thao: Thể thao, thi đấu, Olympic
-                - du-lich: Du lịch, ẩm thực, địa điểm
-                - moi-truong: Môi trường, khí hậu, thiên nhiên
-                - xa-hoi: Xã hội, chính trị, pháp luật
 
                 PHÂN LOẠI SENTIMENT (CHÚ Ý: NEGATIVE khác TOXIC):
 
@@ -135,7 +124,7 @@ class NewsAnalyzer:
                 - Vượt khó: Khuyết tật thành công, chuyển đổi tích cực
                 - Thành công: Kinh doanh phát triển, khởi nghiệp
 
-                NEUTUAL (sentiment = 0) - ƯU TIÊN CHO TIN CẢNH BÁO/GIÁO DỤC:
+                NEUTRAL (sentiment = 0) - ƯU TIÊN CHO TIN CẢNH BÁO/GIÁO DỤC:
                 - Thống kê, báo cáo khách quan
                 - Hướng dẫn kỹ thuật, thủ tục
                 - Thông tin giáo dục, cảnh báo
@@ -176,7 +165,6 @@ class NewsAnalyzer:
 
                 MẪU JSON TRẢ VỀ:
                 {{
-                    "category": Chọn chính xác từ 10 chủ đề trên,
                     "description": "Mô tả tích cực 1-2 câu tiếng Việt",
                     "is_toxic": true chỉ khi nội dung thực có hại,
                     "sentiment": 1 (tích cực), 0 (trung tính - ưu tiên), -1 (tiêu cực thật sự)
@@ -239,7 +227,7 @@ class NewsAnalyzer:
     def _transform_to_firebase(self, gemini_result: Dict, rss_data: Dict) -> Dict:
         """Transform thành Firebase schema chính xác"""
         return {
-            "category": gemini_result.get("category", "xa-hoi"),
+            "category": rss_data.get("category", "xa-hoi"),
             "description": gemini_result.get("description", rss_data.get("summary", ""))[:200],
             "image_url": rss_data.get("image_url", ""),
             "is_toxic": gemini_result.get("is_toxic", False),

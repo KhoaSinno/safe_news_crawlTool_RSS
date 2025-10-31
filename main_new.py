@@ -45,16 +45,19 @@ news_analyzer = NewsAnalyzer(GEMINI_API_KEY)
 
 # RSS feeds to crawl - ưu tiên các category tích cực
 RSS_FEEDS = [
-    {"url": "https://vnexpress.net/rss/giao-duc.rss", "category": "giao-duc"},
-    {"url": "https://vnexpress.net/rss/suc-khoe.rss", "category": "suc-khoe"},
-    {"url": "https://vnexpress.net/rss/gia-dinh.rss", "category": "gia-dinh"},
-    {"url": "https://vnexpress.net/rss/khoa-hoc-cong-nghe.rss",
-        "category": "khoa-hoc-cong-nghe"},
-    {"url": "https://vnexpress.net/rss/startup.rss", "category": "startup"},
-    {"url": "https://vnexpress.net/rss/du-lich.rss", "category": "du-lich"},
-    {"url": "https://vnexpress.net/rss/giai-tri.rss", "category": "giai-tri"},
-    {"url": "https://vnexpress.net/rss/the-thao.rss", "category": "the-thao"},
     {"url": "https://vnexpress.net/rss/tin-moi-nhat.rss", "category": "tin-moi-nhat"},
+    # {"url": "https://vnexpress.net/rss/tin-noi-bat.rss", "category": "tin-noi-bat"},
+    # {"url": "https://vnexpress.net/rss/tin-xem-nhieu.rss", "category": "tin-xem-nhieu"},
+
+    # {"url": "https://vnexpress.net/rss/giao-duc.rss", "category": "giao-duc"},
+    # {"url": "https://vnexpress.net/rss/suc-khoe.rss", "category": "suc-khoe"},
+    # {"url": "https://vnexpress.net/rss/gia-dinh.rss", "category": "gia-dinh"},
+    # {"url": "https://vnexpress.net/rss/khoa-hoc-cong-nghe.rss",
+    #     "category": "khoa-hoc-cong-nghe"},
+    # {"url": "https://vnexpress.net/rss/startup.rss", "category": "startup"},
+    # {"url": "https://vnexpress.net/rss/du-lich.rss", "category": "du-lich"},
+    # {"url": "https://vnexpress.net/rss/giai-tri.rss", "category": "giai-tri"},
+    # {"url": "https://vnexpress.net/rss/the-thao.rss", "category": "the-thao"},
 ]
 
 
@@ -94,6 +97,12 @@ def crawl_and_analyze(use_test_collection=False):
     Args:
         use_test_collection: True để lưu vào test collection
     """
+    # Reload .env mỗi lần crawl
+    load_dotenv(override=True)
+    global GEMINI_API_KEY, news_analyzer
+    GEMINI_API_KEY = os.getenv('GEMINI_API_KEY')
+    news_analyzer = NewsAnalyzer(GEMINI_API_KEY)
+
     logging.info("🚀 Starting news crawl and analysis...")
 
     collection_name = 'positive_news_test' if use_test_collection else 'positive_news'
@@ -141,6 +150,7 @@ def crawl_and_analyze(use_test_collection=False):
                 rss_data = {
                     "title": title,
                     "link": link,
+                    "category": category,
                     "summary": entry.get('summary', ''),
                     "image_url": entry.get('image_url', ''),
                     "published": entry.get('published', '')
@@ -216,15 +226,15 @@ def run_production_crawl():
 
 def schedule_crawls():
     """Lập lịch crawl tự động"""
-    # Test crawl - mỗi 30 phút
-    schedule.every(30).minutes.do(run_test_crawl)
+    # Test crawl - mỗi 30 phút (OPTIONAL)
+    # schedule.every(30).minutes.do(run_test_crawl)
 
-    # Production crawl - mỗi 2 giờ
-    schedule.every(2).hours.do(run_production_crawl)
+    # Production crawl - mỗi 1 giờ
+    schedule.every(1).hours.do(run_production_crawl)
 
     logging.info("⏰ Scheduled crawls:")
-    logging.info("   🧪 Test crawl: Every 30 minutes")
-    logging.info("   🚀 Production crawl: Every 2 hours")
+    # logging.info("   🧪 Test crawl: Every 30 minutes")
+    logging.info("   🚀 Production crawl: Every 1 hour")
 
 
 if __name__ == "__main__":
@@ -240,6 +250,8 @@ if __name__ == "__main__":
             # Chạy production ngay
             run_production_crawl()
         elif command == "schedule":
+            print("GEMINI_API_KEY:", GEMINI_API_KEY)
+
             # Chạy scheduled mode
             schedule_crawls()
 
@@ -247,8 +259,8 @@ if __name__ == "__main__":
             logging.info("Press Ctrl+C to stop")
 
             try:
-                # Chạy test crawl đầu tiên
-                run_test_crawl()
+                # Chạy production crawl ngay lập tức
+                run_production_crawl()
 
                 # Sau đó chạy theo schedule
                 while True:

@@ -1,4 +1,4 @@
-# 🤖 Safe News Crawler - Học tập Code
+# Safe News Crawler by SN
 
 Hệ thống crawl tin tức VNExpress với AI phân tích cảm xúc, chỉ lưu tin tích cực vào Firebase.
 
@@ -66,6 +66,96 @@ safe_news_crawlTool_RSS/
     ├── rss_crawler.py       # RSS fetcher
     ├── gemini_filter.py     # AI analysis + cache
     └── firebase_handler.py  # Firebase operations
+```
+
+## Prompt V1.0.0
+
+``` bash
+BẠN LÀ MỘT CHUYÊN GIA PHÂN TÍCH TIN TỨC TIẾNG VIỆT
+
+                NHIỆM VỤ:
+                1. Truy cập và đọc TOÀN BỘ bài báo từ URL (CHỈ QUAN TÂM ĐOẠN TEXT - CONTENT, KHÔNG QUAN TÂM HTML)
+                2. Phân tích cảm xúc dựa trên toàn bộ nội dung
+                3. Phân loại chủ đề và tạo mô tả ngắn
+                4. Đánh giá tính độc hại cho gia đình
+                5. Phát hiện đánh lừa bởi tiêu đề
+
+                BÀI BÁO:
+                URL: {url}
+                Tiêu đề: "{title}"
+
+                CHỦ ĐỀ (chọn 1):
+                - giao-duc: Giáo dục, học tập, thi cử, học bổng
+                - suc-khoe: Y tế, sức khỏe, chữa bệnh, đột phá y học
+                - gia-dinh: Gia đình, hôn nhân, nuôi con, tình yêu
+                - khoa-hoc-cong-nghe: Công nghệ, khoa học, internet
+                - kinh-doanh: Kinh doanh, khởi nghiệp, tài chính
+                - van-hoa: Văn hóa, nghệ thuật, giải trí, lễ hội
+                - the-thao: Thể thao, thi đấu, Olympic
+                - du-lich: Du lịch, ẩm thực, địa điểm
+                - moi-truong: Môi trường, khí hậu, thiên nhiên
+                - xa-hoi: Xã hội, chính trị, pháp luật
+
+                PHÂN LOẠI SENTIMENT (CHÚ Ý: NEGATIVE khác TOXIC):
+
+                POSITED NEWS (sentiment = 1):
+                - Thành tựu: Học bổng, giải thưởng, tốt nghiệp
+                - Niềm vui gia đình: Đám cưới, sinh con, đoàn tụ
+                - Sức khỏe: Chữa khỏi bệnh, đột phá y học
+                - Việc tốt: Từ thiện, tình nguyện, giúp đỡ
+                - Sáng tạo: Công nghệ tích cực, khám phá khoa học
+                - Cảm hứng: Lễ hội văn hóa, thành tựu nghệ thuật
+                - Vượt khó: Khuyết tật thành công, chuyển đổi tích cực
+                - Thành công: Kinh doanh phát triển, khởi nghiệp
+
+                NEUTUAL (sentiment = 0) - ƯU TIÊN CHO TIN CẢNH BÁO/GIÁO DỤC:
+                - Thống kê, báo cáo khách quan
+                - Hướng dẫn kỹ thuật, thủ tục
+                - Thông tin giáo dục, cảnh báo
+                - Phản ánh vấn đề xã hội để cải thiện
+                - Tin tức thông tin không mang cảm xúc mạnh
+                - Cảnh báo sức khỏe có tính giáo dục
+                - Phân tích khó khăn với mục đích thông tin
+
+                NEGATIVE NEWS (sentiment = -1) - CHỈ KHI THỰC SỰ BẤT HẠNH:
+                - Tử vong, tai nạn, thảm họa NGHIÊM TRỌNG
+                - Tội phạm, bạo lực, khủng bố CHẾT NGƯỜI
+                - Dịch bệnh, đau khổ, bi kịch NẶNG NỀ
+                - Mất mát nghiêm trọng về sức khỏe/cơ thể (mất chức năng sống, hỏng hoặc cắt bỏ bộ phận cơ thể, di chứng nặng nề)
+                - Nội dung mô tả hậu quả kinh dị, gây ám ảnh, mất mát lớn về thể chất hoặc tinh thần
+                - Ly hôn, chia tay, mất mát lớn về THỂ CHẤT hoặc TINH THẦN
+                - Phá sản, thất nghiệp, khủng hoảng THIỆT HẠI NGHIÊM TRỌNG
+                - Tham nhũng, lừa đảo, bê bối nghiêm trọng KHÍCH CHÍNH QUYỀN
+
+                TOXIC CONTENT (is_toxic = true):
+                - Kích động thù hận, phân biệt chủng tộc
+                - Bạo lực, nội dung 18+
+                - Tin giả có hại, lừa đảo trực tiếp
+                - Ngôn từ xúc phạm, chửi bới, tục tiểu
+                - Kích động bạo lực, tự tử
+                => ĐẶT is_toxic = true khi THỰC SỰ có hại
+
+                LỪA ĐẢO TIÊU ĐỀ:
+                CHÚ Ý: Tiêu đề tích cực nhưng nội dung tiêu cực
+                VD: "Sinh viên nhận học bổng" nhưng phát hiện gian lận
+
+                BƯỚC PHÂN TÍCH:
+                1. Đọc TOÀN BỘ nội dung từ URL
+                2. KHÔNG chỉ dựa vào tiêu đề
+                3. Ưu tiên giá trị thông tin/giáo dục của bài viết
+                4. Cân nhắc sentiment = 0 cho tin cảnh báo/giáo dục
+                5. Chỉ đánh is_toxic = true nếu THỰC SỰ có hại
+                6. Tạo mô tả tích cực, tập trung vào giá trị thông tin
+
+                MẪU JSON TRẢ VỀ:
+                {{
+                    "category": Chọn chính xác từ 10 chủ đề trên,
+                    "description": "Mô tả tích cực 1-2 câu tiếng Việt",
+                    "is_toxic": true chỉ khi nội dung thực có hại,
+                    "sentiment": 1 (tích cực), 0 (trung tính - ưu tiên), -1 (tiêu cực thật sự)
+                }}
+
+                CHỈ trả JSON, không giải thích.
 ```
 
 ## 🚀 Nâng cao

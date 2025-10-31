@@ -20,6 +20,28 @@
     },
     "results": [
         {
+            "index": 13,
+            "title": "Mexico phát hiện gần 400 thi thể chất đống trong lò hỏa táng",
+            "link": "https://vnexpress.net/mexico-phat-hien-gan-400-thi-the-chat-dong-trong-lo-hoa-tang-4910554.html",
+            "category": "xa-hoi",
+            "sentiment": -1,
+            "is_toxic": false,
+            "description": "Nhà chức trách Mexico phát hiện gần 400 thi thể bị bỏ lại trong một lò hỏa táng bỏ hoang, làm dấy lên lo ngại về quy trình xử lý thi thể và các vấn đề liên quan đến pháp luật.",
+            "source_category": "tin-moi-nhat",
+            "processing_time": 1.2078711986541748
+        },
+        {
+            "index": 19,
+            "title": "Ôtô đâm 8 xe máy ở Hậu Giang, một người chết",
+            "link": "https://vnexpress.net/oto-dam-8-xe-may-o-hau-giang-mot-nguoi-chet-4908392.html",
+            "category": "xa-hoi",
+            "sentiment": -1,
+            "is_toxic": false,
+            "description": "Vụ tai nạn giao thông nghiêm trọng ở Hậu Giang khiến một người tử vong và nhiều người bị thương. Bài viết cung cấp thông tin chi tiết về vụ việc và tình hình giao thông.",
+            "source_category": "tin-moi-nhat",
+            "processing_time": 2.118195056915283
+        },
+        {
             "index": 1,
             "title": "Kỷ lục gần 23.000 thí sinh tranh suất vào trường Công an",
             "link": "https://vnexpress.net/ky-luc-gan-23-000-thi-sinh-tranh-suat-vao-truong-cong-an-4910506.html",
@@ -326,29 +348,8 @@
             "description": "Bài viết ghi lại lời kể của những người dân Texas về trận lũ quét kinh hoàng, nhấn mạnh sự tàn phá và những khó khăn mà họ phải đối mặt. Thông tin giúp người đọc hình dung rõ hơn về mức độ nghiêm trọn",
             "source_category": "tin-moi-nhat",
             "processing_time": 1.2784147262573242
-        },
-        {
-            "index": 13,
-            "title": "Mexico phát hiện gần 400 thi thể chất đống trong lò hỏa táng",
-            "link": "https://vnexpress.net/mexico-phat-hien-gan-400-thi-the-chat-dong-trong-lo-hoa-tang-4910554.html",
-            "category": "xa-hoi",
-            "sentiment": -1,
-            "is_toxic": false,
-            "description": "Nhà chức trách Mexico phát hiện gần 400 thi thể bị bỏ lại trong một lò hỏa táng bỏ hoang, làm dấy lên lo ngại về quy trình xử lý thi thể và các vấn đề liên quan đến pháp luật.",
-            "source_category": "tin-moi-nhat",
-            "processing_time": 1.2078711986541748
-        },
-        {
-            "index": 19,
-            "title": "Ôtô đâm 8 xe máy ở Hậu Giang, một người chết",
-            "link": "https://vnexpress.net/oto-dam-8-xe-may-o-hau-giang-mot-nguoi-chet-4908392.html",
-            "category": "xa-hoi",
-            "sentiment": -1,
-            "is_toxic": false,
-            "description": "Vụ tai nạn giao thông nghiêm trọng ở Hậu Giang khiến một người tử vong và nhiều người bị thương. Bài viết cung cấp thông tin chi tiết về vụ việc và tình hình giao thông.",
-            "source_category": "tin-moi-nhat",
-            "processing_time": 2.118195056915283
         }
+        
     ],
     "start_time": "2025-07-05T18:00:02.049609",
     "prompt_version": "optimized_no_icons",
