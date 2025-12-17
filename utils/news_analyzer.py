@@ -24,7 +24,8 @@ class NewsAnalyzer:
         """Khởi tạo với Gemini API key"""
         genai.configure(api_key=api_key)
         # Dùng gemini-2.0-flash thay vì 2.5 vì safety filter ít nghiêm ngặt hơn
-        self.model = genai.GenerativeModel('gemini-2.0-flash')
+        # self.model = genai.GenerativeModel('gemini-2.0-flash')
+        self.model = genai.GenerativeModel('gemini-2.5-flash')
         self.cache = {}  # Simple in-memory cache
         self.last_call_time = 0
         self.min_call_interval = 6.0  # Minimum 6 seconds between calls
@@ -51,7 +52,9 @@ class NewsAnalyzer:
         gemini_result = self._call_gemini(rss_data['title'], rss_data['link'])
 
         if not gemini_result:
-            return None        # 2. Transform sang Firebase schema
+            return None
+
+        # 2. Transform sang Firebase schema
         firebase_data = self._transform_to_firebase(gemini_result, rss_data)
 
         # 3. Cache result (bất kể sentiment)
@@ -81,7 +84,7 @@ class NewsAnalyzer:
                 prompt,
                 generation_config={
                     'temperature': 0.1,
-                    'max_output_tokens': 200,
+                    'max_output_tokens': 2048,  # Increased to handle long content analysis
                     'top_p': 0.8,
                     'top_k': 10
                 },
@@ -198,6 +201,11 @@ class NewsAnalyzer:
     def _parse_json_response(self, response_text: str) -> Optional[Dict]:
         """Parse JSON từ Gemini response"""
         try:
+            # Log raw response for debugging
+            if not response_text or not response_text.strip():
+                logging.error(f"❌ Empty response from Gemini")
+                return None
+
             # Clean response
             text = response_text.strip()
 

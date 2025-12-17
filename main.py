@@ -19,8 +19,8 @@ import json
 import os
 from dotenv import load_dotenv
 
-# Load environment variables
-load_dotenv()
+# Load environment variables - FORCE OVERRIDE system env
+load_dotenv(override=True)
 
 # Setup logging
 logging.basicConfig(
@@ -230,11 +230,14 @@ def schedule_crawls():
     # schedule.every(30).minutes.do(run_test_crawl)
 
     # Production crawl - mỗi 1 giờ
-    schedule.every(1).hours.do(run_production_crawl)
+    # schedule.every(1).hours.do(run_production_crawl)
+
+    # Production crawl - mỗi 15 phút
+    schedule.every(15).minutes.do(run_production_crawl)
 
     logging.info("⏰ Scheduled crawls:")
     # logging.info("   🧪 Test crawl: Every 30 minutes")
-    logging.info("   🚀 Production crawl: Every 1 hour")
+    logging.info("   🚀 Production crawl: Every 15 minutes")
 
 
 if __name__ == "__main__":
@@ -270,10 +273,11 @@ if __name__ == "__main__":
             except KeyboardInterrupt:
                 logging.info("⏹️ Crawler stopped by user")
         else:
-            print("Usage: python main_new.py [test|production|schedule]")
+            print("Usage: python main.py [test|production|schedule]")
     else:
         print("🚀 Safe News Crawler - New Implementation")
         print("Commands:")
-        print("  python main_new.py test        - Run test crawl (saves to positive_news_test)")
-        print("  python main_new.py production  - Run production crawl (saves to positive_news)")
-        print("  python main_new.py schedule    - Run scheduled crawler")
+        print("  python main.py test        - Run test crawl (saves to positive_news_test)")
+        print(
+            "  python main.py production  - Run production crawl (saves to positive_news)")
+        print("  python main.py schedule    - Run scheduled crawler")

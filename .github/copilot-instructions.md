@@ -51,12 +51,12 @@
 - **Collections**: `positive_news_test` (development), `positive_news` (production)
 - **Legacy Function**: `store_news()` exists for backward compatibility but is not used
 
-### 4. **main_new.py** - Application Orchestrator
+### 4. **main.py** - Application Orchestrator
 
 - **Entry Points**:
-  - `python main_new.py test` - One-time test crawl to test collection
-  - `python main_new.py production` - One-time production crawl
-  - `python main_new.py schedule` - Automated hourly crawls
+  - `python main.py test` - One-time test crawl to test collection
+  - `python main.py production` - One-time production crawl
+  - `python main.py schedule` - Automated hourly crawls
 - **State Management**: `crawl_state.json` tracks processed article links (max 1000 history)
 - **Rate Limiting**: 2-second sleep between articles
 - **Environment Reload**: Re-reads `.env` on each crawl for dynamic API key updates
@@ -74,11 +74,11 @@ pip install -r requirements.txt
 # - Place serviceAccountKey.json in project root
 
 # 3. Test analysis (safe)
-python main_new.py test
+python main.py test
 
 # 4. Check Firebase test collection before production
 # 5. Deploy to production
-python main_new.py schedule
+python main.py schedule
 ```
 
 ### Testing Strategy
@@ -99,7 +99,7 @@ python main_new.py schedule
 
 ### 2. **Only Store Safe & Positive Articles**
 
-- Filter logic in `main_new.py` line ~164: Only stores if `sentiment >= 0` AND `not is_toxic`
+- Filter logic in `main.py` line ~164: Only stores if `sentiment >= 0` AND `not is_toxic`
 - Both test and production collections follow this rule
 - Duplicate check happens in `firebase_handler.py` before storage
 
@@ -146,7 +146,7 @@ except Exception as e:
    - Collections: `positive_news_test`, `positive_news`
 
 3. **VNExpress RSS Feeds**
-   - 18 category feeds defined in `main_new.py` (most commented out)
+   - 18 category feeds defined in `main.py` (most commented out)
    - Only `tin-moi-nhat` (latest news) enabled by default
    - Feeds return 10-20 articles per fetch
 
@@ -199,12 +199,12 @@ store_to_firebase() →
 
 ```bash
 # Development
-python main_new.py test              # Test run (positive_news_test)
+python main.py test              # Test run (positive_news_test)
 python test_30_articles.py           # Detailed test with logging
 
 # Production
-python main_new.py production        # Single production run
-python main_new.py schedule          # Continuous hourly crawling
+python main.py production        # Single production run
+python main.py schedule          # Continuous hourly crawling
 
 # Debugging
 tail -f news_crawler.log             # Watch live logs
@@ -215,7 +215,7 @@ cat crawl_state.json | jq            # Check crawl state
 
 ### When Adding New RSS Feeds
 
-1. Add to `RSS_FEEDS` list in `main_new.py`
+1. Add to `RSS_FEEDS` list in `main.py`
 2. Ensure category name matches Firebase schema expectations
 3. Test with single feed first before enabling all
 

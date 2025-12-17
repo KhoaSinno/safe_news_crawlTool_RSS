@@ -24,14 +24,14 @@
 | Priority | Vấn Đề | Impact | Effort | File |
 |----------|--------|--------|--------|------|
 | 🔴 P1 | Category field bị thiếu trong Gemini prompt | HIGH | 1h | `news_analyzer.py` |
-| 🔴 P1 | Security: Print API key ra console | HIGH | 5min | `main_new.py` |
+| 🔴 P1 | Security: Print API key ra console | HIGH | 5min | `main.py` |
 | 🔴 P1 | Legacy code gây confusion | MEDIUM | 30min | `firebase_handler.py` |
 | 🟡 P2 | In-memory cache không persistent | HIGH | 2h | `news_analyzer.py` |
 | 🟡 P2 | Rate limiting không consistent | MEDIUM | 30min | All files |
-| 🟡 P2 | Crawl state file quá lớn | MEDIUM | 1h | `main_new.py` |
+| 🟡 P2 | Crawl state file quá lớn | MEDIUM | 1h | `main.py` |
 | 🟢 P3 | Không có unit tests | LOW | 4h | New files |
 | 🟢 P3 | Logging không structured | LOW | 2h | All files |
-| 🟢 P3 | Sequential processing (có thể parallel) | LOW | 6h | `main_new.py` |
+| 🟢 P3 | Sequential processing (có thể parallel) | LOW | 6h | `main.py` |
 
 ---
 
@@ -179,9 +179,9 @@ print('Valid categories:', ['giao-duc', 'suc-khoe', 'gia-dinh', 'khoa-hoc-cong-n
 
 ### 1.2 FIX: Security - Mask API Key
 
-**Vấn đề:** API key bị print ra console (line 254 trong `main_new.py`)
+**Vấn đề:** API key bị print ra console (line 254 trong `main.py`)
 
-**File:** `main_new.py`
+**File:** `main.py`
 
 **Tìm dòng:**
 
@@ -203,7 +203,7 @@ else:
 **Test:**
 
 ```bash
-python main_new.py schedule
+python main.py schedule
 # Output: GEMINI_API_KEY: AIzaSyB...xyz1 (masked)
 ```
 
@@ -519,13 +519,13 @@ self.cache.set(rss_data['title'], rss_data['link'], firebase_data)
 
 ```bash
 # Chạy lần 1
-python main_new.py test
+python main.py test
 
 # Check cache file được tạo
 ls -lh analysis_cache.json
 
 # Chạy lần 2 - should see cache hits
-python main_new.py test
+python main.py test
 # Output: ✅ Cache hit: ...
 ```
 
@@ -655,7 +655,7 @@ class NewsAnalyzer:
         self.min_call_interval = Config.RATE_LIMIT_SECONDS  # <-- SỬA DỤNG CONFIG
 ```
 
-**2. `main_new.py`:**
+**2. `main.py`:**
 
 ```python
 from config import Config
@@ -700,7 +700,7 @@ time.sleep(Config.RATE_LIMIT_SECONDS)
 
 **Vấn đề:** File có thể lớn lên đến 1000 links, cần thêm timestamp và cleanup
 
-**Update `main_new.py`:**
+**Update `main.py`:**
 
 ```python
 import json
@@ -850,7 +850,7 @@ cp crawl_state.json crawl_state.json.backup
 
 # Run migration
 python -c "
-from main_new import load_crawl_state, save_crawl_state
+from main import load_crawl_state, save_crawl_state
 state = load_crawl_state()
 save_crawl_state(state)
 print('✅ Migration complete')
@@ -1288,7 +1288,7 @@ def test_crawl_state_format():
     print("\n🧪 TEST 4: Crawl State Format")
     print("-" * 60)
     
-    from main_new import mark_as_processed, is_new_article
+    from main import mark_as_processed, is_new_article
     from datetime import datetime
     
     processed_links = []
@@ -1397,7 +1397,7 @@ python -c "from config import Config; import json; print(json.dumps(Config.displ
 # 1. Create backup
 mkdir -p backups/$(date +%Y%m%d)
 cp utils/*.py backups/$(date +%Y%m%d)/
-cp main_new.py backups/$(date +%Y%m%d)/
+cp main.py backups/$(date +%Y%m%d)/
 
 # 2. Commit changes
 git add .
@@ -1405,7 +1405,7 @@ git commit -m "feat: optimize codebase - P1, P2, P3 fixes"
 git push origin dev-gemini-handling-all
 
 # 3. Deploy to production
-python main_new.py production
+python main.py production
 
 # 4. Monitor logs
 tail -f news_crawler.log
