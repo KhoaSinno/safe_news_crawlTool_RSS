@@ -23,12 +23,10 @@ class NewsAnalyzer:
     def __init__(self, api_key: str):
         """Khởi tạo với Gemini API key"""
         genai.configure(api_key=api_key)
-        # Dùng gemini-2.0-flash thay vì 2.5 vì safety filter ít nghiêm ngặt hơn
-        # self.model = genai.GenerativeModel('gemini-2.0-flash')
         self.model = genai.GenerativeModel('gemini-2.5-flash')
         self.cache = {}  # Simple in-memory cache
         self.last_call_time = 0
-        self.min_call_interval = 6.0  # Minimum 6 seconds between calls
+        self.min_call_interval = 0  # DISABLED - có 10k RPM rồi
 
     def analyze_and_transform(self, rss_data: Dict) -> Optional[Dict]:
         """
@@ -45,8 +43,8 @@ class NewsAnalyzer:
             logging.info(f"✅ Cache hit: {rss_data['title'][:50]}...")
             return self.cache[cache_key]
 
-        # Rate limiting
-        self._wait_for_rate_limit()
+        # Rate limiting - DISABLED (có 10k RPM)
+        # self._wait_for_rate_limit()
 
         # 1. Gọi Gemini với title + URL
         gemini_result = self._call_gemini(rss_data['title'], rss_data['link'])

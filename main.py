@@ -91,11 +91,12 @@ def is_new_article(link, processed_links, max_history=1000):
     return link not in processed_links
 
 
-def crawl_and_analyze(use_test_collection=False):
+def crawl_and_analyze(use_test_collection=False, save_logs=False):
     """
     Crawl RSS feeds và phân tích với NewsAnalyzer mới
     Args:
         use_test_collection: True để lưu vào test collection
+        save_logs: True để lưu detailed logs vào logs_prod/
     """
     # Reload .env mỗi lần crawl
     load_dotenv(override=True)
@@ -115,6 +116,22 @@ def crawl_and_analyze(use_test_collection=False):
     total_analyzed = 0
     total_stored = 0
     new_processed_links = []
+
+    # Detailed logs for tracking
+    detailed_logs = {
+        "total": 0,
+        "analyzed": 0,
+        "positive": 0,
+        "negative": 0,
+        "neutral": 0,
+        "toxic": 0,
+        "stored": 0,
+        "errors": 0,
+        "categories": {},
+        "results": [],
+        "timestamp": datetime.now().isoformat(),
+        "collection": collection_name
+    } if save_logs else None
 
     for rss_feed in RSS_FEEDS:
         rss_url = rss_feed["url"]
@@ -146,6 +163,10 @@ def crawl_and_analyze(use_test_collection=False):
                 if not is_new_article(link, processed_links):
                     continue
 
+                # Track total articles if logging
+                if save_logs:
+                    detailed_logs["total"] += 1
+
                 # Chuẩn bị dữ liệu RSS
                 rss_data = {
                     "title": title,
@@ -164,27 +185,88 @@ def crawl_and_analyze(use_test_collection=False):
                     total_analyzed += 1
                     category_analyzed += 1
 
+                    # Log detailed analysis result
+                    if save_logs:
+                        detailed_logs["analyzed"] += 1
+
+                        log_entry = {
+                            "index": detailed_logs["total"],
+                            "title": title,
+                            "link": link,
+                            "source_category": category
+                        }
+
                     if result:
+                        # Track sentiment and toxicity stats
+                        if save_logs:
+                            sentiment = result.get('sentiment', 0)
+                            is_toxic = result.get('is_toxic', False)
+                            result_category = result.get('category', category)
+
+                            # Update counters
+                            if sentiment == 1:
+                                detailed_logs["positive"] += 1
+                            elif sentiment == -1:
+                                detailed_logs["negative"] += 1
+                            else:
+                                detailed_logs["neutral"] += 1
+
+                            if is_toxic:
+                                detailed_logs["toxic"] += 1
+
+                            # Update category counter
+                            detailed_logs["categories"][result_category] = \
+                                detailed_logs["categories"].get(
+                                    result_category, 0) + 1
+
+                            # Add to log entry
+                            log_entry.update({
+                                "category": result_category,
+                                "sentiment": sentiment,
+                                "is_toxic": is_toxic,
+                                "description": result.get('description', '')[:200]
+                            })
+
                         # Lưu vào Firebase
                         if store_to_firebase(result, collection_name=collection_name):
                             total_stored += 1
                             category_stored += 1
+                            if save_logs:
+                                detailed_logs["stored"] += 1
                             logging.info(
                                 f"✅ Stored positive article: {title[:50]}...")
                         else:
+                            if save_logs:
+                                log_entry["status"] = "STORAGE_FAILED"
                             logging.warning(
                                 f"⚠️ Failed to store: {title[:50]}...")
                     else:
+                        if save_logs:
+                            log_entry["status"] = "FILTERED_OUT"
                         logging.info(
                             f"❌ Article filtered out: {title[:50]}...")
+
+                    # Add log entry to results
+                    if save_logs:
+                        detailed_logs["results"].append(log_entry)
 
                     # Thêm vào danh sách đã xử lý
                     new_processed_links.append(link)
 
-                    # Rate limiting - đợi 2 giây giữa các bài để tránh spam API
-                    time.sleep(2)
+                    # Rate limiting - DISABLED (có 10k RPM rồi)
+                    # time.sleep(2)
 
                 except Exception as e:
+                    if save_logs:
+                        detailed_logs["errors"] += 1
+                        detailed_logs["results"].append({
+                            "index": detailed_logs["total"],
+                            "title": title,
+                            "link": link,
+                            "source_category": category,
+                            "status": "ERROR",
+                            "error": str(e)
+                        })
                     logging.error(
                         f"❌ Error analyzing article: {title[:50]}... Error: {e}")
                     new_processed_links.append(link)  # Vẫn mark là đã xử lý
@@ -211,59 +293,90 @@ def crawl_and_analyze(use_test_collection=False):
     logging.info(f"   🔥 Collection: {collection_name}")
     logging.info("=" * 50)
 
+    # Save detailed logs to file
+    if save_logs and detailed_logs["total"] > 0:
+        try:
+            # Create logs_prod directory if not exists
+            os.makedirs("logs_prod", exist_ok=True)
 
-def run_test_crawl():
+            # Generate unique timestamp for filename
+            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+            log_filename = f"logs_prod/crawl_result_{timestamp}.json"
+
+            # Save to JSON file
+            with open(log_filename, 'w', encoding='utf-8') as f:
+                json.dump(detailed_logs, f, ensure_ascii=False, indent=2)
+
+            logging.info(f"📝 Detailed logs saved to: {log_filename}")
+        except Exception as e:
+            logging.error(f"❌ Failed to save detailed logs: {e}")
+
+
+def run_test_crawl(save_logs=False):
     """Chạy test crawl với collection test"""
     logging.info("🧪 Running TEST crawl...")
-    crawl_and_analyze(use_test_collection=True)
+    crawl_and_analyze(use_test_collection=True, save_logs=save_logs)
 
 
-def run_production_crawl():
+def run_production_crawl(save_logs=False):
     """Chạy production crawl"""
     logging.info("🚀 Running PRODUCTION crawl...")
-    crawl_and_analyze(use_test_collection=False)
+    crawl_and_analyze(use_test_collection=False, save_logs=save_logs)
 
 
-def schedule_crawls():
+def schedule_crawls(save_logs=False):
     """Lập lịch crawl tự động"""
     # Test crawl - mỗi 30 phút (OPTIONAL)
-    # schedule.every(30).minutes.do(run_test_crawl)
+    # schedule.every(30).minutes.do(run_test_crawl, save_logs=save_logs)
 
     # Production crawl - mỗi 1 giờ
-    # schedule.every(1).hours.do(run_production_crawl)
+    # schedule.every(1).hours.do(run_production_crawl, save_logs=save_logs)
 
     # Production crawl - mỗi 15 phút
-    schedule.every(15).minutes.do(run_production_crawl)
+    schedule.every(15).minutes.do(run_production_crawl, save_logs=save_logs)
 
     logging.info("⏰ Scheduled crawls:")
     # logging.info("   🧪 Test crawl: Every 30 minutes")
     logging.info("   🚀 Production crawl: Every 15 minutes")
+    if save_logs:
+        logging.info("   📝 Detailed logging: ENABLED")
 
 
 if __name__ == "__main__":
     import sys
+
+    # Check for --save-logs flag
+    save_logs = '--save-logs' in sys.argv
+    if save_logs:
+        sys.argv.remove('--save-logs')
 
     if len(sys.argv) > 1:
         command = sys.argv[1].lower()
 
         if command == "test":
             # Chạy test ngay
-            run_test_crawl()
+            run_test_crawl(save_logs=save_logs)
         elif command == "production":
             # Chạy production ngay
-            run_production_crawl()
+            run_production_crawl(save_logs=save_logs)
         elif command == "schedule":
-            print("GEMINI_API_KEY:", GEMINI_API_KEY)
+            # print("GEMINI_API_KEY:", GEMINI_API_KEY)
 
-            # Chạy scheduled mode
-            schedule_crawls()
+            # Chạy scheduled mode - MẶC ĐỊNH BẬT save_logs cho production
+            # User có thể tắt bằng --no-logs nếu cần
+            if '--no-logs' not in sys.argv and not save_logs:
+                save_logs = True  # Default enabled for schedule mode
+                logging.info(
+                    "📝 Auto-enabled detailed logging for schedule mode")
+
+            schedule_crawls(save_logs=save_logs)
 
             logging.info("🚀 Starting scheduled crawler...")
             logging.info("Press Ctrl+C to stop")
 
             try:
                 # Chạy production crawl ngay lập tức
-                run_production_crawl()
+                run_production_crawl(save_logs=save_logs)
 
                 # Sau đó chạy theo schedule
                 while True:
@@ -273,11 +386,17 @@ if __name__ == "__main__":
             except KeyboardInterrupt:
                 logging.info("⏹️ Crawler stopped by user")
         else:
-            print("Usage: python main.py [test|production|schedule]")
+            print(
+                "Usage: python main.py [test|production|schedule] [--save-logs]")
     else:
         print("🚀 Safe News Crawler - New Implementation")
         print("Commands:")
-        print("  python main.py test        - Run test crawl (saves to positive_news_test)")
         print(
-            "  python main.py production  - Run production crawl (saves to positive_news)")
-        print("  python main.py schedule    - Run scheduled crawler")
+            "  python main.py test [--save-logs]       - Run test crawl (saves to positive_news_test)")
+        print(
+            "  python main.py production [--save-logs] - Run production crawl (saves to positive_news)")
+        print(
+            "  python main.py schedule [--save-logs]   - Run scheduled crawler")
+        print("\nOptions:")
+        print(
+            "  --save-logs  - Save detailed analysis logs to logs_prod/crawl_result_[timestamp].json")

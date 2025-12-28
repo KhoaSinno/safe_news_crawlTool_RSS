@@ -502,15 +502,72 @@ def api_call_with_retry(text, max_retries=3):
 
 ## 🚀 Chạy thử
 
-```bash
-# Test individual components
-python utils/gemini_filter.py
+### Chạy cơ bản
 
-# Chạy full system
-python main.py
+```bash
+# Test crawl (lưu vào positive_news_test)
+python main.py test
+
+# Production crawl (lưu vào positive_news)
+python main.py production
+
+# Scheduled crawl (chạy mỗi 15 phút)
+python main.py schedule
 ```
 
-**Logs để theo dõi:**
+### Chạy với detailed logging (NEW! 🎉)
+
+```bash
+# Test crawl với logging
+python main.py test --save-logs
+
+# Production crawl với logging
+python main.py production --save-logs
+
+# Scheduled crawl với logging (khuyến nghị cho monitoring)
+python main.py schedule --save-logs
+```
+
+**Detailed logs được lưu tại:** `logs_prod/crawl_result_YYYYMMDD_HHMMSS.json`
+
+**Cấu trúc log file:**
+
+```json
+{
+  "total": 20,
+  "analyzed": 20,
+  "positive": 13,
+  "negative": 0,
+  "neutral": 7,
+  "toxic": 0,
+  "stored": 13,
+  "errors": 0,
+  "categories": {"giao-duc": 6, "suc-khoe": 2},
+  "results": [
+    {
+      "index": 1,
+      "title": "...",
+      "sentiment": 1,
+      "is_toxic": false,
+      "description": "..."
+    }
+  ],
+  "timestamp": "2025-12-17T11:36:14.852314",
+  "collection": "positive_news"
+}
+```
+
+**Lợi ích của detailed logging:**
+
+- 📊 Tracking performance và success rate
+- 🐛 Debugging và error analysis
+- 🤖 AI improvement - phân tích để cải thiện prompts
+- 📈 Analytics - phân bố sentiment, categories
+- 🔍 Audit trail - lịch sử crawl chi tiết
+
+Xem thêm: [`logs_prod/README.md`](logs_prod/README.md)
+
+### Logs để theo dõi
 
 - Console: Real-time progress
 - `news_crawler.log`: Chi tiết logs

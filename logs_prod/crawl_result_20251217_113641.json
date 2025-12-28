@@ -1,0 +1,47 @@
+{
+  "total": 3,
+  "analyzed": 3,
+  "positive": 0,
+  "negative": 0,
+  "neutral": 3,
+  "toxic": 0,
+  "stored": 0,
+  "errors": 0,
+  "categories": {
+    "tin-moi-nhat": 3
+  },
+  "results": [
+    {
+      "index": 1,
+      "title": "Cúm A/H3N2 có thể biến chứng viêm não",
+      "link": "https://vnexpress.net/cum-a-h3n2-co-the-bien-chung-viem-nao-4994799.html",
+      "source_category": "tin-moi-nhat",
+      "category": "tin-moi-nhat",
+      "sentiment": 0,
+      "is_toxic": false,
+      "description": "Bài viết cung cấp thông tin cảnh báo về sự gia tăng của cúm A/H3N2, các biến chứng nguy hiểm như viêm não và khuyến nghị các biện pháp phòng ngừa, điều trị kịp thời để bảo vệ sức khỏe cộng đồng."
+    },
+    {
+      "index": 2,
+      "title": "Sandro ra mắt bộ sưu tập mùa lễ hội cuối năm",
+      "link": "https://vnexpress.net/sandro-ra-mat-bo-suu-tap-mua-le-hoi-cuoi-nam-4994603.html",
+      "source_category": "tin-moi-nhat",
+      "category": "tin-moi-nhat",
+      "sentiment": 0,
+      "is_toxic": false,
+      "description": "Bài báo giới thiệu bộ sưu tập thời trang mới nhất của thương hiệu Sandro dành cho mùa lễ hội cuối năm, mang đến những gợi ý phong cách và xu hướng cho người yêu thời trang."
+    },
+    {
+      "index": 3,
+      "title": "Hai người phụ nữ chiến đấu với 30 đàn ông ở đâu?",
+      "link": "https://vnexpress.net/cau-do-tieng-viet-do-chu-hai-nguoi-phu-nu-chien-dau-voi-30-dan-ong-o-dau-4994352.html",
+      "source_category": "tin-moi-nhat",
+      "category": "tin-moi-nhat",
+      "sentiment": 0,
+      "is_toxic": false,
+      "description": "Bài báo giới thiệu một câu đố tiếng Việt thú vị, sử dụng lối chơi chữ để thử thách khả năng suy luận của độc giả, mang tính giải trí và giáo dục."
+    }
+  ],
+  "timestamp": "2025-12-17T11:36:14.852314",
+  "collection": "test_logging_feature"
+}
