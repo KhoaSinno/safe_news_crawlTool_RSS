@@ -1,0 +1,93 @@
+{
+  "test_time": "2025-12-29T15:35:02.493916",
+  "model": "gemini-2.5-flash",
+  "purpose": "Verify if Gemini can read URLs in real-time or only uses training data",
+  "results": [
+    {
+      "article": {
+        "title": "Có em, anh nghĩ mọi thứ sẽ trở nên dễ dàng",
+        "link": "https://vnexpress.net/co-em-anh-nghi-moi-thu-se-tro-nen-de-dang-4999347.html",
+        "published": "Mon, 29 Dec 2025 15:05:46 +0700",
+        "summary": "Anh thích những bữa cơm gia đình, sống tình cảm, luôn hướng về gia đình, em cũng vậy nhé...."
+      },
+      "gemini_response": {
+        "can_read_url": false,
+        "reading_method": "cannot_access",
+        "specific_details": {
+          "first_paragraph": "",
+          "person_names": [],
+          "locations": [],
+          "numbers_statistics": [],
+          "quotes": []
+        },
+        "confidence": "LOW",
+        "explanation": "Tôi không thể truy cập các URL trực tiếp hoặc nội dung web theo thời gian thực. Thông tin của tôi được giới hạn bởi dữ liệu huấn luyện có thời điểm cắt nhất định. Do bài báo được xuất bản vào ngày 29/12/2025, một ngày trong tương lai so với dữ liệu huấn luyện của tôi, tôi không thể đọc nội dung của nó."
+      },
+      "test_time": "2025-12-29T15:34:33.628673"
+    },
+    {
+      "article": {
+        "title": "Bình yên là điều em muốn giữ cùng anh",
+        "link": "https://vnexpress.net/binh-yen-la-dieu-em-muon-giu-cung-anh-4999343.html",
+        "published": "Mon, 29 Dec 2025 15:00:35 +0700",
+        "summary": "Em hướng tới một lối sống tối giản và nhẹ nhàng, không chỉ trong không gian sống mà cả trong suy ngh..."
+      },
+      "gemini_response": {
+        "can_read_url": false,
+        "reading_method": "cannot_access",
+        "specific_details": {
+          "first_paragraph": "Không thể truy cập nội dung bài báo vì tôi không có khả năng duyệt web theo thời gian thực.",
+          "person_names": [],
+          "locations": [],
+          "numbers_statistics": [],
+          "quotes": []
+        },
+        "confidence": "LOW",
+        "explanation": "Tôi là một mô hình AI và không có khả năng truy cập internet theo thời gian thực để đọc nội dung từ URL. Bài báo được đề cập có ngày xuất bản là 29/12/2025, là một ngày trong tương lai so với thời điểm tôi được huấn luyện, do đó không thể có trong dữ liệu của tôi."
+      },
+      "test_time": "2025-12-29T15:34:40.183085"
+    },
+    {
+      "article": {
+        "title": "Bạn có đoán ra câu thành ngữ chỉ trong 10 giây không?",
+        "link": "https://vnexpress.net/duoi-hinh-bat-chu-thanh-ngu-tuc-ngu-ban-co-doan-ra-cau-thanh-ngu-chi-trong-10-giay-khong-4998694.html",
+        "published": "Mon, 29 Dec 2025 15:00:00 +0700",
+        "summary": "<a href=\"https://vnexpress.net/duoi-hinh-bat-chu-thanh-ngu-tuc-ngu-ban-co-doan-ra-cau-thanh-ngu-chi-..."
+      },
+      "error": "'NoneType' object is not subscriptable",
+      "test_time": "2025-12-29T15:34:46.923422"
+    },
+    {
+      "article": {
+        "title": "Apple vá hai lỗ hổng 'đã bị lợi dụng thực tế' trên iPhone",
+        "link": "https://vnexpress.net/apple-va-hai-lo-hong-da-bi-loi-dung-thuc-te-tren-iphone-4999426.html",
+        "published": "Mon, 29 Dec 2025 15:00:00 +0700",
+        "summary": "<a href=\"https://vnexpress.net/apple-va-hai-lo-hong-da-bi-loi-dung-thuc-te-tren-iphone-4999426.html\"..."
+      },
+      "gemini_response": {
+        "can_read_url": false,
+        "reading_method": "cannot_access",
+        "specific_details": {
+          "first_paragraph": "N/A - Không thể truy cập URL theo thời gian thực.",
+          "person_names": [],
+          "locations": [],
+          "numbers_statistics": [],
+          "quotes": []
+        },
+        "confidence": "LOW",
+        "explanation": "Tôi không thể truy cập các URL theo thời gian thực hoặc các bài báo được xuất bản sau ngày cắt dữ liệu huấn luyện của tôi (thường là đầu năm 2023 hoặc giữa năm 2024). Bài báo này được ghi ngày 29/12/2025, là một ngày trong tương lai so với kiến thức của tôi."
+      },
+      "test_time": "2025-12-29T15:34:51.446545"
+    },
+    {
+      "article": {
+        "title": "Gần 2.000 VĐV hoàn thành hơn 300.000 km tại IAV Run 2025",
+        "link": "https://vnexpress.net/gan-2-000-vdv-hoan-thanh-hon-300-000-km-tai-iav-run-2025-4999566.html",
+        "published": "Mon, 29 Dec 2025 15:00:00 +0700",
+        "summary": "<a href=\"https://vnexpress.net/gan-2-000-vdv-hoan-thanh-hon-300-000-km-tai-iav-run-2025-4999566.html..."
+      },
+      "error": "'NoneType' object is not subscriptable",
+      "test_time": "2025-12-29T15:35:02.493916"
+    }
+  ]
+}

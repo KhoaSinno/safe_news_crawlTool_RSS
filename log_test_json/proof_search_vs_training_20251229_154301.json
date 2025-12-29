@@ -1,0 +1,54 @@
+{
+  "test_time": "2025-12-29T15:43:01.397117",
+  "conclusion": "Google Search Grounding is REQUIRED for fresh news articles",
+  "results": [
+    {
+      "article": {
+        "title": "Có em, anh nghĩ mọi thứ sẽ trở nên dễ dàng",
+        "link": "https://vnexpress.net/co-em-anh-nghi-moi-thu-se-tro-nen-de-dang-4999347.html",
+        "published": "Mon, 29 Dec 2025 15:05:46 +0700"
+      },
+      "without_search": {
+        "success": true,
+        "response": "Dựa trên thông tin bạn cung cấp, đặc biệt là ngày xuất bản \"29/12/2025\" (một ngày trong tương lai), tôi không thể truy cập và đọc nội dung của bài báo này từ URL đã cho. Các bài báo thường chỉ xuất hiện trên URL vào hoặc trước ngày xuất bản của chúng.\n\nDo đó, tôi sẽ trả về thông tin dựa trên việc không thể truy cập nội dung:\n\n```json\n{\n    \"can_access\": false,\n    \"method\": \"cannot_access\",\n    \"first_sentences\": \"\",\n    \"specific_names\": [],\n    \"confidence\": \"HIGH\"\n}\n```",
+        "has_grounding": false
+      },
+      "with_search": {
+        "success": true,
+        "response": "```json\n{\n    \"search_used\": true,\n    \"first_sentences\": \"Bù lại mỗi lời nói, việc anh làm đều chân thành. Khi hợp nhau, đôi lúc anh vẫn nói được dăm ba câu sến.\",\n    \"specific_names\": [\"Nguyễn Hồng Hải\"],\n    \"specific_numbers\": [\"46\", \"một\", \"024 7300 8899\", \"4529\"]\n}\n```",
+        "has_grounding": true,
+        "grounding_info": {
+          "search_queries": [
+            " \"Có em, anh nghĩ mọi thứ sẽ trở nên dễ dàng\" 4999347.html",
+            "https://vnexpress.net/co-em-anh-nghi-moi-thu-se-tro-nen-de-dang-4999347.html"
+          ],
+          "sources_count": 1
+        }
+      }
+    },
+    {
+      "article": {
+        "title": "Bình yên là điều em muốn giữ cùng anh",
+        "link": "https://vnexpress.net/binh-yen-la-dieu-em-muon-giu-cung-anh-4999343.html",
+        "published": "Mon, 29 Dec 2025 15:00:35 +0700"
+      },
+      "without_search": {
+        "success": true,
+        "response": "Dựa trên thông tin bạn cung cấp, đặc biệt là ngày xuất bản của bài báo là **29/12/2025** (một ngày trong tương lai), tôi không thể truy cập và đọc nội dung bài báo này vào thời điểm hiện tại.\n\nĐây là phản hồi JSON:\n\n```json\n{\n    \"can_access\": false,\n    \"method\": \"cannot_access\",\n    \"first_sentences\": \"\",\n    \"specific_names\": [],\n    \"confidence\": \"HIGH\"\n}\n```",
+        "has_grounding": false
+      },
+      "with_search": {
+        "success": true,
+        "response": "```json\n{\n    \"search_used\": true,\n    \"first_sentences\": \"Bình yên là điều em muốn giữ cùng anh. Em hướng tới một lối sống tối giản và nhẹ nhàng, không chỉ trong không gian sống mà cả trong suy nghĩ và cảm xúc.\",\n    \"specific_names\": [\"Thuy\"],\n    \"specific_numbers\": [\"36\", \"024 7300 8899\", \"4529\"]\n}\n```",
+        "has_grounding": true,
+        "grounding_info": {
+          "search_queries": [
+            " \"Bình yên là điều em muốn giữ cùng anh\" 4999343",
+            "https://vnexpress.net/binh-yen-la-dieu-em-muon-giu-cung-anh-4999343.html"
+          ],
+          "sources_count": 0
+        }
+      }
+    }
+  ]
+}
