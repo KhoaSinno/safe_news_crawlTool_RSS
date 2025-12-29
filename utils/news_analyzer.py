@@ -23,7 +23,21 @@ class NewsAnalyzer:
     def __init__(self, api_key: str):
         """Khởi tạo với Gemini API key"""
         genai.configure(api_key=api_key)
-        self.model = genai.GenerativeModel('gemini-2.5-flash')
+
+        # Cấu hình Google Search Tool (Grounding)
+        self.tools = [
+            {
+                'google_search_retrieval': {
+                    'dynamic_retrieval_config': {
+                        'mode': 'dynamic',
+                        'dynamic_threshold': 0.6  # Ngưỡng 0.6 để AI dễ kích hoạt tìm kiếm hơn
+                    }
+                }
+            }
+        ]
+        self.model = genai.GenerativeModel(
+            'gemini-2.5-flash', tools=self.tools)
+
         self.cache = {}  # Simple in-memory cache
         self.last_call_time = 0
         self.min_call_interval = 0  # DISABLED - có 10k RPM rồi
@@ -75,7 +89,15 @@ class NewsAnalyzer:
         """Gọi Gemini API với prompt đơn giản"""
         from google.generativeai.types import HarmCategory, HarmBlockThreshold
 
-        prompt = self._create_firebase_prompt(title, url)
+        # prompt = self._create_firebase_prompt(title, url)
+        prompt = f"""
+            HÃY SỬ DỤNG CÔNG CỤ GOOGLE SEARCH ĐỂ TRUY CẬP VÀ ĐỌC NỘI DUNG TỪ URL SAU:
+            URL: {url}
+            Tiêu đề bài báo: "{title}"
+
+            Sau khi đọc nội dung thực tế từ URL trên, hãy thực hiện nhiệm vụ phân tích như sau:
+            {self._create_firebase_prompt(title, url)}
+        """
 
         try:
             response = self.model.generate_content(
