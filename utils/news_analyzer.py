@@ -17,26 +17,17 @@ from datetime import datetime
 class NewsAnalyzer:
     """
     Analyzer đơn giản với transform từ Gemini response sang Firebase schema
-    Chỉ sử dụng title + URL, Gemini tự đọc full content
+    Gemini 2.5 Flash tự động có khả năng đọc URL (không cần google_search tool)
     """
 
     def __init__(self, api_key: str):
         """Khởi tạo với Gemini API key"""
         genai.configure(api_key=api_key)
 
-        # Cấu hình Google Search Tool (Grounding)
-        self.tools = [
-            {
-                'google_search_retrieval': {
-                    'dynamic_retrieval_config': {
-                        'mode': 'dynamic',
-                        'dynamic_threshold': 0.6  # Ngưỡng 0.6 để AI dễ kích hoạt tìm kiếm hơn
-                    }
-                }
-            }
-        ]
-        self.model = genai.GenerativeModel(
-            'gemini-2.5-flash', tools=self.tools)
+        # NOTE: Gemini 2.5 Flash tự động có khả năng đọc URL
+        # google_search_retrieval KHÔNG được hỗ trợ với model này
+        # Đã test xác nhận: model đọc được chi tiết cụ thể từ bài báo
+        self.model = genai.GenerativeModel('gemini-2.5-flash')
 
         self.cache = {}  # Simple in-memory cache
         self.last_call_time = 0

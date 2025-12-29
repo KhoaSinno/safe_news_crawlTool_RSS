@@ -1,0 +1,20 @@
+[
+  {
+    "title": "Tiêm filler nâng ngực đón Tết, người phụ nữ biến dạng vòng một",
+    "url": "https://vnexpress.net/tiem-filler-nang-nguc-don-tet-nguoi-phu-nu-bien-dang-vong-mot-4999467.html",
+    "response": "```json\n{\n    \"can_read_url\": true,\n    \"specific_names\": [\n        \"Bệnh viện Hữu nghị Việt Đức\",\n        \"Nguyễn Hồng Hà\",\n        \"Bệnh viện Đa khoa Quốc tế Vinmec\"\n    ],\n    \"specific_dates\": [\n        \"Thứ năm, 18/1/2024, 10:00 (GMT+7",
+    "success": true
+  },
+  {
+    "title": "Tôi như kẻ lập dị vì một năm từ chối túi nilon",
+    "url": "https://vnexpress.net/toi-nhu-ke-lap-di-vi-mot-nam-khong-dung-tui-nilon-4999324.html",
+    "response": "```json\n{\n    \"can_read_url\": true,\n    \"specific_names\": [\n        \"Nguyễn Thị Thùy Dương\"\n    ],\n    \"specific_dates\": [\n        \"tháng 10/2023\"\n    ],\n    \"specific_locations\": [\n        \"Hà Nội\",\n        \"chợ Thành Công\",\n        \"quận Đống Đa\"\n    ],\n    \"specific_numbers\": [\n        \"200.000 đồng\",\n        \"500.000 đồng\",\n        \"10-15 chiếc\"",
+    "success": true
+  },
+  {
+    "title": "Giáo dục 2025 giữa đột phá và xáo trộn",
+    "url": "https://vnexpress.net/nhung-su-kien-giao-duc-noi-bat-2025-4995006.html",
+    "response": "```json\n{\n    \"can_read_url\": true,\n    \"specific_names\": [\n        \"Bộ Giáo dục và Đào tạo\",\n        \"PGS.TS Nguyễn Thu Thủy\"\n    ],\n    \"specific_dates\": [\n        \"ngày 1/7/2024\",\n        \"tháng 9/2025\"\n    ],\n    \"specific_locations\": [\n        \"Hà Nội\",\n        \"TP",
+    "success": true
+  }
+]
