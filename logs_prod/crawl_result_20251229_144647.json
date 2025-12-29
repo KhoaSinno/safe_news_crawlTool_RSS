@@ -1,0 +1,51 @@
+{
+  "total": 3,
+  "analyzed": 3,
+  "positive": 0,
+  "negative": 0,
+  "neutral": 3,
+  "toxic": 0,
+  "stored": 0,
+  "filtered": 0,
+  "errors": 0,
+  "categories": {
+    "tin-xem-nhieu": 3
+  },
+  "results": [
+    {
+      "index": 1,
+      "title": "Tại sao tỷ lệ sinh trai nhiều hơn gái?",
+      "link": "https://vnexpress.net/tai-sao-ty-le-sinh-trai-nhieu-hon-gai-4379911.html",
+      "source_category": "tin-xem-nhieu",
+      "category": "tin-xem-nhieu",
+      "sentiment": 0,
+      "is_toxic": false,
+      "description": "Bài báo cung cấp thông tin chi tiết về các yếu tố sinh học và xã hội dẫn đến tình trạng mất cân bằng giới tính khi sinh, đặc biệt nhấn mạnh tác động của việc lựa chọn giới tính thai nhi và những hệ lụ",
+      "status": "STORAGE_FAILED"
+    },
+    {
+      "index": 2,
+      "title": "Thêm 5.637 ca Covid-19",
+      "link": "https://vnexpress.net/covid-19-ngay-2-11-4380539.html",
+      "source_category": "tin-xem-nhieu",
+      "category": "tin-xem-nhieu",
+      "sentiment": 0,
+      "is_toxic": false,
+      "description": "Bài báo cung cấp thông tin cập nhật về tình hình dịch Covid-19 tại Việt Nam vào ngày 2/11, bao gồm số ca mắc mới và các số liệu liên quan, giúp cộng đồng nắm bắt diễn biến dịch bệnh.",
+      "status": "STORAGE_FAILED"
+    },
+    {
+      "index": 3,
+      "title": "Rắn độc chui vào ống nước để ghép đôi",
+      "link": "https://vnexpress.net/ran-doc-chui-vao-ong-nuoc-de-ghep-doi-4380130.html",
+      "source_category": "tin-xem-nhieu",
+      "category": "tin-xem-nhieu",
+      "sentiment": 0,
+      "is_toxic": false,
+      "description": "Bài báo mô tả sự việc hai con rắn hổ mang chui vào ống nước để ghép đôi, cung cấp thông tin về hành vi của loài rắn và cảnh báo về sự xuất hiện của chúng trong khu dân cư.",
+      "status": "STORAGE_FAILED"
+    }
+  ],
+  "timestamp": "2025-12-29T14:46:13.988721",
+  "collection": "positive_news"
+}

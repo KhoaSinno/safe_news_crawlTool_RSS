@@ -22,15 +22,23 @@ from dotenv import load_dotenv
 # Load environment variables - FORCE OVERRIDE system env
 load_dotenv(override=True)
 
-# Setup logging
+# Setup logging with UTF-8 and immediate flush for real-time tracking
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s',
     handlers=[
-        logging.FileHandler('news_crawler.log'),
+        logging.FileHandler('news_crawler.log', encoding='utf-8'),
         logging.StreamHandler()
-    ]
+    ],
+    force=True  # Force reconfigure if already configured
 )
+
+# Ensure immediate flush to file (real-time logging)
+for handler in logging.getLogger().handlers:
+    if isinstance(handler, logging.FileHandler):
+        handler.setLevel(logging.INFO)
+        # Force immediate write without buffering
+        handler.stream.reconfigure(line_buffering=True)
 
 # Cấu hình
 GEMINI_API_KEY = os.getenv('GEMINI_API_KEY')
@@ -45,9 +53,9 @@ news_analyzer = NewsAnalyzer(GEMINI_API_KEY)
 
 # RSS feeds to crawl - ưu tiên các category tích cực
 RSS_FEEDS = [
-    {"url": "https://vnexpress.net/rss/tin-moi-nhat.rss", "category": "tin-moi-nhat"},
+    # {"url": "https://vnexpress.net/rss/tin-moi-nhat.rss", "category": "tin-moi-nhat"},
     # {"url": "https://vnexpress.net/rss/tin-noi-bat.rss", "category": "tin-noi-bat"},
-    # {"url": "https://vnexpress.net/rss/tin-xem-nhieu.rss", "category": "tin-xem-nhieu"},
+    {"url": "https://vnexpress.net/rss/tin-xem-nhieu.rss", "category": "tin-xem-nhieu"},
 
     # {"url": "https://vnexpress.net/rss/giao-duc.rss", "category": "giao-duc"},
     # {"url": "https://vnexpress.net/rss/suc-khoe.rss", "category": "suc-khoe"},
@@ -117,7 +125,7 @@ def crawl_and_analyze(use_test_collection=False, save_logs=False):
     total_stored = 0
     new_processed_links = []
 
-    # Detailed logs for tracking
+    # Detailed logs for tracking - Always create in schedule mode
     detailed_logs = {
         "total": 0,
         "analyzed": 0,
@@ -126,6 +134,7 @@ def crawl_and_analyze(use_test_collection=False, save_logs=False):
         "neutral": 0,
         "toxic": 0,
         "stored": 0,
+        "filtered": 0,  # Articles analyzed but filtered (negative/toxic)
         "errors": 0,
         "categories": {},
         "results": [],
@@ -227,19 +236,38 @@ def crawl_and_analyze(use_test_collection=False, save_logs=False):
                                 "description": result.get('description', '')[:200]
                             })
 
-                        # Lưu vào Firebase
-                        if store_to_firebase(result, collection_name=collection_name):
-                            total_stored += 1
-                            category_stored += 1
-                            if save_logs:
-                                detailed_logs["stored"] += 1
-                            logging.info(
-                                f"✅ Stored positive article: {title[:50]}...")
+                        # ⚠️ CRITICAL: Chỉ lưu bài POSITIVE/NEUTRAL và SAFE vào Firebase
+                        sentiment = result.get('sentiment', 0)
+                        is_toxic = result.get('is_toxic', False)
+
+                        # Check if article should be stored
+                        should_store = sentiment >= 0 and not is_toxic
+
+                        if should_store:
+                            # Lưu vào Firebase
+                            if store_to_firebase(result, collection_name=collection_name):
+                                total_stored += 1
+                                category_stored += 1
+                                if save_logs:
+                                    detailed_logs["stored"] += 1
+                                    log_entry["status"] = "STORED"
+                                logging.info(
+                                    f"✅ Stored positive article: {title[:50]}...")
+                            else:
+                                if save_logs:
+                                    log_entry["status"] = "STORAGE_FAILED"
+                                logging.warning(
+                                    f"⚠️ Failed to store: {title[:50]}...")
                         else:
+                            # Article filtered out due to negative sentiment or toxic content
                             if save_logs:
-                                log_entry["status"] = "STORAGE_FAILED"
-                            logging.warning(
-                                f"⚠️ Failed to store: {title[:50]}...")
+                                log_entry["status"] = "FILTERED_OUT"
+                                detailed_logs["filtered"] += 1
+                            sentiment_label = "POSITIVE" if sentiment == 1 else (
+                                "NEUTRAL" if sentiment == 0 else "NEGATIVE")
+                            toxic_label = "TOXIC" if is_toxic else "SAFE"
+                            logging.info(
+                                f"⚠️ Article filtered out: {title[:50]}... ({sentiment_label}, {toxic_label})")
                     else:
                         if save_logs:
                             log_entry["status"] = "FILTERED_OUT"
@@ -293,8 +321,8 @@ def crawl_and_analyze(use_test_collection=False, save_logs=False):
     logging.info(f"   🔥 Collection: {collection_name}")
     logging.info("=" * 50)
 
-    # Save detailed logs to file
-    if save_logs and detailed_logs["total"] > 0:
+    # Save detailed logs to file - Always save in schedule mode for tracking
+    if save_logs:
         try:
             # Create logs_prod directory if not exists
             os.makedirs("logs_prod", exist_ok=True)
@@ -307,7 +335,11 @@ def crawl_and_analyze(use_test_collection=False, save_logs=False):
             with open(log_filename, 'w', encoding='utf-8') as f:
                 json.dump(detailed_logs, f, ensure_ascii=False, indent=2)
 
-            logging.info(f"📝 Detailed logs saved to: {log_filename}")
+            if detailed_logs["total"] > 0:
+                logging.info(f"📝 Detailed logs saved to: {log_filename}")
+            else:
+                logging.info(
+                    f"📝 Crawl log saved (no new articles): {log_filename}")
         except Exception as e:
             logging.error(f"❌ Failed to save detailed logs: {e}")
 
@@ -362,10 +394,10 @@ if __name__ == "__main__":
         elif command == "schedule":
             # print("GEMINI_API_KEY:", GEMINI_API_KEY)
 
-            # Chạy scheduled mode - MẶC ĐỊNH BẬT save_logs cho production
+            # Chạy scheduled mode - Default "on": save_logs cho production
             # User có thể tắt bằng --no-logs nếu cần
             if '--no-logs' not in sys.argv and not save_logs:
-                save_logs = True  # Default enabled for schedule mode
+                save_logs = True
                 logging.info(
                     "📝 Auto-enabled detailed logging for schedule mode")
 

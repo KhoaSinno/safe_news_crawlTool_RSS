@@ -1,0 +1,15 @@
+{
+  "total": 0,
+  "analyzed": 0,
+  "positive": 0,
+  "negative": 0,
+  "neutral": 0,
+  "toxic": 0,
+  "stored": 0,
+  "filtered": 0,
+  "errors": 0,
+  "categories": {},
+  "results": [],
+  "timestamp": "2025-12-29T14:31:13.730578",
+  "collection": "positive_news"
+}
