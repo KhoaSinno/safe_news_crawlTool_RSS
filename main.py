@@ -53,8 +53,8 @@ news_analyzer = NewsAnalyzer(GEMINI_API_KEY)
 
 # RSS feeds to crawl - ưu tiên các category tích cực
 RSS_FEEDS = [
-    # {"url": "https://vnexpress.net/rss/tin-moi-nhat.rss", "category": "tin-moi-nhat"},
-    {"url": "https://vnexpress.net/rss/tin-noi-bat.rss", "category": "tin-noi-bat"},
+    {"url": "https://vnexpress.net/rss/tin-moi-nhat.rss", "category": "tin-moi-nhat"},
+    # {"url": "https://vnexpress.net/rss/tin-noi-bat.rss", "category": "tin-noi-bat"},
     # {"url": "https://vnexpress.net/rss/tin-xem-nhieu.rss", "category": "tin-xem-nhieu"},
 
     # {"url": "https://vnexpress.net/rss/giao-duc.rss", "category": "giao-duc"},
