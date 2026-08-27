@@ -1,4 +1,4 @@
-﻿name: Safe News Auto & Manual Crawler
+name: Safe News Auto & Manual Crawler
 
 on:
   # Cho phép bấm nút "Run workflow" thủ công bằng tay bất cứ lúc nào
@@ -13,10 +13,10 @@ on:
           - production
           - test
 
-  # Hẹn giờ tự động chạy (Tùy chọn: Chạy 1 lần/ngày lúc 07:00 sáng giờ VN = 00:00 UTC)
-  # Bạn có thể Disable/Enable workflow này bất kỳ lúc nào trên giao diện GitHub
-  schedule:
-    - cron: '0 0 * * *'
+  # [MẶC ĐỊNH: ĐÃ TẮT TỰ ĐỘNG] 
+  # Khi nào muốn hẹn giờ tự động chạy mỗi ngày, bạn chỉ cần bỏ dấu # ở 2 dòng dưới:
+  # schedule:
+  #   - cron: '0 0 * * *'
 
 jobs:
   crawl:
