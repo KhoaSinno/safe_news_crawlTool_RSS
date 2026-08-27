@@ -1,12 +1,26 @@
+import os
+import json
 import firebase_admin
 from firebase_admin import credentials, firestore
 import logging
 import hashlib
 from datetime import datetime
 
-# Khởi tạo Firebase
-cred = credentials.Certificate("serviceAccountKey.json")
-firebase_admin.initialize_app(cred)
+# Khởi tạo Firebase linh hoạt (Hỗ trợ file local và Secret/Env trên Cloud như Render)
+if not firebase_admin._apps:
+    firebase_json_env = os.getenv("FIREBASE_SERVICE_ACCOUNT")
+    if firebase_json_env:
+        try:
+            cred_dict = json.loads(firebase_json_env)
+            cred = credentials.Certificate(cred_dict)
+        except Exception:
+            cred = credentials.Certificate("serviceAccountKey.json")
+    elif os.path.exists("serviceAccountKey.json"):
+        cred = credentials.Certificate("serviceAccountKey.json")
+    else:
+        cred = credentials.Certificate("serviceAccountKey.json")
+    firebase_admin.initialize_app(cred)
+
 db = firestore.client()
 
 
