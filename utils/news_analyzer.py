@@ -235,50 +235,47 @@ CHỈ TRẢ VỀ JSON HỢP LỆ, không kèm lời giải thích nào khác.
         if not response_text or not response_text.strip():
             return None
 
-        text = response_text.strip()
+        # 1. Làm sạch các tiền tố/hậu tố bọc ngoài như ***, ```, ```json
+        cleaned = re.sub(r'[*`]+(?:json)?', '', response_text).strip()
 
-        # Cách 1: Parse trực tiếp JSON tiêu chuẩn
+        # 2. Parse trực tiếp JSON tiêu chuẩn
         try:
-            return json.loads(text)
+            return json.loads(cleaned)
         except Exception:
             pass
 
-        # Cách 2: Nếu thiếu dấu ngoặc nhọn ngoài cùng
-        if not text.startswith('{') and '"description"' in text:
-            try:
-                wrapped = '{' + text + ('}' if not text.endswith('}') else '')
-                return json.loads(wrapped)
-            except Exception:
-                pass
+        # 3. Tự động bọc ngoặc nhọn nếu Gemini sinh thiếu { }
+        try:
+            wrapped = cleaned
+            if not wrapped.startswith('{'):
+                wrapped = '{' + wrapped
+            if not wrapped.endswith('}'):
+                wrapped = wrapped + '}'
+            return json.loads(wrapped)
+        except Exception:
+            pass
 
-        # Cách 3: Tìm khối JSON giữa dấu { đầu tiên và } cuối cùng
-        start_idx = text.find('{')
-        end_idx = text.rfind('}')
+        # 4. Tìm khối JSON giữa dấu { đầu tiên và } cuối cùng
+        start_idx = response_text.find('{')
+        end_idx = response_text.rfind('}')
         if start_idx != -1 and end_idx != -1 and end_idx > start_idx:
-            json_str = text[start_idx:end_idx + 1]
+            json_str = response_text[start_idx:end_idx + 1]
             try:
                 return json.loads(json_str)
             except Exception:
                 pass
 
-        # Cách 4: Bóc tách markdown
-        if '```' in text:
-            cleaned = re.sub(r'```(?:json)?', '', text).replace('```', '').strip()
-            try:
-                return json.loads(cleaned)
-            except Exception:
-                pass
-
-        # Cách 5: Regex Field Extractor siêu linh hoạt
+        # 5. Regex Field Extractor siêu linh hoạt (Bóc tách từng trường độc lập)
         try:
-            toxic_match = re.search(r'"is_toxic"\s*:\s*(true|false)', text, re.IGNORECASE)
-            sentiment_match = re.search(r'"sentiment"\s*:\s*(-?1|0)', text)
-            desc_match = re.search(r'"description"\s*:\s*"(.+?)(?:"\s*,\s*"is_toxic"|"$)', text, re.DOTALL)
+            toxic_match = re.search(r'is_toxic["\s:]+(true|false)', response_text, re.IGNORECASE)
+            sentiment_match = re.search(r'sentiment["\s:]+(-?1|0)', response_text)
+            desc_match = re.search(r'description["\s:]+["\'](.*?)["\']\s*[,}\n]', response_text, re.DOTALL)
             if not desc_match:
-                desc_match = re.search(r'"description"\s*:\s*"(.*?)"', text, re.DOTALL)
+                desc_match = re.search(r'description["\s:]+["\'](.*)', response_text, re.DOTALL)
 
             if toxic_match and sentiment_match:
                 desc = desc_match.group(1).strip() if desc_match else ""
+                desc = re.sub(r'[*`"\']+$', '', desc).strip()
                 return {
                     "description": desc,
                     "is_toxic": toxic_match.group(1).lower() == 'true',
