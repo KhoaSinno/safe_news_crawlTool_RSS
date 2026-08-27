@@ -1,0 +1,692 @@
+{
+  "total": 48,
+  "filtered_by_rule": 1,
+  "analyzed_by_ai": 47,
+  "positive": 12,
+  "negative": 5,
+  "neutral": 13,
+  "toxic": 0,
+  "stored": 21,
+  "filtered_by_ai": 5,
+  "errors": 0,
+  "metrics": {
+    "total_prompt_tokens": 31279,
+    "total_candidate_tokens": 2195,
+    "total_tokens": 33474,
+    "total_llm_time": 135.78,
+    "total_extract_time": 22.82,
+    "avg_tokens_per_article": 712.2,
+    "avg_latency_per_article": 3.37
+  },
+  "results": [
+    {
+      "index": 1,
+      "title": "Đường phố Hà Nội ngập, ùn tắc nhìn từ trên cao",
+      "link": "https://vnexpress.net/duong-pho-ha-noi-ngap-un-tac-nhin-tu-tren-cao-5114275.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {
+        "prompt_tokens": 691,
+        "candidates_tokens": 60,
+        "total_tokens": 751,
+        "llm_time": 3.956,
+        "extract_time": 1.272406816482544,
+        "content_length": 499
+      },
+      "sentiment": 0,
+      "is_toxic": false,
+      "description": "Nội dung cung cấp các 'phím tắt điều khiển' video và 'form góp ý' về trải nghiệm người dùng để VnE-GO phục vụ tốt hơn.",
+      "status": "STORED"
+    },
+    {
+      "index": 2,
+      "title": "Ông Mai Hữu Tín làm Chủ tịch Liên đoàn Doanh nghiệp TP HCM",
+      "link": "https://vnexpress.net/ong-mai-huu-tin-lam-chu-tich-lien-doan-doanh-nghiep-tp-hcm-5114271.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {
+        "prompt_tokens": 881,
+        "candidates_tokens": 82,
+        "total_tokens": 963,
+        "llm_time": 3.36,
+        "extract_time": 0.7492780685424805,
+        "content_length": 1089
+      },
+      "sentiment": 1,
+      "is_toxic": false,
+      "description": "Ông Mai Hữu Tín được bầu làm Chủ tịch Liên đoàn Doanh nghiệp TP HCM (HUBA) nhiệm kỳ 2026-2031. Đại hội cũng đổi tên Hiệp hội Doanh nghiệp TP HCM thành Liên đoàn Doanh nghiệp TP HCM.",
+      "status": "STORED"
+    },
+    {
+      "index": 3,
+      "title": "Chương Tử Di: 'Gương mặt tôi thay đổi do mập'",
+      "link": "https://vnexpress.net/chuong-tu-di-guong-mat-toi-thay-doi-do-map-5114174.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {}
+    },
+    {
+      "index": 4,
+      "title": "Sườn núi như bị xẻ đôi sau lũ quét ở biên giới Nepal - Trung Quốc",
+      "link": "https://vnexpress.net/suon-nui-nhu-bi-xe-doi-sau-lu-quet-o-bien-gioi-nepal-trung-quoc-5114267.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {
+        "prompt_tokens": 1121,
+        "candidates_tokens": 76,
+        "total_tokens": 1197,
+        "llm_time": 2.226,
+        "extract_time": 0.7540113925933838,
+        "content_length": 2641
+      },
+      "sentiment": -1,
+      "is_toxic": false,
+      "description": "Ảnh vệ tinh cho thấy sườn núi gần đỉnh Langtang Lirung ở biên giới Nepal - Trung Quốc 'như bị xẻ đôi' sau khi một đoạn sông băng dài 930m sụp đổ, gây ra lũ quét.",
+      "status": "FILTERED_BY_AI"
+    },
+    {
+      "index": 5,
+      "title": "Vì sao nhiều du khách tập trung tại vùng bị lũ quét ở Nepal?",
+      "link": "https://vnexpress.net/vi-sao-nhieu-du-khach-tap-trung-tai-vung-bi-lu-quet-o-nepal-5114186.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {
+        "prompt_tokens": 1104,
+        "candidates_tokens": 67,
+        "total_tokens": 1171,
+        "llm_time": 3.193,
+        "extract_time": 0.7550528049468994,
+        "content_length": 4749
+      },
+      "sentiment": -1,
+      "is_toxic": false,
+      "description": "Lũ quét tại Nepal khiến hơn 500 du khách nước ngoài mất liên lạc và ít nhất 270 người thiệt mạng. Khu vực này là điểm hành hương và du lịch nổi tiếng.",
+      "status": "FILTERED_BY_AI"
+    },
+    {
+      "index": 6,
+      "title": "Nhiệt độ tăng có thể thúc đẩy lũ quét tử thần ở Nepal",
+      "link": "https://vnexpress.net/nhiet-do-tang-co-the-thuc-day-lu-quet-tu-than-o-nepal-5114238.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {
+        "prompt_tokens": 1114,
+        "candidates_tokens": 80,
+        "total_tokens": 1194,
+        "llm_time": 3.212,
+        "extract_time": 0.745311975479126,
+        "content_length": 2899
+      },
+      "sentiment": -1,
+      "is_toxic": false,
+      "description": "Nhiệt độ tăng có thể thúc đẩy lũ quét tử thần ở Nepal, với ít nhất 165 người thiệt mạng trong trận lũ quét ngày 26/8 do lở đất và sông băng sụp đổ, liên quan đến biến đổi khí hậu.",
+      "status": "FILTERED_BY_AI"
+    },
+    {
+      "index": 7,
+      "title": "Bị bắt vì dùng Facebook đăng thông tin sai sự thật",
+      "link": "https://vnexpress.net/bi-bat-vi-dung-facebook-dang-thong-tin-sai-su-that-5114256.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {
+        "prompt_tokens": 940,
+        "candidates_tokens": 64,
+        "total_tokens": 1004,
+        "llm_time": 4.227,
+        "extract_time": 0.7435364723205566,
+        "content_length": 1428
+      },
+      "sentiment": 0,
+      "is_toxic": false,
+      "description": "Nguyễn Ngọc Thảo bị bắt tạm giam vì dùng Facebook đăng thông tin sai sự thật, xúc phạm lãnh đạo và cơ quan Nhà nước, sau khi từng bị xử phạt hành chính.",
+      "status": "STORED"
+    },
+    {
+      "index": 8,
+      "title": "Nhiều tuyến phố Hà Nội bị ngập trong mưa giông",
+      "link": "https://vnexpress.net/nhieu-tuyen-pho-ha-noi-bi-ngap-trong-mua-giong-5114248.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {
+        "prompt_tokens": 975,
+        "candidates_tokens": 74,
+        "total_tokens": 1049,
+        "llm_time": 4.762,
+        "extract_time": 0.77419114112854,
+        "content_length": 1335
+      },
+      "sentiment": 0,
+      "is_toxic": false,
+      "description": "Nhiều tuyến phố Hà Nội bị ngập và ùn tắc giao thông do mưa giông chiều tối 27/8, cục bộ có điểm ngập tới 40 cm khiến nhiều phương tiện 'chết máy'.",
+      "status": "STORED"
+    },
+    {
+      "index": 9,
+      "title": "Tranh nhau giật tiền cúng cô hồn",
+      "link": "https://vnexpress.net/tranh-nhau-giat-tien-cung-co-hon-5114264.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {
+        "prompt_tokens": 686,
+        "candidates_tokens": 54,
+        "total_tokens": 740,
+        "llm_time": 4.216,
+        "extract_time": 0.5143594741821289,
+        "content_length": 499
+      },
+      "sentiment": 0,
+      "is_toxic": false,
+      "description": "Nội dung bài viết là danh sách các phím tắt điều khiển video và một biểu mẫu thu thập ý kiến phản hồi của người dùng.",
+      "status": "STORED"
+    },
+    {
+      "index": 10,
+      "title": "Việt Nam định vị 'du lịch MICE' là sản phẩm chiến lược",
+      "link": "https://vnexpress.net/viet-nam-dinh-vi-du-lich-mice-la-san-pham-chien-luoc-5114254.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {
+        "prompt_tokens": 1100,
+        "candidates_tokens": 67,
+        "total_tokens": 1167,
+        "llm_time": 4.74,
+        "extract_time": 0.7492585182189941,
+        "content_length": 2540
+      },
+      "sentiment": 1,
+      "is_toxic": false,
+      "description": "Việt Nam định vị 'du lịch MICE' là sản phẩm chiến lược để nâng chất lượng ngành du lịch, với mục tiêu thu hút khách chất lượng cao và thúc đẩy thương mại, đầu tư.",
+      "status": "STORED"
+    },
+    {
+      "index": 11,
+      "title": "Nam Anh, Nam Em mặc đồng điệu trên thảm đỏ",
+      "link": "https://vnexpress.net/nam-anh-nam-em-mac-dong-dieu-tren-tham-do-5114218.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {
+        "prompt_tokens": 1119,
+        "candidates_tokens": 85,
+        "total_tokens": 1204,
+        "llm_time": 3.547,
+        "extract_time": 0.7511444091796875,
+        "content_length": 2422
+      },
+      "sentiment": 1,
+      "is_toxic": false,
+      "description": "Nam Anh, Nam Em và nhiều người đẹp khác tham dự sự kiện khởi động Miss Charm Vietnam 2026. Bài viết cũng đề cập đến thành tích của Nam Anh và mục tiêu của cuộc thi Miss Charm trong việc tìm kiếm 'Vẻ đ",
+      "status": "STORED"
+    },
+    {
+      "index": 12,
+      "title": "Tuyến cáp quang biển thứ tư gặp sự cố, Internet Việt Nam bị ảnh hưởng",
+      "link": "https://vnexpress.net/tuyen-cap-quang-bien-thu-tu-gap-su-co-internet-viet-nam-bi-anh-huong-5114250.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {
+        "prompt_tokens": 1098,
+        "candidates_tokens": 66,
+        "total_tokens": 1164,
+        "llm_time": 12.344,
+        "extract_time": 0.743269681930542,
+        "content_length": 3546
+      },
+      "sentiment": 0,
+      "is_toxic": false,
+      "description": "Bốn tuyến cáp quang biển của Việt Nam gặp sự cố, gây ảnh hưởng đáng kể đến kết nối Internet quốc tế, nhưng các nhà mạng đang triển khai giải pháp để hạn chế tác động.",
+      "status": "STORED"
+    },
+    {
+      "index": 13,
+      "title": "Trải nghiệm chơi golf kết hợp nghỉ dưỡng bên bờ biển Đà Nẵng",
+      "link": "https://vnexpress.net/trai-nghiem-choi-golf-ket-hop-nghi-duong-ben-bo-bien-da-nang-5113183.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {}
+    },
+    {
+      "index": 14,
+      "title": "Gu mặc của vợ Quang Hải khi ra sân cổ vũ chồng",
+      "link": "https://vnexpress.net/gu-mac-cua-vo-quang-hai-khi-ra-san-co-vu-chong-5114202.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {}
+    },
+    {
+      "index": 15,
+      "title": "Chồng sắp cưới không chịu nhận con riêng với người phụ nữ có gia đình",
+      "link": "https://vnexpress.net/chong-sap-cuoi-khong-chiu-nhan-con-rieng-voi-nguoi-phu-nu-co-gia-dinh-5114194.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {
+        "prompt_tokens": 1079,
+        "candidates_tokens": 66,
+        "total_tokens": 1145,
+        "llm_time": 4.472,
+        "extract_time": 0.7411441802978516,
+        "content_length": 3876
+      },
+      "sentiment": -1,
+      "is_toxic": false,
+      "description": "Người phụ nữ 27 tuổi phát hiện chồng sắp cưới có con riêng với người phụ nữ đã có gia đình nhưng anh ta không chịu thừa nhận, khiến cô rất đau khổ và hoang mang.",
+      "status": "FILTERED_BY_AI"
+    },
+    {
+      "index": 16,
+      "title": "Người sống sót kể khoảnh khắc sinh tử giữa trận lũ quét Nepal",
+      "link": "https://vnexpress.net/nguoi-song-sot-ke-khoanh-khac-sinh-tu-giua-tran-lu-quet-nepal-5113963.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {}
+    },
+    {
+      "index": 17,
+      "title": "Cách Agribank đưa ESG vào hoạt động kinh doanh",
+      "link": "https://vnexpress.net/cach-agribank-dua-esg-vao-hoat-dong-kinh-doanh-5113946.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {}
+    },
+    {
+      "index": 18,
+      "title": "Tân Á Đại Thành vào Top 100 doanh nghiệp tư nhân nộp ngân sách lớn",
+      "link": "https://vnexpress.net/tan-a-dai-thanh-vao-top-100-doanh-nghiep-tu-nhan-nop-ngan-sach-lon-5113741.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {}
+    },
+    {
+      "index": 19,
+      "title": "HLV CA TP HCM từng rủ Juan Mata sang Việt Nam",
+      "link": "https://vnexpress.net/hlv-ca-tp-hcm-tung-ru-juan-mata-sang-viet-nam-5114260.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {}
+    },
+    {
+      "index": 20,
+      "title": "Nghi vợ chồng khách bị lừa đảo, chủ tiệm vàng đưa đến công an",
+      "link": "https://vnexpress.net/nghi-vo-chong-khach-bi-lua-dao-chu-tiem-vang-dua-den-cong-an-5114086.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {}
+    },
+    {
+      "index": 21,
+      "title": "Ukraine tuyên bố hạ nhiều tên lửa đạn đạo, siêu thanh Nga",
+      "link": "https://vnexpress.net/ukraine-tuyen-bo-ha-nhieu-ten-lua-dan-dao-sieu-thanh-nga-5114167.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {}
+    },
+    {
+      "index": 22,
+      "title": "Thủ khoa D01 của Bắc Ninh bị hủy kết quả thi tốt nghiệp",
+      "link": "https://vnexpress.net/thu-khoa-d01-cua-bac-ninh-bi-huy-ket-qua-thi-tot-nghiep-5114212.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {}
+    },
+    {
+      "index": 23,
+      "title": "Cửa khẩu Trung Quốc - Nepal tan hoang sau thảm họa",
+      "link": "https://vnexpress.net/cua-khau-trung-quoc-nepal-tan-hoang-sau-tham-hoa-5114242.html",
+      "source_category": "tin-moi-nhat",
+      "status": "FILTERED_BY_FAST_RULE",
+      "reason": "MATCHED_NEGATIVE: thảm họa"
+    },
+    {
+      "index": 24,
+      "title": "Thai nhi nhỏ nhất được sửa dị tật tim từ trong bụng mẹ",
+      "link": "https://vnexpress.net/thai-nhi-nho-nhat-duoc-sua-di-tat-tim-tu-trong-bung-me-5114124.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {}
+    },
+    {
+      "index": 25,
+      "title": "Ảo tưởng Việt Nam 'chơi bóng đá đẹp'",
+      "link": "https://vnexpress.net/asean-cup-2026-bong-da-viet-nam-thang-truoc-da-dep-tinh-sau-5114134.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {}
+    },
+    {
+      "index": 26,
+      "title": "Điểm tựa trong những gia đình ba thế hệ",
+      "link": "https://vnexpress.net/diem-tua-trong-nhung-gia-dinh-ba-the-he-5114236.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {
+        "prompt_tokens": 1094,
+        "candidates_tokens": 74,
+        "total_tokens": 1168,
+        "llm_time": 2.951,
+        "extract_time": 0.7467970848083496,
+        "content_length": 4983
+      },
+      "sentiment": 1,
+      "is_toxic": false,
+      "description": "Câu chuyện về tình yêu thương và sự hỗ trợ lẫn nhau trong gia đình ba thế hệ của Thùy Linh, nơi ông bà là 'điểm tựa' vững chắc giúp con cháu cân bằng cuộc sống và vượt qua khó khăn.",
+      "status": "STORED"
+    },
+    {
+      "index": 27,
+      "title": "Nestlé tăng năng lực chế biến cà phê xuất khẩu tại Việt Nam",
+      "link": "https://vnexpress.net/nestle-tang-nang-luc-che-bien-ca-phe-xuat-khau-tai-viet-nam-5114228.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {
+        "prompt_tokens": 1076,
+        "candidates_tokens": 80,
+        "total_tokens": 1156,
+        "llm_time": 4.25,
+        "extract_time": 0.7567615509033203,
+        "content_length": 6482
+      },
+      "sentiment": 1,
+      "is_toxic": false,
+      "description": "Nestlé đã tăng cường năng lực chế biến cà phê xuất khẩu tại Việt Nam bằng việc đưa vào vận hành dây chuyền mới tại nhà máy Trị An, sản xuất hơn 350.000 hũ mỗi ngày cho 11 thị trường.",
+      "status": "STORED"
+    },
+    {
+      "index": 28,
+      "title": "Loạt sự kiện văn hóa, du lịch tại Gia Lai trong tháng 9",
+      "link": "https://vnexpress.net/loat-su-kien-van-hoa-du-lich-tai-gia-lai-trong-thang-9-5114195.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {}
+    },
+    {
+      "index": 29,
+      "title": "Sạm da sau tự trị nám",
+      "link": "https://vnexpress.net/sam-da-sau-tu-tri-nam-5114154.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {
+        "prompt_tokens": 1091,
+        "candidates_tokens": 78,
+        "total_tokens": 1169,
+        "llm_time": 5.499,
+        "extract_time": 0.7743358612060547,
+        "content_length": 2364
+      },
+      "sentiment": 1,
+      "is_toxic": false,
+      "description": "Chị Hòa bị sạm da nặng hơn sau 'tự trị nám' bằng cách 'peel da' và dùng sản phẩm trên mạng. Sau điều trị laser, nám và tàn nhang của chị đã mờ rõ, da đều màu hơn.",
+      "status": "STORED"
+    },
+    {
+      "index": 30,
+      "title": "Chuyên gia Thái Lan: 'Wanchai cứ như người Việt Nam'",
+      "link": "https://vnexpress.net/chuyen-gia-thai-lan-wanchai-cu-nhu-nguoi-viet-nam-5114243.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {
+        "prompt_tokens": 1130,
+        "candidates_tokens": 79,
+        "total_tokens": 1209,
+        "llm_time": 4.835,
+        "extract_time": 0.7571125030517578,
+        "content_length": 4076
+      },
+      "sentiment": -1,
+      "is_toxic": false,
+      "description": "Cầu thủ Thái Lan Wanchai Jarunongkran ghi bàn phản lưới nhà ở phút bù giờ, khiến đội nhà mất cơ hội trước Việt Nam. Các chuyên gia Thái Lan châm biếm, ví anh như 'người Việt Nam chính gốc'.",
+      "status": "FILTERED_BY_AI"
+    },
+    {
+      "index": 31,
+      "title": "Mưa lớn giờ tan tầm, giao thông Hà Nội rối loạn",
+      "link": "https://vnexpress.net/mua-lon-gio-tan-tam-giao-thong-ha-noi-roi-loan-5114244.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {
+        "prompt_tokens": 1229,
+        "candidates_tokens": 68,
+        "total_tokens": 1297,
+        "llm_time": 5.562,
+        "extract_time": 0.7492332458496094,
+        "content_length": 3302
+      },
+      "sentiment": 0,
+      "is_toxic": false,
+      "description": "Mưa lớn chiều 27/8 gây ngập lụt nhiều tuyến phố như Nguyễn Trãi, Cầu Giấy, Phạm Hùng... và ùn tắc giao thông kéo dài ở Hà Nội.",
+      "status": "STORED"
+    },
+    {
+      "index": 32,
+      "title": "'Chiến tướng' của Canada trong cuộc đấu thương mại với Mỹ",
+      "link": "https://vnexpress.net/chien-tuong-cua-canada-trong-cuoc-dau-thuong-mai-voi-my-5113748.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {
+        "prompt_tokens": 1081,
+        "candidates_tokens": 70,
+        "total_tokens": 1151,
+        "llm_time": 5.638,
+        "extract_time": 0.7517905235290527,
+        "content_length": 5575
+      },
+      "sentiment": 0,
+      "is_toxic": false,
+      "description": "Thủ hiến Doug Ford của Canada đã có những lời lẽ 'quyết liệt' với Tổng thống Mỹ Donald Trump trong cuộc đấu thương mại, gọi ông là 'kẻ thất bại' trước khi dịu giọng.",
+      "status": "STORED"
+    },
+    {
+      "index": 33,
+      "title": "Hai lô dung dịch vệ sinh phụ nữ giả bị thu hồi",
+      "link": "https://vnexpress.net/hai-lo-dung-dich-ve-sinh-phu-nu-gia-bi-thu-hoi-5114230.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {
+        "prompt_tokens": 1045,
+        "candidates_tokens": 71,
+        "total_tokens": 1116,
+        "llm_time": 4.933,
+        "extract_time": 0.7424476146697998,
+        "content_length": 1708
+      },
+      "sentiment": 0,
+      "is_toxic": false,
+      "description": "Cục Quản lý Dược đã đình chỉ lưu hành và thu hồi hai lô dung dịch vệ sinh phụ nữ Rolux AF giả trên toàn quốc sau khi cơ quan điều tra xác định đây là 'hàng giả'.",
+      "status": "STORED"
+    },
+    {
+      "index": 34,
+      "title": "Thời tiết cả nước dịp nghỉ lễ 2/9",
+      "link": "https://vnexpress.net/thoi-tiet-ca-nuoc-dip-nghi-le-2-9-5114225.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {}
+    },
+    {
+      "index": 35,
+      "title": "Điểm tin 17h: Gần 1.500 người có thể đã bị chôn vùi trong lũ bùn Nepal | Tàu cá chở 50 người mất liên lạc trên biển",
+      "link": "https://vnexpress.net/diem-tin-17h-gan-1-500-nguoi-co-the-da-bi-chon-vui-trong-lu-bun-nepal-tau-ca-cho-50-nguoi-mat-lien-lac-tren-bien-5114235.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {}
+    },
+    {
+      "index": 36,
+      "title": "Apple mở trung tâm đào tạo đầu tiên ở Đông Nam Á tại Hà Nội",
+      "link": "https://vnexpress.net/apple-mo-trung-tam-dao-tao-dau-tien-o-dong-nam-a-tai-ha-noi-5114166.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {
+        "prompt_tokens": 1056,
+        "candidates_tokens": 72,
+        "total_tokens": 1128,
+        "llm_time": 3.005,
+        "extract_time": 0.7478668689727783,
+        "content_length": 3306
+      },
+      "sentiment": 1,
+      "is_toxic": false,
+      "description": "Apple hợp tác với Đại học Bách khoa Hà Nội mở trung tâm đào tạo nhân lực đầu tiên tại Việt Nam và Đông Nam Á, tập trung vào sản xuất thông minh, robotics và tự động hóa cho chuỗi cung ứng.",
+      "status": "STORED"
+    },
+    {
+      "index": 37,
+      "title": "Nguy cơ lũ quét lần hai ở biên giới Nepal - Trung Quốc",
+      "link": "https://vnexpress.net/nguy-co-lu-quet-lan-hai-o-bien-gioi-nepal-trung-quoc-5114131.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {}
+    },
+    {
+      "index": 38,
+      "title": "Những yếu tố gây ra trận lũ quét tử thần ở Nepal",
+      "link": "https://vnexpress.net/nhung-yeu-to-gay-ra-tran-lu-quet-tu-than-o-nepal-5114193.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {}
+    },
+    {
+      "index": 39,
+      "title": "Đề xuất mở rộng tái định cư tại chỗ khi thu hồi đất làm dự án nhà thương mại",
+      "link": "https://vnexpress.net/de-xuat-mo-rong-tai-dinh-cu-tai-cho-khi-thu-hoi-dat-lam-du-an-nha-thuong-mai-5114169.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {
+        "prompt_tokens": 1094,
+        "candidates_tokens": 88,
+        "total_tokens": 1182,
+        "llm_time": 5.932,
+        "extract_time": 0.743781328201294,
+        "content_length": 4746
+      },
+      "sentiment": 0,
+      "is_toxic": false,
+      "description": "Luật sư Phạm Thanh Tuấn đề xuất mở rộng 'tái định cư tại chỗ' khi thu hồi đất làm dự án nhà thương mại, đồng thời nêu lo ngại về sự khác biệt chính sách và việc bỏ ưu tiên vị trí thuận lợi cho một số ",
+      "status": "STORED"
+    },
+    {
+      "index": 40,
+      "title": "Tiết sữa bất thường ở tuổi 68 do u tuyến yên",
+      "link": "https://vnexpress.net/tiet-sua-bat-thuong-o-tuoi-68-do-u-tuyen-yen-5114018.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {
+        "prompt_tokens": 1119,
+        "candidates_tokens": 77,
+        "total_tokens": 1196,
+        "llm_time": 4.206,
+        "extract_time": 0.7516193389892578,
+        "content_length": 2239
+      },
+      "sentiment": 1,
+      "is_toxic": false,
+      "description": "Bà Thảo, 68 tuổi, bị đau đầu, mờ mắt và tiết sữa bất thường do u tuyến yên gần 5cm. Sau phẫu thuật, bà đã khỏi bệnh, thị lực cải thiện và cần tái khám định kỳ.",
+      "status": "STORED"
+    },
+    {
+      "index": 41,
+      "title": "Đường dây đánh bạc 500 tỷ đồng qua game KUBET, B52",
+      "link": "https://vnexpress.net/duong-day-danh-bac-500-ty-dong-qua-game-kubet-b52-5114102.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {
+        "prompt_tokens": 1036,
+        "candidates_tokens": 77,
+        "total_tokens": 1113,
+        "llm_time": 4.466,
+        "extract_time": 0.7503421306610107,
+        "content_length": 1746
+      },
+      "sentiment": 0,
+      "is_toxic": false,
+      "description": "Công an Hưng Yên khởi tố 14 bị can trong đường dây đánh bạc 'KUBET, B52' quy mô 500 tỷ đồng, sử dụng hàng trăm tài khoản ngân hàng và tiền điện tử để xóa dấu vết.",
+      "status": "STORED"
+    },
+    {
+      "index": 42,
+      "title": "Tìm bạn tâm giao cùng chia sẻ chuyện đời",
+      "link": "https://vnexpress.net/tim-ban-tam-giao-cung-chia-se-chuyen-doi-5113983.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {
+        "prompt_tokens": 915,
+        "candidates_tokens": 80,
+        "total_tokens": 995,
+        "llm_time": 5.192,
+        "extract_time": 0.7474863529205322,
+        "content_length": 1232
+      },
+      "sentiment": 1,
+      "is_toxic": false,
+      "description": "Một phụ nữ 37 tuổi ở Bình Dương tìm 'bạn tâm giao' để chia sẻ buồn vui cuộc sống, mong muốn người bạn đời tương lai từ 36-42 tuổi, sống tại Bình Dương hoặc TP HCM, có công việc ổn định.",
+      "status": "STORED"
+    },
+    {
+      "index": 43,
+      "title": "Người gốc Việt mang máy chém tới Washington được tại ngoại",
+      "link": "https://vnexpress.net/nguoi-goc-viet-mang-may-chem-toi-washington-duoc-tai-ngoai-5114178.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {
+        "prompt_tokens": 1104,
+        "candidates_tokens": 72,
+        "total_tokens": 1176,
+        "llm_time": 4.251,
+        "extract_time": 0.7567188739776611,
+        "content_length": 2939
+      },
+      "sentiment": 0,
+      "is_toxic": false,
+      "description": "Philan Tam Duy Le, người gốc Việt, được tại ngoại sau khi mang máy chém tới Washington D.C. và bị bắt giữ. Thẩm phán xác định anh này 'không đe dọa ai'.",
+      "status": "STORED"
+    },
+    {
+      "index": 44,
+      "title": "Dùng số định danh thay mã số bảo hiểm xã hội từ ngày 1/9",
+      "link": "https://vnexpress.net/dung-so-dinh-danh-thay-ma-so-bao-hiem-xa-hoi-tu-ngay-1-9-5114171.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {
+        "prompt_tokens": 1091,
+        "candidates_tokens": 74,
+        "total_tokens": 1165,
+        "llm_time": 5.048,
+        "extract_time": 0.7492268085479736,
+        "content_length": 2420
+      },
+      "sentiment": 1,
+      "is_toxic": false,
+      "description": "Từ ngày 1/9, Bảo hiểm xã hội Việt Nam sẽ chuyển đổi mã số bảo hiểm xã hội sang số định danh cá nhân/căn cước công dân nhằm chuẩn hóa dữ liệu và tối ưu hóa thủ tục hành chính.",
+      "status": "STORAGE_FAILED"
+    },
+    {
+      "index": 45,
+      "title": "Sợ chồng biết mất nhẫn cưới, vợ dựng chuyện bị cướp",
+      "link": "https://vnexpress.net/so-chong-biet-mat-nhan-cuoi-vo-dung-chuyen-bi-cuop-5114205.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {
+        "prompt_tokens": 869,
+        "candidates_tokens": 78,
+        "total_tokens": 947,
+        "llm_time": 3.528,
+        "extract_time": 0.7502436637878418,
+        "content_length": 1125
+      },
+      "sentiment": 0,
+      "is_toxic": false,
+      "description": "Một phụ nữ 30 tuổi ở TP HCM đã 'dựng chuyện bị cướp' và đăng lên Facebook sau khi làm mất nhẫn cưới vì sợ chồng biết. Công an đã xác minh và xử phạt cô về hành vi báo thông tin giả.",
+      "status": "STORED"
+    },
+    {
+      "index": 46,
+      "title": "Em tìm một người làm bạn hiện tại và cùng già đi sau này",
+      "link": "https://vnexpress.net/em-tim-mot-nguoi-lam-ban-hien-tai-va-cung-gia-di-sau-nay-5114007.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {
+        "prompt_tokens": 1068,
+        "candidates_tokens": 73,
+        "total_tokens": 1141,
+        "llm_time": 3.496,
+        "extract_time": 0.7610073089599609,
+        "content_length": 2661
+      },
+      "sentiment": 1,
+      "is_toxic": false,
+      "description": "Một phụ nữ đã ly hôn và có con riêng chia sẻ mong muốn tìm một người bạn đời trầm tĩnh, thực tế, có công việc ổn định để cùng vun vén và già đi sau này, bắt đầu từ tình bạn chân thành.",
+      "status": "STORAGE_FAILED"
+    },
+    {
+      "index": 47,
+      "title": "Hai mẹ con kiếm triệu USD nhờ 'hoạt hình dở nhất Trung Quốc'",
+      "link": "https://vnexpress.net/hai-me-con-kiem-trieu-usd-nho-hoat-hinh-do-nhat-trung-quoc-5114037.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {
+        "prompt_tokens": 1138,
+        "candidates_tokens": 65,
+        "total_tokens": 1203,
+        "llm_time": 3.933,
+        "extract_time": 0.7417159080505371,
+        "content_length": 4492
+      },
+      "sentiment": 1,
+      "is_toxic": false,
+      "description": "Hai mẹ con Tín Vũ Manh kiếm triệu USD từ phim hoạt hình 'Ngưu Lai' dù không có kinh nghiệm, mẹ anh còn tự sáng tác nhạc và lời bài hát chủ đề.",
+      "status": "STORAGE_FAILED"
+    },
+    {
+      "index": 48,
+      "title": "47 người bị bắt trong đường dây 'Pod chill' giao dịch 100 tỷ đồng",
+      "link": "https://vnexpress.net/47-nguoi-bi-bat-trong-duong-day-pod-chill-giao-dich-100-ty-dong-5114183.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {
+        "prompt_tokens": 1135,
+        "candidates_tokens": 78,
+        "total_tokens": 1213,
+        "llm_time": 4.801,
+        "extract_time": 0.7499566078186035,
+        "content_length": 1925
+      },
+      "sentiment": 0,
+      "is_toxic": false,
+      "description": "Công an Hà Nội đã bắt giữ 47 người trong đường dây do Ngô Thị Trang cầm đầu, chuyên san chiết ma túy Etomidate thành tinh dầu 'Pod chill', với số tiền giao dịch lên đến 100 tỷ đồng.",
+      "status": "STORAGE_FAILED"
+    }
+  ],
+  "timestamp": "2026-08-27T13:59:12.769527",
+  "collection": "positive_news"
+}
