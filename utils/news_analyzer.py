@@ -124,42 +124,54 @@ class NewsAnalyzer:
         return firebase_data
 
     def _call_gemini_direct(self, title: str, content: str) -> Tuple[Optional[Dict], Dict]:
-        """Gọi Gemini API với nội dung văn bản trực tiếp và đo metrics"""
+        """Gọi Gemini API với cơ chế Retry tự động khi gặp 503 và đo metrics"""
         import time
         prompt = self._create_analysis_prompt(title, content)
         metrics = {'prompt_tokens': 0, 'candidates_tokens': 0, 'total_tokens': 0, 'llm_time': 0.0}
 
-        try:
-            start_llm = time.time()
-            response = self.client.models.generate_content(
-                model=self.model_name,
-                contents=prompt,
-                config=self.config,
-            )
-            llm_time = time.time() - start_llm
-            metrics['llm_time'] = round(llm_time, 3)
+        max_retries = 3
+        for attempt in range(max_retries):
+            try:
+                start_llm = time.time()
+                response = self.client.models.generate_content(
+                    model=self.model_name,
+                    contents=prompt,
+                    config=self.config,
+                )
+                llm_time = time.time() - start_llm
+                metrics['llm_time'] = round(llm_time, 3)
 
-            # Lấy token count từ usage_metadata nếu có
-            if hasattr(response, 'usage_metadata') and response.usage_metadata:
-                metrics['prompt_tokens'] = response.usage_metadata.prompt_token_count or 0
-                metrics['candidates_tokens'] = response.usage_metadata.candidates_token_count or 0
-                metrics['total_tokens'] = metrics['prompt_tokens'] + metrics['candidates_tokens']
+                # Lấy token count từ usage_metadata nếu có
+                if hasattr(response, 'usage_metadata') and response.usage_metadata:
+                    metrics['prompt_tokens'] = response.usage_metadata.prompt_token_count or 0
+                    metrics['candidates_tokens'] = response.usage_metadata.candidates_token_count or 0
+                    metrics['total_tokens'] = metrics['prompt_tokens'] + metrics['candidates_tokens']
 
-            if not response.candidates:
-                logging.warning(f"⚠️ No candidates in response: {title[:50]}...")
-                return self._get_blocked_content_result(), metrics
+                if not response.candidates:
+                    logging.warning(f"⚠️ No candidates in response: {title[:50]}...")
+                    return self._get_blocked_content_result(), metrics
 
-            result = self._parse_json_response(response.text)
+                result = self._parse_json_response(response.text)
 
-            if self._validate_gemini_result(result):
-                return result, metrics
-            else:
-                logging.warning(f"⚠️ Invalid Gemini response structure for '{title[:40]}': Parsed={result} | Raw={response.text[:120]}...")
-                return None, metrics
+                if self._validate_gemini_result(result):
+                    return result, metrics
+                else:
+                    logging.warning(f"⚠️ Invalid Gemini response structure for '{title[:40]}': Parsed={result} | Raw={response.text[:120]}...")
+                    return None, metrics
 
-        except Exception as e:
-            logging.error(f"❌ Gemini API error: {title[:50]}... Error: {e}")
-            return None, metrics
+            except Exception as e:
+                err_str = str(e)
+                if '503' in err_str or 'UNAVAILABLE' in err_str or 'high demand' in err_str.lower():
+                    wait_time = (attempt + 1) * 2
+                    logging.warning(f"⏳ Gemini 503 Busy for '{title[:35]}...'. Retrying in {wait_time}s (Attempt {attempt+1}/{max_retries})...")
+                    time.sleep(wait_time)
+                    continue
+                else:
+                    logging.error(f"❌ Gemini API error: {title[:50]}... Error: {e}")
+                    return None, metrics
+
+        logging.error(f"❌ Failed to analyze '{title[:50]}' after {max_retries} attempts.")
+        return None, metrics
 
     def _create_analysis_prompt(self, title: str, content: str) -> str:
         """Tạo prompt phân tích nội dung chuẩn xác"""
@@ -231,7 +243,15 @@ CHỈ TRẢ VỀ JSON HỢP LỆ, không kèm lời giải thích nào khác.
         except Exception:
             pass
 
-        # Cách 2: Tìm khối JSON giữa dấu { đầu tiên và } cuối cùng
+        # Cách 2: Nếu thiếu dấu ngoặc nhọn ngoài cùng
+        if not text.startswith('{') and '"description"' in text:
+            try:
+                wrapped = '{' + text + ('}' if not text.endswith('}') else '')
+                return json.loads(wrapped)
+            except Exception:
+                pass
+
+        # Cách 3: Tìm khối JSON giữa dấu { đầu tiên và } cuối cùng
         start_idx = text.find('{')
         end_idx = text.rfind('}')
         if start_idx != -1 and end_idx != -1 and end_idx > start_idx:
@@ -241,7 +261,7 @@ CHỈ TRẢ VỀ JSON HỢP LỆ, không kèm lời giải thích nào khác.
             except Exception:
                 pass
 
-        # Cách 3: Bóc tách markdown
+        # Cách 4: Bóc tách markdown
         if '```' in text:
             cleaned = re.sub(r'```(?:json)?', '', text).replace('```', '').strip()
             try:
@@ -249,14 +269,13 @@ CHỈ TRẢ VỀ JSON HỢP LỆ, không kèm lời giải thích nào khác.
             except Exception:
                 pass
 
-        # Cách 4: Regex Field Extractor (Cứu nguy khi có dấu ngoặc kép lồng nhau bên trong description)
+        # Cách 5: Regex Field Extractor siêu linh hoạt
         try:
-            desc_match = re.search(r'"description"\s*:\s*"(.+?)"\s*,\s*"is_toxic"', text, re.DOTALL)
-            if not desc_match:
-                desc_match = re.search(r'"description"\s*:\s*"(.*?)"\s*[,}\n]', text, re.DOTALL)
-
             toxic_match = re.search(r'"is_toxic"\s*:\s*(true|false)', text, re.IGNORECASE)
             sentiment_match = re.search(r'"sentiment"\s*:\s*(-?1|0)', text)
+            desc_match = re.search(r'"description"\s*:\s*"(.+?)(?:"\s*,\s*"is_toxic"|"$)', text, re.DOTALL)
+            if not desc_match:
+                desc_match = re.search(r'"description"\s*:\s*"(.*?)"', text, re.DOTALL)
 
             if toxic_match and sentiment_match:
                 desc = desc_match.group(1).strip() if desc_match else ""
