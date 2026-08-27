@@ -1,0 +1,752 @@
+{
+  "total": 47,
+  "filtered_by_rule": 2,
+  "analyzed_by_ai": 45,
+  "positive": 13,
+  "negative": 9,
+  "neutral": 14,
+  "toxic": 0,
+  "stored": 27,
+  "filtered_by_ai": 9,
+  "errors": 0,
+  "metrics": {
+    "total_prompt_tokens": 37248,
+    "total_candidate_tokens": 2575,
+    "total_tokens": 39823,
+    "total_llm_time": 176.71,
+    "total_extract_time": 12.61,
+    "avg_tokens_per_article": 885.0,
+    "avg_latency_per_article": 4.21
+  },
+  "results": [
+    {
+      "index": 1,
+      "title": "Dùng số định danh thay mã số bảo hiểm xã hội từ ngày 1/9",
+      "link": "https://vnexpress.net/dung-so-dinh-danh-thay-ma-so-bao-hiem-xa-hoi-tu-ngay-1-9-5114171.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {
+        "prompt_tokens": 1072,
+        "candidates_tokens": 83,
+        "total_tokens": 1155,
+        "llm_time": 6.357,
+        "extract_time": 0.5656354427337646,
+        "content_length": 2420
+      },
+      "sentiment": 1,
+      "is_toxic": false,
+      "description": "Từ ngày 1/9, Bảo hiểm xã hội Việt Nam sẽ chuyển đổi mã số bảo hiểm xã hội sang số định danh cá nhân/căn cước công dân sau khi chuẩn hóa dữ liệu, nhằm số hóa thủ tục hành chính và đảm bảo quyền lợi ngư",
+      "status": "STORED"
+    },
+    {
+      "index": 2,
+      "title": "Sợ chồng biết mất nhẫn cưới, vợ dựng chuyện bị cướp",
+      "link": "https://vnexpress.net/so-chong-biet-mat-nhan-cuoi-vo-dung-chuyen-bi-cuop-5114205.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {}
+    },
+    {
+      "index": 3,
+      "title": "Em tìm một người làm bạn hiện tại và cùng già đi sau này",
+      "link": "https://vnexpress.net/em-tim-mot-nguoi-lam-ban-hien-tai-va-cung-gia-di-sau-nay-5114007.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {
+        "prompt_tokens": 1049,
+        "candidates_tokens": 82,
+        "total_tokens": 1131,
+        "llm_time": 5.573,
+        "extract_time": 0.18935227394104004,
+        "content_length": 2661
+      },
+      "sentiment": 1,
+      "is_toxic": false,
+      "description": "Một người phụ nữ ở Dĩ An tìm kiếm bạn đời để cùng chia sẻ cuộc sống, mong muốn một mối quan hệ chân thành, ổn định và cùng nhau vun vén cho tương lai, đặc biệt là người có thể cảm thông hoàn cảnh đã l",
+      "status": "STORED"
+    },
+    {
+      "index": 4,
+      "title": "Hai mẹ con kiếm triệu USD nhờ 'hoạt hình dở nhất Trung Quốc'",
+      "link": "https://vnexpress.net/hai-me-con-kiem-trieu-usd-nho-hoat-hinh-do-nhat-trung-quoc-5114037.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {
+        "prompt_tokens": 1119,
+        "candidates_tokens": 62,
+        "total_tokens": 1181,
+        "llm_time": 4.295,
+        "extract_time": 0.551480770111084,
+        "content_length": 4492
+      },
+      "sentiment": 1,
+      "is_toxic": false,
+      "description": "Hai mẹ con đạo diễn Tín Vũ Manh kiếm triệu USD từ phim hoạt hình \"Ngưu Lai\" dù không kinh nghiệm, vượt khó thành công và đạt doanh thu lớn.",
+      "status": "STORED"
+    },
+    {
+      "index": 5,
+      "title": "47 người bị bắt trong đường dây 'Pod chill' giao dịch 100 tỷ đồng",
+      "link": "https://vnexpress.net/47-nguoi-bi-bat-trong-duong-day-pod-chill-giao-dich-100-ty-dong-5114183.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {
+        "prompt_tokens": 1116,
+        "candidates_tokens": 76,
+        "total_tokens": 1192,
+        "llm_time": 4.465,
+        "extract_time": 0.29874300956726074,
+        "content_length": 1925
+      },
+      "sentiment": 0,
+      "is_toxic": false,
+      "description": "Công an Hà Nội bắt giữ 47 người trong đường dây 'Pod chill' do Ngô Thị Trang cầm đầu, san chiết ma túy Etomidate thành tinh dầu thuốc lá điện tử, giao dịch 100 tỷ đồng.",
+      "status": "STORED"
+    },
+    {
+      "index": 6,
+      "title": "Không sinh viên Y Hà Nội nào tốt nghiệp xuất sắc",
+      "link": "https://vnexpress.net/khong-sinh-vien-y-ha-noi-nao-tot-nghiep-xuat-sac-5114022.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {
+        "prompt_tokens": 1097,
+        "candidates_tokens": 71,
+        "total_tokens": 1168,
+        "llm_time": 4.763,
+        "extract_time": 0.6470141410827637,
+        "content_length": 2068
+      },
+      "sentiment": 0,
+      "is_toxic": false,
+      "description": "Đại học Y Hà Nội không có sinh viên tốt nghiệp xuất sắc, nhưng số sinh viên giỏi tăng nhẹ. Trường khẳng định đây là do đặc thù đào tạo nghiêm ngặt, không phải lạm phát điểm số.",
+      "status": "STORED"
+    },
+    {
+      "index": 7,
+      "title": "Vợ ông Phạm Nhật Vượng trở thành người giàu thứ hai Việt Nam",
+      "link": "https://vnexpress.net/vo-ong-pham-nhat-vuong-tro-thanh-nguoi-giau-thu-hai-viet-nam-5114180.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {
+        "prompt_tokens": 1097,
+        "candidates_tokens": 74,
+        "total_tokens": 1171,
+        "llm_time": 6.156,
+        "extract_time": 0.21277570724487305,
+        "content_length": 2024
+      },
+      "sentiment": 1,
+      "is_toxic": false,
+      "description": "Bà Phạm Thu Hương, vợ ông Phạm Nhật Vượng, đã trở thành người giàu thứ hai Việt Nam với tài sản 4,1 tỷ USD, vượt qua bà Nguyễn Thị Phương Thảo nhờ cổ phiếu Vingroup tăng giá.",
+      "status": "STORED"
+    },
+    {
+      "index": 8,
+      "title": "Tàu cá chở 50 người mất liên lạc trên biển",
+      "link": "https://vnexpress.net/tau-ca-cho-50-nguoi-mat-lien-lac-tren-bien-5114164.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {
+        "prompt_tokens": 996,
+        "candidates_tokens": 74,
+        "total_tokens": 1070,
+        "llm_time": 3.828,
+        "extract_time": 0.3610522747039795,
+        "content_length": 1555
+      },
+      "sentiment": -1,
+      "is_toxic": false,
+      "description": "Bộ đội Biên phòng và các lực lượng chức năng đang tìm kiếm tàu cá QNa-90859 TS chở 50 người bị mất liên lạc khi đánh bắt tại vùng biển Trường Sa từ ngày 25/8.",
+      "status": "FILTERED_BY_AI"
+    },
+    {
+      "index": 9,
+      "title": "Ngân hàng 'ăn theo' chiến thắng của tuyển Việt Nam hút khách gửi tiền",
+      "link": "https://vnexpress.net/ngan-hang-an-theo-chien-thang-cua-tuyen-viet-nam-hut-khach-gui-tien-5114091.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {
+        "prompt_tokens": 1096,
+        "candidates_tokens": 69,
+        "total_tokens": 1165,
+        "llm_time": 4.197,
+        "extract_time": 0.39331722259521484,
+        "content_length": 1925
+      },
+      "sentiment": 1,
+      "is_toxic": false,
+      "description": "Các ngân hàng như VPBank, Vikki, Sacombank tung ưu đãi lãi suất, voucher để thu hút khách gửi tiền, tận dụng chiến thắng của tuyển Việt Nam tại ASEAN Cup 2026.",
+      "status": "STORED"
+    },
+    {
+      "index": 10,
+      "title": "Dấu hiệu bệnh xương khớp ở người cao tuổi",
+      "link": "https://vnexpress.net/dau-hieu-benh-xuong-khop-o-nguoi-cao-tuoi-5114148.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {
+        "prompt_tokens": 1071,
+        "candidates_tokens": 67,
+        "total_tokens": 1138,
+        "llm_time": 5.025,
+        "extract_time": 0.26912426948547363,
+        "content_length": 4594
+      },
+      "sentiment": 0,
+      "is_toxic": false,
+      "description": "Bài báo nêu các dấu hiệu bệnh xương khớp ở người cao tuổi như thay đổi thói quen di chuyển, giảm biên độ hoạt động, và cảnh báo về nguy cơ biến chứng nếu không điều trị sớm.",
+      "status": "STORED"
+    },
+    {
+      "index": 11,
+      "title": "Hòa nhạc đón năm học mới tại TH School",
+      "link": "https://vnexpress.net/hoa-nhac-don-nam-hoc-moi-tai-th-school-5114035.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {
+        "prompt_tokens": 1056,
+        "candidates_tokens": 74,
+        "total_tokens": 1130,
+        "llm_time": 4.916,
+        "extract_time": 0.5104279518127441,
+        "content_length": 3717
+      },
+      "sentiment": 1,
+      "is_toxic": false,
+      "description": "TH School và Dàn nhạc Sức Sống Mới tổ chức hòa nhạc 'Bài học đầu tiên' nhân dịp năm học mới, nhằm đưa âm nhạc truyền thống Việt Nam đến gần hơn với thế hệ trẻ bằng ngôn ngữ hiện đại.",
+      "status": "STORED"
+    },
+    {
+      "index": 12,
+      "title": "Các biện pháp đơn giản hỗ trợ phòng huyết áp thấp",
+      "link": "https://vnexpress.net/cac-bien-phap-don-gian-ho-tro-phong-huyet-ap-thap-5114034.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {
+        "prompt_tokens": 1072,
+        "candidates_tokens": 66,
+        "total_tokens": 1138,
+        "llm_time": 3.984,
+        "extract_time": 0.21434259414672852,
+        "content_length": 2635
+      },
+      "sentiment": 0,
+      "is_toxic": false,
+      "description": "Bài viết hướng dẫn các biện pháp đơn giản để phòng ngừa huyết áp thấp như uống đủ nước, bổ sung vitamin B12, folate, không kiêng muối quá mức và duy trì vận động.",
+      "status": "STORED"
+    },
+    {
+      "index": 13,
+      "title": "Hy vọng anh là người vui tính, ấm áp",
+      "link": "https://vnexpress.net/hy-vong-anh-la-nguoi-vui-tinh-am-ap-5114010.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {
+        "prompt_tokens": 1052,
+        "candidates_tokens": 74,
+        "total_tokens": 1126,
+        "llm_time": 4.928,
+        "extract_time": 0.18311142921447754,
+        "content_length": 2977
+      },
+      "sentiment": 1,
+      "is_toxic": false,
+      "description": "Một cô gái sinh năm 1995 tại TP.HCM tìm kiếm người bạn đời chân thành, ấm áp, kiên định, có thể cùng cô chia sẻ mọi buồn vui và đồng hành qua những khó khăn trong cuộc sống.",
+      "status": "STORED"
+    },
+    {
+      "index": 14,
+      "title": "Bí quyết làm trứng ngâm",
+      "link": "https://vnexpress.net/bi-quyet-lam-trung-ngam-5113266.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {
+        "prompt_tokens": 1149,
+        "candidates_tokens": 66,
+        "total_tokens": 1215,
+        "llm_time": 3.007,
+        "extract_time": 0.14898681640625,
+        "content_length": 2642
+      },
+      "sentiment": 0,
+      "is_toxic": false,
+      "description": "Bài viết hướng dẫn chi tiết ba nguyên tắc khoa học về nhiệt độ và thẩm thấu để làm trứng ngâm lòng đào sánh mịn, cùng với công thức trứng ngâm tương Nhật và Hàn Quốc.",
+      "status": "STORED"
+    },
+    {
+      "index": 15,
+      "title": "Chưa có nạn nhân người Việt trong thảm họa lũ quét ở biên giới Nepal - Trung Quốc",
+      "link": "https://vnexpress.net/chua-co-nan-nhan-nguoi-viet-trong-tham-hoa-lu-quet-o-bien-gioi-nepal-trung-quoc-5114152.html",
+      "source_category": "tin-moi-nhat",
+      "status": "FILTERED_BY_FAST_RULE",
+      "reason": "MATCHED_NEGATIVE: thảm họa lũ quét"
+    },
+    {
+      "index": 16,
+      "title": "Thủ tướng: Giáo dục phải thoát khỏi áp lực điểm số",
+      "link": "https://vnexpress.net/thu-tuong-giao-duc-phai-thoat-khoi-ap-luc-diem-so-5114118.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {
+        "prompt_tokens": 1093,
+        "candidates_tokens": 73,
+        "total_tokens": 1166,
+        "llm_time": 5.782,
+        "extract_time": 0.5545084476470947,
+        "content_length": 2855
+      },
+      "sentiment": 0,
+      "is_toxic": false,
+      "description": "Thủ tướng yêu cầu ngành giáo dục đổi mới cách dạy, học, đánh giá để thoát khỏi áp lực điểm số và kiên quyết chống gian lận thi cử, đảm bảo chất lượng thực chất sau các vi phạm vừa qua.",
+      "status": "STORED"
+    },
+    {
+      "index": 17,
+      "title": "Bảo vệ 'đá tới tấp vào đầu tài xế giao hàng' bị bắt",
+      "link": "https://vnexpress.net/bao-ve-da-toi-tap-vao-dau-tai-xe-giao-hang-bi-bat-5114089.html",
+      "source_category": "tin-moi-nhat",
+      "status": "FILTERED_BY_FAST_RULE",
+      "reason": "MATCHED_NEGATIVE: đá tới tấp"
+    },
+    {
+      "index": 18,
+      "title": "Mỹ chi hơn 2 tỷ USD để lắp lò hạt nhân siêu nhỏ ở loạt căn cứ",
+      "link": "https://vnexpress.net/my-chi-hon-2-ty-usd-de-lap-lo-hat-nhan-sieu-nho-o-loat-can-cu-5114120.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {}
+    },
+    {
+      "index": 19,
+      "title": "Vợ biết chuyện nhưng anh không chịu buông tha tôi",
+      "link": "https://vnexpress.net/vo-biet-chuyen-nhung-anh-khong-chiu-buong-tha-toi-5114158.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {
+        "prompt_tokens": 1051,
+        "candidates_tokens": 65,
+        "total_tokens": 1116,
+        "llm_time": 5.358,
+        "extract_time": 0.1721200942993164,
+        "content_length": 4203
+      },
+      "sentiment": -1,
+      "is_toxic": false,
+      "description": "Một cô gái độc thân vướng vào mối quan hệ ngoài luồng với đồng nghiệp đã có gia đình, cảm thấy mệt mỏi và hối hận khi vợ anh ta phát hiện.",
+      "status": "FILTERED_BY_AI"
+    },
+    {
+      "index": 20,
+      "title": "7 thói quen dùng điện dễ gây cháy nổ",
+      "link": "https://vnexpress.net/7-thoi-quen-dung-dien-de-gay-chay-no-5114147.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {
+        "prompt_tokens": 1077,
+        "candidates_tokens": 66,
+        "total_tokens": 1143,
+        "llm_time": 3.934,
+        "extract_time": 0.2567176818847656,
+        "content_length": 2835
+      },
+      "sentiment": 0,
+      "is_toxic": false,
+      "description": "Bài viết chỉ ra 7 thói quen dùng điện phổ biến dễ gây cháy nổ và điện giật, kèm theo lời khuyên từ chuyên gia để phòng tránh các rủi ro nguy hiểm.",
+      "status": "STORED"
+    },
+    {
+      "index": 21,
+      "title": "Vợ chồng bán hơn 11.000 đôi dép giả Havaianas bị bắt",
+      "link": "https://vnexpress.net/vo-chong-ban-hon-11-000-doi-dep-gia-havaianas-bi-bat-5114109.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {}
+    },
+    {
+      "index": 22,
+      "title": "Chứng khoán 'xanh vỏ, đỏ lòng'",
+      "link": "https://vnexpress.net/chung-khoan-xanh-vo-do-long-5114160.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {}
+    },
+    {
+      "index": 23,
+      "title": "WiLL Vi - chiếc Toyota dị biệt",
+      "link": "https://vnexpress.net/will-vi-chiec-toyota-di-biet-5111357.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {
+        "prompt_tokens": 1078,
+        "candidates_tokens": 75,
+        "total_tokens": 1153,
+        "llm_time": 5.733,
+        "extract_time": 0.16655635833740234,
+        "content_length": 2144
+      },
+      "sentiment": 0,
+      "is_toxic": false,
+      "description": "Toyota WiLL Vi là mẫu xe dị biệt ra mắt năm 2000, dùng chung nền tảng Yaris nhưng có thiết kế lập dị nhằm thu hút giới trẻ. Dù độc đáo, xe không đạt doanh số kỳ vọng.",
+      "status": "STORED"
+    },
+    {
+      "index": 24,
+      "title": "5 năm ABI Hà Nội đồng hành cùng ngành kiến trúc, xây dựng",
+      "link": "https://vnexpress.net/5-nam-abi-ha-noi-dong-hanh-cung-nganh-kien-truc-xay-dung-5114150.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {
+        "prompt_tokens": 1058,
+        "candidates_tokens": 78,
+        "total_tokens": 1136,
+        "llm_time": 5.176,
+        "extract_time": 0.24625611305236816,
+        "content_length": 3615
+      },
+      "sentiment": 1,
+      "is_toxic": false,
+      "description": "ABI Hà Nội kỷ niệm 5 năm phát triển, xây dựng cộng đồng nghề nghiệp vững mạnh. Hội ghi nhận giá trị giao dịch thương mại giữa các hội viên tăng trưởng ấn tượng, đạt hơn 34 tỷ đồng vào năm 2025.",
+      "status": "STORED"
+    },
+    {
+      "index": 25,
+      "title": "Atletico: 'Chúng tôi mới là nạn nhân duy nhất trong vụ Alvarez'",
+      "link": "https://vnexpress.net/atletico-chung-toi-moi-la-nan-nhan-duy-nhat-trong-vu-alvarez-5113889.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {}
+    },
+    {
+      "index": 26,
+      "title": "Tàu sân bay Lincoln sắp 'cập cảng Thái Lan để thủy thủ thư giãn'",
+      "link": "https://vnexpress.net/tau-san-bay-lincoln-sap-cap-cang-thai-lan-de-thuy-thu-thu-gian-5114105.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {}
+    },
+    {
+      "index": 27,
+      "title": "Gần 1.500 người có thể đã bị chôn vùi trong lũ bùn Nepal",
+      "link": "https://vnexpress.net/gan-1-500-nguoi-co-the-da-bi-chon-vui-trong-lu-bun-nepal-5114121.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {
+        "prompt_tokens": 1101,
+        "candidates_tokens": 74,
+        "total_tokens": 1175,
+        "llm_time": 4.235,
+        "extract_time": 0.22812986373901367,
+        "content_length": 2408
+      },
+      "sentiment": -1,
+      "is_toxic": false,
+      "description": "Gần 1.500 người, trong đó có nhiều người nước ngoài, mất tích và ít nhất 165 người thiệt mạng trong trận lũ bùn kinh hoàng tại Nepal. Công tác cứu hộ đang gặp khó khăn.",
+      "status": "FILTERED_BY_AI"
+    },
+    {
+      "index": 28,
+      "title": "Khoảnh khắc xúc động trong lễ Vu Lan",
+      "link": "https://vnexpress.net/khoanh-khac-xuc-dong-trong-le-vu-lan-5113886.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {
+        "prompt_tokens": 666,
+        "candidates_tokens": 58,
+        "total_tokens": 724,
+        "llm_time": 5.608,
+        "extract_time": 0.14387249946594238,
+        "content_length": 499
+      },
+      "sentiment": 0,
+      "is_toxic": false,
+      "description": "Nội dung bài viết liệt kê các phím tắt điều khiển video và một biểu mẫu thu thập ý kiến phản hồi của người dùng về trải nghiệm dịch vụ.",
+      "status": "STORED"
+    },
+    {
+      "index": 29,
+      "title": "Cải thảo ngâm hóa chất gây ung thư phơi bày lỗ hổng quản lý thực phẩm",
+      "link": "https://vnexpress.net/cai-thao-ngam-hoa-chat-gay-ung-thu-phoi-bay-lo-hong-quan-ly-thuc-pham-5113916.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {
+        "prompt_tokens": 1080,
+        "candidates_tokens": 64,
+        "total_tokens": 1144,
+        "llm_time": 5.856,
+        "extract_time": 0.21308183670043945,
+        "content_length": 4401
+      },
+      "sentiment": -1,
+      "is_toxic": false,
+      "description": "Bê bối cải thảo ở Trung Quốc bị nhúng formaldehyde gây ung thư, phơi bày lỗ hổng quản lý thực phẩm và sự thiếu phối hợp giữa các cơ quan chức năng.",
+      "status": "FILTERED_BY_AI"
+    },
+    {
+      "index": 30,
+      "title": "Nền tảng Hugging Face bị 700 tác nhân OpenAI tấn công",
+      "link": "https://vnexpress.net/nen-tang-hugging-face-bi-700-tac-nhan-openai-tan-cong-5114062.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {}
+    },
+    {
+      "index": 31,
+      "title": "Báo Nhật: Phú Quốc đổi mới diện mạo trước thềm APEC",
+      "link": "https://vnexpress.net/bao-nhat-phu-quoc-doi-moi-dien-mao-truoc-them-apec-5114119.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {
+        "prompt_tokens": 1128,
+        "candidates_tokens": 77,
+        "total_tokens": 1205,
+        "llm_time": 5.528,
+        "extract_time": 0.27261781692504883,
+        "content_length": 4052
+      },
+      "sentiment": 1,
+      "is_toxic": false,
+      "description": "Phú Quốc đầu tư hơn 5 tỷ USD vào hạ tầng trước APEC 2027, kỳ vọng trở thành trung tâm du lịch, đầu tư quốc tế. Lượng khách và doanh thu du lịch của đảo cũng tăng trưởng mạnh mẽ.",
+      "status": "STORED"
+    },
+    {
+      "index": 32,
+      "title": "Phổi yếu có biểu hiện gì ngoài ho, khó thở?",
+      "link": "https://vnexpress.net/phoi-yeu-co-bieu-hien-gi-ngoai-ho-kho-tho-5114078.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {
+        "prompt_tokens": 1054,
+        "candidates_tokens": 67,
+        "total_tokens": 1121,
+        "llm_time": 4.182,
+        "extract_time": 0.42606115341186523,
+        "content_length": 2183
+      },
+      "sentiment": 0,
+      "is_toxic": false,
+      "description": "Bài viết liệt kê các biểu hiện ít gặp của phổi yếu như dễ mệt, khó ngủ, thay đổi giọng nói, tím tái môi/ngón tay và phù chân, khuyến nghị đi khám sớm.",
+      "status": "STORED"
+    },
+    {
+      "index": 33,
+      "title": "Bí quyết ăn uống tốt cho người cao tuổi",
+      "link": "https://vnexpress.net/bi-quyet-an-uong-tot-cho-nguoi-cao-tuoi-5114012.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {
+        "prompt_tokens": 1074,
+        "candidates_tokens": 66,
+        "total_tokens": 1140,
+        "llm_time": 5.496,
+        "extract_time": 0.37366342544555664,
+        "content_length": 2692
+      },
+      "sentiment": 0,
+      "is_toxic": false,
+      "description": "Bài viết hướng dẫn người cao tuổi cách ăn uống khoa học để duy trì sức khỏe, bao gồm bổ sung dinh dưỡng, thay đổi cách chế biến và duy trì thói quen ăn uống lành mạnh.",
+      "status": "STORED"
+    },
+    {
+      "index": 34,
+      "title": "Táo bón kéo dài có gây trào ngược axit?",
+      "link": "https://vnexpress.net/tao-bon-keo-dai-co-gay-trao-nguoc-axit-5113235.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {
+        "prompt_tokens": 590,
+        "candidates_tokens": 71,
+        "total_tokens": 661,
+        "llm_time": 4.01,
+        "extract_time": 0.42476439476013184,
+        "content_length": 232
+      },
+      "sentiment": 0,
+      "is_toxic": false,
+      "description": "Bài viết giải đáp thắc mắc về việc táo bón kéo dài có gây trào ngược axit không, đồng thời nêu tác động của táo bón đến hệ tiêu hóa và mời độc giả đặt câu hỏi cho bác sĩ.",
+      "status": "STORED"
+    },
+    {
+      "index": 35,
+      "title": "Mỗi xã, phường Hà Nội dự kiến có một cơ sở chăm sóc người cao tuổi",
+      "link": "https://vnexpress.net/moi-xa-phuong-ha-noi-du-kien-co-mot-co-so-cham-soc-nguoi-cao-tuoi-5114110.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {
+        "prompt_tokens": 1038,
+        "candidates_tokens": 70,
+        "total_tokens": 1108,
+        "llm_time": 4.615,
+        "extract_time": 0.18696069717407227,
+        "content_length": 3003
+      },
+      "sentiment": 1,
+      "is_toxic": false,
+      "description": "Hà Nội dự kiến mỗi xã, phường có một cơ sở chăm sóc người cao tuổi ban ngày, đồng thời phát triển dịch vụ, hỗ trợ người cao tuổi làm việc và thu hút đầu tư vào lĩnh vực này.",
+      "status": "STORED"
+    },
+    {
+      "index": 36,
+      "title": "Sẽ miễn thuế thu nhập doanh nghiệp với suất ăn học sinh, sinh viên",
+      "link": "https://vnexpress.net/se-mien-thue-thu-nhap-doanh-nghiep-voi-suat-an-hoc-sinh-sinh-vien-5114112.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {
+        "prompt_tokens": 1063,
+        "candidates_tokens": 73,
+        "total_tokens": 1136,
+        "llm_time": 6.014,
+        "extract_time": 0.18464922904968262,
+        "content_length": 2403
+      },
+      "sentiment": 1,
+      "is_toxic": false,
+      "description": "Thủ tướng chỉ đạo miễn thuế thu nhập doanh nghiệp cho suất ăn học sinh, sinh viên để nâng cao chất lượng. Đồng thời, Bộ trưởng Khoa học và Công nghệ đề xuất chính sách tín dụng cho sinh viên khó khăn.",
+      "status": "STORED"
+    },
+    {
+      "index": 37,
+      "title": "Phút kinh hoàng của phi công Nepal trước sóng lũ cao 6 m",
+      "link": "https://vnexpress.net/phut-kinh-hoang-cua-phi-cong-nepal-truoc-song-lu-cao-6-m-5113990.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {
+        "prompt_tokens": 1099,
+        "candidates_tokens": 64,
+        "total_tokens": 1163,
+        "llm_time": 5.267,
+        "extract_time": 0.18432307243347168,
+        "content_length": 3484
+      },
+      "sentiment": -1,
+      "is_toxic": false,
+      "description": "Phi công Nepal chứng kiến sóng lũ cao 6m do sụp sông băng gây ra thảm họa kinh hoàng ở Himalaya. Sự việc được mô tả là chuỗi hiểm họa liên hoàn.",
+      "status": "FILTERED_BY_AI"
+    },
+    {
+      "index": 38,
+      "title": "Khách Tây: 'Tôi chưa từng thấy cảnh mừng bóng đá như ở Việt Nam'",
+      "link": "https://vnexpress.net/khach-tay-toi-chua-tung-thay-canh-mung-bong-da-nhu-o-viet-nam-5114081.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {}
+    },
+    {
+      "index": 39,
+      "title": "Chủ tịch FIFA thăm công trường SVĐ lớn bậc nhất Việt Nam",
+      "link": "https://vnexpress.net/chu-tich-fifa-tham-cong-truong-svd-lon-bac-nhat-viet-nam-5114126.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {}
+    },
+    {
+      "index": 40,
+      "title": "Trận lũ quét ở Nepal xảy ra thế nào",
+      "link": "https://vnexpress.net/tran-lu-quet-o-nepal-xay-ra-the-nao-5113929.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {
+        "prompt_tokens": 763,
+        "candidates_tokens": 78,
+        "total_tokens": 841,
+        "llm_time": 4.452,
+        "extract_time": 0.6189162731170654,
+        "content_length": 827
+      },
+      "sentiment": -1,
+      "is_toxic": false,
+      "description": "Trận lũ quét nghiêm trọng ở Nepal do khối băng đá khổng lồ gây ra đã vùi lấp nhiều công trình, khiến hơn 160 người chết và hơn 1.000 người mất tích, xóa sổ nhiều làng mạc.",
+      "status": "FILTERED_BY_AI"
+    },
+    {
+      "index": 41,
+      "title": "Thị trường ôtô Việt Nam - VinFast bỏ xa các đối thủ",
+      "link": "https://vnexpress.net/thi-truong-oto-viet-nam-vinfast-bo-xa-cac-doi-thu-5113760.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {
+        "prompt_tokens": 1120,
+        "candidates_tokens": 78,
+        "total_tokens": 1198,
+        "llm_time": 4.642,
+        "extract_time": 0.3809170722961426,
+        "content_length": 3542
+      },
+      "sentiment": 1,
+      "is_toxic": false,
+      "description": "Bài báo phân tích thị trường ôtô Việt Nam sau 7 tháng đầu năm 2026, nổi bật là sự áp đảo của VinFast với hơn 35% thị phần và tốc độ tăng trưởng vượt trội so với các đối thủ.",
+      "status": "STORED"
+    },
+    {
+      "index": 42,
+      "title": "Giá xăng, dầu cùng giảm",
+      "link": "https://vnexpress.net/gia-xang-dau-cung-giam-5114100.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {
+        "prompt_tokens": 1045,
+        "candidates_tokens": 101,
+        "total_tokens": 1146,
+        "llm_time": 4.75,
+        "extract_time": 0.3036971092224121,
+        "content_length": 1521
+      },
+      "sentiment": 0,
+      "is_toxic": false,
+      "description": "Giá xăng, dầu trong nước (trừ mazut) cùng giảm từ 15h hôm nay, theo đà biến động của thị trường năng lượng thế giới. Liên Bộ Công Thương - Tài chính đã điều chỉnh giá, với xăng E10 RON 95-III giảm 60 ",
+      "status": "STORED"
+    },
+    {
+      "index": 43,
+      "title": "Những chỉ số chứng minh Việt Nam mạnh hơn Thái và vô địch xứng đáng",
+      "link": "https://vnexpress.net/viet-nam-vo-dich-asean-cup-2026-thang-thai-lan-5113991.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {
+        "prompt_tokens": 1070,
+        "candidates_tokens": 72,
+        "total_tokens": 1142,
+        "llm_time": 2.624,
+        "extract_time": 0.5735316276550293,
+        "content_length": 6757
+      },
+      "sentiment": 1,
+      "is_toxic": false,
+      "description": "Bài viết phân tích các chỉ số thống kê để chứng minh đội tuyển Việt Nam mạnh hơn Thái Lan và xứng đáng vô địch giải bóng đá khu vực Đông Nam Á lần thứ tư, đồng thời bảo vệ thành công chức vô địch.",
+      "status": "STORED"
+    },
+    {
+      "index": 44,
+      "title": "Làm sao đong chính xác 8 lít từ bình 11 lít và 9 lít?",
+      "link": "https://vnexpress.net/lam-sao-dong-chinh-xac-8-lit-tu-binh-11-lit-va-9-lit-cau-do-meo-thu-thach-kha-nang-tinh-toan-5112112.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {
+        "prompt_tokens": 827,
+        "candidates_tokens": 71,
+        "total_tokens": 898,
+        "llm_time": 5.892,
+        "extract_time": 0.580918550491333,
+        "content_length": 986
+      },
+      "sentiment": 0,
+      "is_toxic": false,
+      "description": "Bài viết đưa ra một câu đố mẹo về cách đong chính xác 8 lít nước chỉ với hai bình 11 lít và 9 lít không vạch chia, yêu cầu người đọc tìm ra lời giải.",
+      "status": "STORED"
+    },
+    {
+      "index": 45,
+      "title": "Bạn trai và cô bạn trong nhóm phản bội tôi",
+      "link": "https://vnexpress.net/ban-trai-va-co-ban-trong-nhom-phan-boi-toi-5114125.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {
+        "prompt_tokens": 1028,
+        "candidates_tokens": 71,
+        "total_tokens": 1099,
+        "llm_time": 4.624,
+        "extract_time": 0.5027873516082764,
+        "content_length": 4117
+      },
+      "sentiment": -1,
+      "is_toxic": false,
+      "description": "Người viết bày tỏ nỗi đau khi bị bạn trai và cô bạn thân trong nhóm phản bội, làm tan vỡ niềm tin và tình yêu. Cô phát hiện sự thật qua tin nhắn và cảm thấy mất mát nặng nề.",
+      "status": "FILTERED_BY_AI"
+    },
+    {
+      "index": 46,
+      "title": "Ukraine phóng tên lửa Storm Shadow vào thành phố Donetsk",
+      "link": "https://vnexpress.net/ukraine-phong-ten-lua-storm-shadow-vao-thanh-pho-donetsk-5113953.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {
+        "prompt_tokens": 1024,
+        "candidates_tokens": 57,
+        "total_tokens": 1081,
+        "llm_time": 4.488,
+        "extract_time": 0.8345873355865479,
+        "content_length": 2897
+      },
+      "sentiment": -1,
+      "is_toxic": false,
+      "description": "Ukraine phóng tên lửa Storm Shadow vào thành phố Donetsk, khiến 8 dân thường bị thương và nhiều tòa nhà, cơ sở hạ tầng dân sự hư hại.",
+      "status": "FILTERED_BY_AI"
+    },
+    {
+      "index": 47,
+      "title": "Dolly Parton - 'cô búp bê quê mùa' của làng mốt",
+      "link": "https://vnexpress.net/dolly-parton-co-bup-be-que-mua-cua-lang-mot-5113501.html",
+      "source_category": "tin-moi-nhat",
+      "metrics": {
+        "prompt_tokens": 1079,
+        "candidates_tokens": 68,
+        "total_tokens": 1147,
+        "llm_time": 6.951,
+        "extract_time": 0.23415398597717285,
+        "content_length": 7143
+      },
+      "sentiment": -1,
+      "is_toxic": false,
+      "description": "Danh ca Dolly Parton qua đời ở tuổi 80. Bà được ngưỡng mộ với phong cách thời trang \"quê mùa\" độc đáo, tạo nên di sản văn hóa đại chúng từ tuổi thơ khó khăn.",
+      "status": "FILTERED_BY_AI"
+    }
+  ],
+  "timestamp": "2026-08-27T17:27:53.828400",
+  "collection": "positive_news"
+}

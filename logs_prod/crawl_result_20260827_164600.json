@@ -1,0 +1,280 @@
+{
+  "total": 30,
+  "filtered_by_rule": 2,
+  "analyzed_by_ai": 28,
+  "positive": 5,
+  "negative": 4,
+  "neutral": 11,
+  "toxic": 0,
+  "stored": 16,
+  "filtered_by_ai": 4,
+  "errors": 0,
+  "results": [
+    {
+      "index": 1,
+      "title": "Chưa có nạn nhân người Việt trong thảm họa lũ quét ở biên giới Nepal - Trung Quốc",
+      "link": "https://vnexpress.net/chua-co-nan-nhan-nguoi-viet-trong-tham-hoa-lu-quet-o-bien-gioi-nepal-trung-quoc-5114152.html",
+      "source_category": "tin-moi-nhat",
+      "status": "FILTERED_BY_FAST_RULE",
+      "reason": "MATCHED_NEGATIVE: thảm họa lũ quét"
+    },
+    {
+      "index": 2,
+      "title": "Thủ tướng: Giáo dục phải thoát khỏi áp lực điểm số",
+      "link": "https://vnexpress.net/thu-tuong-giao-duc-phai-thoat-khoi-ap-luc-diem-so-5114118.html",
+      "source_category": "tin-moi-nhat",
+      "sentiment": 0,
+      "is_toxic": false,
+      "description": "Thủ tướng yêu cầu ngành giáo dục đổi mới toàn diện, thoát khỏi áp lực điểm số và chống gian lận thi cử sau các vi phạm, nhằm đảm bảo chất lượng thực chất.",
+      "status": "STORED"
+    },
+    {
+      "index": 3,
+      "title": "Bảo vệ 'đá tới tấp vào đầu tài xế giao hàng' bị bắt",
+      "link": "https://vnexpress.net/bao-ve-da-toi-tap-vao-dau-tai-xe-giao-hang-bi-bat-5114089.html",
+      "source_category": "tin-moi-nhat",
+      "status": "FILTERED_BY_FAST_RULE",
+      "reason": "MATCHED_NEGATIVE: đá tới tấp"
+    },
+    {
+      "index": 4,
+      "title": "Mỹ chi hơn 2 tỷ USD để lắp lò hạt nhân siêu nhỏ ở loạt căn cứ",
+      "link": "https://vnexpress.net/my-chi-hon-2-ty-usd-de-lap-lo-hat-nhan-sieu-nho-o-loat-can-cu-5114120.html",
+      "source_category": "tin-moi-nhat"
+    },
+    {
+      "index": 5,
+      "title": "Vợ biết chuyện nhưng anh không chịu buông tha tôi",
+      "link": "https://vnexpress.net/vo-biet-chuyen-nhung-anh-khong-chiu-buong-tha-toi-5114158.html",
+      "source_category": "tin-moi-nhat",
+      "sentiment": -1,
+      "is_toxic": false,
+      "description": "Một cô gái độc thân vướng vào mối quan hệ ngoài luồng với đồng nghiệp đã có gia đình. Cô cảm thấy mệt mỏi, sợ hãi khi vợ anh biết chuyện và không biết phải làm gì.",
+      "status": "FILTERED_BY_AI"
+    },
+    {
+      "index": 6,
+      "title": "7 thói quen dùng điện dễ gây cháy nổ",
+      "link": "https://vnexpress.net/7-thoi-quen-dung-dien-de-gay-chay-no-5114147.html",
+      "source_category": "tin-moi-nhat",
+      "sentiment": 0,
+      "is_toxic": false,
+      "description": "Bài viết chỉ ra 7 thói quen dùng điện phổ biến dễ gây cháy nổ và điện giật, như cắm nối nhiều ổ, luồn dây dưới thảm, tự sửa điện, cùng lời khuyên từ chuyên gia để phòng tránh.",
+      "status": "STORED"
+    },
+    {
+      "index": 7,
+      "title": "Vợ chồng bán hơn 11.000 đôi dép giả Havaianas bị bắt",
+      "link": "https://vnexpress.net/vo-chong-ban-hon-11-000-doi-dep-gia-havaianas-bi-bat-5114109.html",
+      "source_category": "tin-moi-nhat",
+      "sentiment": 0,
+      "is_toxic": false,
+      "description": "Vợ chồng Hiển và Vy bị bắt vì bán hơn 11.000 đôi dép giả Havaianas, trị giá tương đương 7,3 tỷ đồng hàng thật.",
+      "status": "STORED"
+    },
+    {
+      "index": 8,
+      "title": "Chứng khoán 'xanh vỏ, đỏ lòng'",
+      "link": "https://vnexpress.net/chung-khoan-xanh-vo-do-long-5114160.html",
+      "source_category": "tin-moi-nhat"
+    },
+    {
+      "index": 9,
+      "title": "WiLL Vi - chiếc Toyota dị biệt",
+      "link": "https://vnexpress.net/will-vi-chiec-toyota-di-biet-5111357.html",
+      "source_category": "tin-moi-nhat",
+      "sentiment": 0,
+      "is_toxic": false,
+      "description": "WiLL Vi là mẫu xe Toyota có thiết kế dị biệt, ra mắt năm 2000 nhằm thu hút giới trẻ nhưng không thành công về doanh số. Dù vậy, xe vẫn được đánh giá cao về độ phá cách và có sức hút riêng.",
+      "status": "STORED"
+    },
+    {
+      "index": 10,
+      "title": "5 năm ABI Hà Nội đồng hành cùng ngành kiến trúc, xây dựng",
+      "link": "https://vnexpress.net/5-nam-abi-ha-noi-dong-hanh-cung-nganh-kien-truc-xay-dung-5114150.html",
+      "source_category": "tin-moi-nhat"
+    },
+    {
+      "index": 11,
+      "title": "Atletico: 'Chúng tôi mới là nạn nhân duy nhất trong vụ Alvarez'",
+      "link": "https://vnexpress.net/atletico-chung-toi-moi-la-nan-nhan-duy-nhat-trong-vu-alvarez-5113889.html",
+      "source_category": "tin-moi-nhat",
+      "sentiment": 0,
+      "is_toxic": false,
+      "description": "Atletico Madrid tuyên bố họ là nạn nhân duy nhất trong vụ Julian Alvarez, cáo buộc cầu thủ này và Barca gây thiệt hại kinh tế, danh tiếng, đồng thời khẳng định không bán Alvarez cho Barca.",
+      "status": "STORED"
+    },
+    {
+      "index": 12,
+      "title": "Tàu sân bay Lincoln sắp 'cập cảng Thái Lan để thủy thủ thư giãn'",
+      "link": "https://vnexpress.net/tau-san-bay-lincoln-sap-cap-cang-thai-lan-de-thuy-thu-thu-gian-5114105.html",
+      "source_category": "tin-moi-nhat"
+    },
+    {
+      "index": 13,
+      "title": "Gần 1.500 người có thể đã bị chôn vùi trong lũ bùn Nepal",
+      "link": "https://vnexpress.net/gan-1-500-nguoi-co-the-da-bi-chon-vui-trong-lu-bun-nepal-5114121.html",
+      "source_category": "tin-moi-nhat",
+      "sentiment": -1,
+      "is_toxic": false,
+      "description": "Gần 1.500 người, trong đó khoảng 800 người nước ngoài, đang mất tích sau trận lũ bùn quét qua biên giới Trung Quốc - Nepal, với ít nhất 165 người đã thiệt mạng.",
+      "status": "FILTERED_BY_AI"
+    },
+    {
+      "index": 14,
+      "title": "Khoảnh khắc xúc động trong lễ Vu Lan",
+      "link": "https://vnexpress.net/khoanh-khac-xuc-dong-trong-le-vu-lan-5113886.html",
+      "source_category": "tin-moi-nhat",
+      "sentiment": 0,
+      "is_toxic": false,
+      "description": "Nội dung cung cấp các phím tắt điều khiển video và một biểu mẫu thu thập phản hồi về trải nghiệm người dùng, kèm theo thông tin bảo mật và điều khoản sử dụng.",
+      "status": "STORED"
+    },
+    {
+      "index": 15,
+      "title": "Cải thảo ngâm hóa chất gây ung thư phơi bày 'lỗ hổng' quản lý thực phẩm",
+      "link": "https://vnexpress.net/cai-thao-ngam-hoa-chat-gay-ung-thu-phoi-bay-lo-hong-quan-ly-thuc-pham-5113916.html",
+      "source_category": "tin-moi-nhat",
+      "sentiment": 0,
+      "is_toxic": false,
+      "description": "Bê bối cải thảo ngâm formaldehyde gây ung thư ở Trung Quốc phơi bày lỗ hổng quản lý thực phẩm và áp lực chi phí vận chuyển khiến thương lái lạm dụng hóa chất độc hại.",
+      "status": "STORED"
+    },
+    {
+      "index": 16,
+      "title": "Nền tảng Hugging Face bị 700 tác nhân OpenAI tấn công",
+      "link": "https://vnexpress.net/nen-tang-hugging-face-bi-700-tac-nhan-openai-tan-cong-5114062.html",
+      "source_category": "tin-moi-nhat"
+    },
+    {
+      "index": 17,
+      "title": "Báo Nhật: Phú Quốc đổi mới diện mạo trước thềm APEC",
+      "link": "https://vnexpress.net/bao-nhat-phu-quoc-doi-moi-dien-mao-truoc-them-apec-5114119.html",
+      "source_category": "tin-moi-nhat",
+      "sentiment": 1,
+      "is_toxic": false,
+      "description": "Phú Quốc đầu tư hơn 5 tỷ USD vào hạ tầng, mở rộng sân bay, xây dựng LRT và trung tâm hội nghị trước APEC 2027, kỳ vọng trở thành trung tâm du lịch, đầu tư quốc tế, theo Nikkei Asia.",
+      "status": "STORED"
+    },
+    {
+      "index": 18,
+      "title": "Phổi yếu có biểu hiện gì ngoài ho, khó thở?",
+      "link": "https://vnexpress.net/phoi-yeu-co-bieu-hien-gi-ngoai-ho-kho-tho-5114078.html",
+      "source_category": "tin-moi-nhat"
+    },
+    {
+      "index": 19,
+      "title": "Bí quyết ăn uống tốt cho người cao tuổi",
+      "link": "https://vnexpress.net/bi-quyet-an-uong-tot-cho-nguoi-cao-tuoi-5114012.html",
+      "source_category": "tin-moi-nhat",
+      "sentiment": 0,
+      "is_toxic": false,
+      "description": "Bài viết cung cấp các bí quyết ăn uống khoa học cho người cao tuổi, tập trung vào việc bổ sung dinh dưỡng, thay đổi cách chế biến và duy trì thói quen ăn uống lành mạnh để bảo vệ sức khỏe.",
+      "status": "STORED"
+    },
+    {
+      "index": 20,
+      "title": "Táo bón kéo dài có gây trào ngược axit?",
+      "link": "https://vnexpress.net/tao-bon-keo-dai-co-gay-trao-nguoc-axit-5113235.html",
+      "source_category": "tin-moi-nhat",
+      "sentiment": 0,
+      "is_toxic": false,
+      "description": "Bài viết đặt câu hỏi về mối liên hệ giữa táo bón kéo dài và trào ngược axit, đồng thời giải thích tác động của táo bón lên hệ tiêu hóa.",
+      "status": "STORED"
+    },
+    {
+      "index": 21,
+      "title": "Mỗi xã, phường Hà Nội dự kiến có một cơ sở chăm sóc người cao tuổi",
+      "link": "https://vnexpress.net/moi-xa-phuong-ha-noi-du-kien-co-mot-co-so-cham-soc-nguoi-cao-tuoi-5114110.html",
+      "source_category": "tin-moi-nhat",
+      "sentiment": 1,
+      "is_toxic": false,
+      "description": "Hà Nội dự kiến mỗi xã, phường có một cơ sở chăm sóc người cao tuổi ban ngày, hỗ trợ sức khỏe, sinh hoạt cộng đồng và tạo việc làm cho người cao tuổi.",
+      "status": "STORED"
+    },
+    {
+      "index": 22,
+      "title": "Sẽ miễn thuế thu nhập doanh nghiệp với suất ăn học sinh, sinh viên",
+      "link": "https://vnexpress.net/se-mien-thue-thu-nhap-doanh-nghiep-voi-suat-an-hoc-sinh-sinh-vien-5114112.html",
+      "source_category": "tin-moi-nhat"
+    },
+    {
+      "index": 23,
+      "title": "Phút kinh hoàng của phi công Nepal trước sóng lũ cao 6 m",
+      "link": "https://vnexpress.net/phut-kinh-hoang-cua-phi-cong-nepal-truoc-song-lu-cao-6-m-5113990.html",
+      "source_category": "tin-moi-nhat",
+      "sentiment": -1,
+      "is_toxic": false,
+      "description": "Phi công Nepal chứng kiến sóng lũ cao 6m do sụp sông băng gây ra thảm họa lũ quét kinh hoàng ở Himalaya.",
+      "status": "FILTERED_BY_AI"
+    },
+    {
+      "index": 24,
+      "title": "Khách Tây: 'Tôi chưa từng thấy cảnh mừng bóng đá như ở Việt Nam'",
+      "link": "https://vnexpress.net/khach-tay-toi-chua-tung-thay-canh-mung-bong-da-nhu-o-viet-nam-5114081.html",
+      "source_category": "tin-moi-nhat",
+      "sentiment": 0,
+      "is_toxic": false,
+      "description": "Nội dung bao gồm các phím tắt điều khiển video và biểu mẫu thu thập phản hồi người dùng, kèm chính sách bảo mật.",
+      "status": "STORED"
+    },
+    {
+      "index": 25,
+      "title": "Chủ tịch FIFA thăm công trường SVĐ lớn bậc nhất Việt Nam",
+      "link": "https://vnexpress.net/chu-tich-fifa-tham-cong-truong-svd-lon-bac-nhat-viet-nam-5114126.html",
+      "source_category": "tin-moi-nhat",
+      "sentiment": 1,
+      "is_toxic": false,
+      "description": "Chủ tịch FIFA Gianni Infantino thăm công trường SVĐ PVF 60.000 chỗ tại Hưng Yên, đánh giá đây là bước đột phá cho thể thao Việt Nam, và chúc mừng Việt Nam vô địch ASEAN Cup.",
+      "status": "STORED"
+    },
+    {
+      "index": 26,
+      "title": "Trận lũ quét ở Nepal xảy ra thế nào",
+      "link": "https://vnexpress.net/tran-lu-quet-o-nepal-xay-ra-the-nao-5113929.html",
+      "source_category": "tin-moi-nhat",
+      "sentiment": -1,
+      "is_toxic": false,
+      "description": "Trận lũ quét nghiêm trọng ở Nepal do khối băng đá sạt lở đã gây ra cái chết của hơn 160 người và khiến hơn 1.000 người mất tích, xóa sổ nhiều làng mạc.",
+      "status": "FILTERED_BY_AI"
+    },
+    {
+      "index": 27,
+      "title": "Thị trường ôtô Việt Nam - VinFast bỏ xa các đối thủ",
+      "link": "https://vnexpress.net/thi-truong-oto-viet-nam-vinfast-bo-xa-cac-doi-thu-5113760.html",
+      "source_category": "tin-moi-nhat"
+    },
+    {
+      "index": 28,
+      "title": "Giá xăng, dầu cùng giảm",
+      "link": "https://vnexpress.net/gia-xang-dau-cung-giam-5114100.html",
+      "source_category": "tin-moi-nhat",
+      "sentiment": 1,
+      "is_toxic": false,
+      "description": "Từ 15h hôm nay, giá xăng, dầu trong nước đồng loạt giảm (trừ mazut), mang lại lợi ích cho người tiêu dùng.",
+      "status": "STORED"
+    },
+    {
+      "index": 29,
+      "title": "Những chỉ số chứng minh Việt Nam mạnh hơn Thái và vô địch xứng đáng",
+      "link": "https://vnexpress.net/viet-nam-vo-dich-asean-cup-2026-thang-thai-lan-5113991.html",
+      "source_category": "tin-moi-nhat",
+      "sentiment": 1,
+      "is_toxic": false,
+      "description": "Bài báo phân tích chiến thắng của đội tuyển Việt Nam tại giải bóng đá khu vực Đông Nam Á lần thứ tư, bảo vệ thành công chức vô địch. Dù có chỉ số lép vế, Việt Nam vẫn được đánh giá vô địch xứng đáng.",
+      "status": "STORED"
+    },
+    {
+      "index": 30,
+      "title": "Làm sao đong chính xác 8 lít từ bình 11 lít và 9 lít?",
+      "link": "https://vnexpress.net/lam-sao-dong-chinh-xac-8-lit-tu-binh-11-lit-va-9-lit-cau-do-meo-thu-thach-kha-nang-tinh-toan-5112112.html",
+      "source_category": "tin-moi-nhat",
+      "sentiment": 0,
+      "is_toxic": false,
+      "description": "Bài báo đưa ra một câu đố logic: làm thế nào để đong chính xác 8 lít nước chỉ với hai bình không vạch chia dung tích 11 lít và 9 lít, thách thức người đọc tìm ra lời giải.",
+      "status": "STORED"
+    }
+  ],
+  "timestamp": "2026-08-27T16:43:02.966698",
+  "collection": "positive_news_test"
+}

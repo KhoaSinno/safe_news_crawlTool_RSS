@@ -53,11 +53,12 @@ def store_to_firebase(firebase_data: dict, collection_name: str = 'positive_news
         # Tạo document ID duy nhất
         doc_id = generate_article_id(title, link)
 
-        # Thêm timestamp
+        # Thêm timestamp và loại bỏ các trường nội bộ (bắt đầu bằng _)
+        clean_data = {k: v for k, v in firebase_data.items() if not k.startswith('_')}
         firebase_data_with_timestamp = {
-            **firebase_data,
+            **clean_data,
             'created_at': datetime.now().isoformat(),
-            'source': 'gemini-2.0-flash'
+            'source': 'gemini-2.5-flash'
         }
 
         # Lưu vào Firebase
