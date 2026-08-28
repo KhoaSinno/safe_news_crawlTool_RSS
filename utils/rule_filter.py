@@ -70,15 +70,32 @@ class RuleFilter:
         r"khen\s*thưởng",
     ]
 
-    def __init__(self):
+    def __init__(self, learned_config_path: str = "config/learned_patterns.json"):
+        import os
+        import json
+
+        all_negative = list(self.EXTREME_NEGATIVE_PATTERNS)
+
+        # Nạp các mẫu tự động học từ Active Learning nếu có
+        if os.path.exists(learned_config_path):
+            try:
+                with open(learned_config_path, 'r', encoding='utf-8') as f:
+                    data = json.load(f)
+                    learned = data.get('learned_patterns', [])
+                    for lp in learned:
+                        if lp and lp not in all_negative:
+                            all_negative.append(lp)
+            except Exception as e:
+                logging.debug(f"Could not load learned patterns: {e}")
+
         # Compile trước regex để tối ưu hiệu năng tối đa
         self.compiled_negative = [
-            re.compile(p, re.IGNORECASE | re.UNICODE) for p in self.EXTREME_NEGATIVE_PATTERNS
+            re.compile(p, re.IGNORECASE | re.UNICODE) for p in all_negative
         ]
         self.compiled_whitelist = [
             re.compile(p, re.IGNORECASE | re.UNICODE) for p in self.WHITELIST_PATTERNS
         ]
-        logging.info(f"✅ RuleFilter initialized with {len(self.compiled_negative)} negative patterns.")
+        logging.info(f"✅ RuleFilter initialized with {len(self.compiled_negative)} negative patterns ({len(all_negative) - len(self.EXTREME_NEGATIVE_PATTERNS)} learned).")
 
     def check_article(self, title: str, summary: str = "") -> Tuple[bool, Optional[str]]:
         """

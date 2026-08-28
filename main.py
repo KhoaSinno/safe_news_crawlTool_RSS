@@ -19,7 +19,8 @@ from config import settings
 from utils.rss_crawler import fetch_rss
 from utils.news_analyzer import NewsAnalyzer
 from utils.rule_filter import RuleFilter
-from utils.firebase_handler import store_to_firebase
+from utils.active_learner import ActiveLearner
+from utils.firebase_handler import store_to_firebase, db
 
 # Validate configuration on startup
 settings.validate()
@@ -44,12 +45,18 @@ for handler in logging.getLogger().handlers:
 rule_filter = RuleFilter()
 news_analyzer = NewsAnalyzer(settings.GEMINI_API_KEY)
 
-# Danh sách nguồn RSS
+# Danh sách nguồn RSS đa nguồn báo uy tín
 RSS_FEEDS = [
-    {"url": "https://vnexpress.net/rss/tin-moi-nhat.rss", "category": "tin-moi-nhat"},
-    # {"url": "https://vnexpress.net/rss/giao-duc.rss", "category": "giao-duc"},
-    # {"url": "https://vnexpress.net/rss/suc-khoe.rss", "category": "suc-khoe"},
-    # {"url": "https://vnexpress.net/rss/khoa-hoc-cong-nghe.rss", "category": "khoa-hoc-cong-nghe"},
+    # VnExpress
+    {"url": "https://vnexpress.net/rss/tin-moi-nhat.rss", "category": "tin-moi-nhat", "source": "VnExpress"},
+    {"url": "https://vnexpress.net/rss/giao-duc.rss", "category": "giao-duc", "source": "VnExpress"},
+    {"url": "https://vnexpress.net/rss/khoa-hoc-cong-nghe.rss", "category": "khoa-hoc-cong-nghe", "source": "VnExpress"},
+
+    # Tuổi Trẻ
+    {"url": "https://tuoitre.vn/rss/tin-moi-nhat.rss", "category": "tin-moi-nhat", "source": "Tuổi Trẻ"},
+
+    # Dân Trí
+    {"url": "https://dantri.com.vn/rss/tin-moi-nhat.rss", "category": "tin-moi-nhat", "source": "Dân Trí"},
 ]
 
 
@@ -92,6 +99,16 @@ def crawl_and_analyze(use_test_collection=False, save_logs=False, max_articles_p
     global news_analyzer, rule_filter
     settings.reload()
     settings.validate()
+
+    # 1. Bước Active Learning: Tự động học từ các báo cáo sai lệch của người dùng trên Mobile
+    try:
+        active_learner = ActiveLearner(settings.GEMINI_API_KEY)
+        learned_count = active_learner.process_user_reports(db)
+        if learned_count > 0:
+            logging.info(f"✨ Active Learning: Đã học và cập nhật thêm {learned_count} quy tắc lọc mới từ người dùng.")
+    except Exception as e:
+        logging.warning(f"⚠️ Active Learning step skipped: {e}")
+
     news_analyzer = NewsAnalyzer(settings.GEMINI_API_KEY)
     rule_filter = RuleFilter()
 
