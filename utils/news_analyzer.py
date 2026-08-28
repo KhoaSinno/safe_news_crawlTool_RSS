@@ -14,6 +14,7 @@ from datetime import datetime
 import trafilatura
 from google import genai
 from google.genai import types
+from config import settings
 
 
 class NewsAnalyzer:
@@ -22,10 +23,10 @@ class NewsAnalyzer:
     Không phụ thuộc vào Google Search Tool, đạt độ ổn định cao và tối ưu chi phí.
     """
 
-    def __init__(self, api_key: str):
+    def __init__(self, api_key: str, model_name: Optional[str] = None):
         """Khởi tạo Gemini client và config"""
         self.client = genai.Client(api_key=api_key)
-        self.model_name = 'gemini-2.5-flash'
+        self.model_name = model_name or settings.GEMINI_MODEL
 
         # Cấu hình generate ép kiểu JSON thuần túy
         self.config = types.GenerateContentConfig(
