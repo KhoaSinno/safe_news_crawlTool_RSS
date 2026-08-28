@@ -1,16 +1,17 @@
-"""Test Gemini with actual article"""
+import sys
 import os
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 import logging
-from dotenv import load_dotenv
+from config import settings
 from utils.news_analyzer import NewsAnalyzer
 
 logging.basicConfig(level=logging.DEBUG)
 
-load_dotenv(override=True)
-api_key = os.getenv('GEMINI_API_KEY')
-print(f"API Key: {api_key[:20]}...")
+settings.validate()
+print(f"API Key: {settings.GEMINI_API_KEY[:20]}...")
 
-analyzer = NewsAnalyzer(api_key)
+analyzer = NewsAnalyzer(settings.GEMINI_API_KEY)
 
 # Test với article thật
 rss_data = {

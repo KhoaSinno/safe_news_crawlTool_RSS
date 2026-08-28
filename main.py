@@ -14,22 +14,22 @@ from datetime import datetime
 import json
 import os
 import sys
-from dotenv import load_dotenv
 
+from config import settings
 from utils.rss_crawler import fetch_rss
 from utils.news_analyzer import NewsAnalyzer
 from utils.rule_filter import RuleFilter
 from utils.firebase_handler import store_to_firebase
 
-# Load environment variables
-load_dotenv(override=True)
+# Validate configuration on startup
+settings.validate()
 
 # Setup logging với UTF-8 và immediate flush
 logging.basicConfig(
-    level=logging.INFO,
+    level=getattr(logging, settings.LOG_LEVEL.upper(), logging.INFO),
     format='%(asctime)s - %(levelname)s - %(message)s',
     handlers=[
-        logging.FileHandler('news_crawler.log', encoding='utf-8'),
+        logging.FileHandler(settings.LOG_FILE, encoding='utf-8'),
         logging.StreamHandler()
     ],
     force=True
@@ -40,16 +40,9 @@ for handler in logging.getLogger().handlers:
         handler.setLevel(logging.INFO)
         handler.stream.reconfigure(line_buffering=True)
 
-# Cấu hình API Key
-GEMINI_API_KEY = os.getenv('GEMINI_API_KEY')
-if not GEMINI_API_KEY:
-    raise ValueError("GEMINI_API_KEY not found in environment variables. Please check .env file.")
-
-CRAWL_STATE_FILE = "crawl_state.json"
-
 # Khởi tạo các module
 rule_filter = RuleFilter()
-news_analyzer = NewsAnalyzer(GEMINI_API_KEY)
+news_analyzer = NewsAnalyzer(settings.GEMINI_API_KEY)
 
 # Danh sách nguồn RSS
 RSS_FEEDS = [
@@ -62,9 +55,9 @@ RSS_FEEDS = [
 
 def load_crawl_state():
     """Load trạng thái crawl từ file"""
-    if os.path.exists(CRAWL_STATE_FILE):
+    if os.path.exists(settings.CRAWL_STATE_FILE):
         try:
-            with open(CRAWL_STATE_FILE, 'r', encoding='utf-8') as f:
+            with open(settings.CRAWL_STATE_FILE, 'r', encoding='utf-8') as f:
                 return json.load(f)
         except Exception as e:
             logging.error(f"Error loading crawl state: {e}")
@@ -74,16 +67,17 @@ def load_crawl_state():
 def save_crawl_state(state):
     """Lưu trạng thái crawl"""
     try:
-        with open(CRAWL_STATE_FILE, 'w', encoding='utf-8') as f:
+        with open(settings.CRAWL_STATE_FILE, 'w', encoding='utf-8') as f:
             json.dump(state, f, ensure_ascii=False, indent=2)
     except Exception as e:
         logging.error(f"Error saving crawl state: {e}")
 
 
-def is_new_article(link, processed_links, max_history=2000):
+def is_new_article(link, processed_links, max_history=None):
     """Kiểm tra bài báo có mới không dựa trên link"""
-    if len(processed_links) > max_history:
-        processed_links[:] = processed_links[-max_history:]
+    limit = max_history or settings.MAX_PROCESSED_LINKS
+    if len(processed_links) > limit:
+        processed_links[:] = processed_links[-limit:]
     return link not in processed_links
 
 
@@ -95,14 +89,14 @@ def crawl_and_analyze(use_test_collection=False, save_logs=False, max_articles_p
         save_logs: True để lưu detailed logs vào logs_prod/
         max_articles_per_feed: Giới hạn số bài xử lý mỗi feed (dùng khi test)
     """
-    load_dotenv(override=True)
-    global GEMINI_API_KEY, news_analyzer, rule_filter
-    GEMINI_API_KEY = os.getenv('GEMINI_API_KEY')
-    news_analyzer = NewsAnalyzer(GEMINI_API_KEY)
+    global news_analyzer, rule_filter
+    settings.reload()
+    settings.validate()
+    news_analyzer = NewsAnalyzer(settings.GEMINI_API_KEY)
     rule_filter = RuleFilter()
 
     logging.info("🚀 Starting news crawl and multi-stage analysis pipeline...")
-    collection_name = 'positive_news_test' if use_test_collection else 'positive_news'
+    collection_name = settings.TEST_COLLECTION if use_test_collection else settings.PROD_COLLECTION
 
     crawl_state = load_crawl_state()
     processed_links = crawl_state.get("processed_links", [])
