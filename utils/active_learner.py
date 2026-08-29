@@ -1,4 +1,4 @@
-﻿"""
+"""
 Active Learning & User Feedback Loop
 Tự động thu thập các bài báo bị người dùng report trên ứng dụng di động,
 sử dụng Gemini để phân tích nguyên nhân và trích xuất từ khóa tiêu cực mới
@@ -56,8 +56,13 @@ class ActiveLearner:
 
         try:
             reports_ref = db.collection('article_reports')
-            # Lấy các báo cáo chưa được xử lý
-            query = reports_ref.where('processed', '==', False).limit(20)
+            # Lấy các báo cáo chưa được xử lý với FieldFilter chuẩn
+            try:
+                from google.cloud.firestore_v1.base_query import FieldFilter
+                query = reports_ref.where(filter=FieldFilter('processed', '==', False)).limit(20)
+            except Exception:
+                query = reports_ref.where('processed', '==', False).limit(20)
+
             docs = list(query.stream())
 
             # Fallback nếu trường processed chưa có
@@ -100,24 +105,25 @@ class ActiveLearner:
 
     def _extract_keyword_pattern(self, title: str, reason: str) -> Optional[str]:
         """Sử dụng Gemini để trích xuất cụm từ tiêu cực đặc trưng"""
+        from pydantic import BaseModel, Field
+
+        class KeywordPatternSchema(BaseModel):
+            pattern: Optional[str] = Field(description="Từ khóa/cụm từ tiếng Việt ngắn (2-4 từ) hoặc null")
+
         prompt = f"""
 Bạn là chuyên gia NLP. Người dùng đã báo cáo bài báo sau là tiêu cực/bạo lực hoặc phân loại sai:
 - Tiêu đề: "{title}"
 - Lý do báo cáo: "{reason}"
 
 Nhiệm vụ: Trích xuất 1 cụm từ tiếng Việt ngắn (2-4 từ) tiêu biểu nhất đại diện cho hành vi/nội dung tiêu cực trong bài báo này để làm mẫu regex lọc bài tự động.
-
-Yêu cầu đầu ra (JSON ONLY):
-{{
-    "pattern": "từ_khóa_tiếng_việt"
-}}
-Nếu không có từ khóa tiêu cực rõ ràng, trả về: {{"pattern": null}}
+Nếu không có từ khóa tiêu cực rõ ràng, trả về pattern là null.
 """
         try:
             config = types.GenerateContentConfig(
                 temperature=0.1,
                 max_output_tokens=256,
                 response_mime_type="application/json",
+                response_schema=KeywordPatternSchema,
             )
             response = self.client.models.generate_content(
                 model=self.model_name,
