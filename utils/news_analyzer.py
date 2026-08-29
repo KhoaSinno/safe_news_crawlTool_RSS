@@ -11,10 +11,24 @@ import re
 from typing import Dict, Optional, Tuple
 from datetime import datetime
 
+from pydantic import BaseModel, Field
 import trafilatura
 from google import genai
 from google.genai import types
 from config import settings
+
+
+class ArticleAnalysisResult(BaseModel):
+    """Schema ràng buộc cứng định dạng JSON đầu ra của Gemini 2.5 Flash"""
+    description: str = Field(
+        description="Tóm tắt 1-2 câu tiếng Việt từ nội dung thực tế (tối đa 200 ký tự)"
+    )
+    is_toxic: bool = Field(
+        description="True nếu độc hại, khiêu dâm 18+, bạo lực phản cảm hoặc tin giả"
+    )
+    sentiment: int = Field(
+        description="Sắc thái: 1 (Tích cực), 0 (Trung tính / Báo cáo / Cảnh báo an toàn), -1 (Tiêu cực / Bi kịch / Tử vong)"
+    )
 
 
 class NewsAnalyzer:
@@ -28,15 +42,16 @@ class NewsAnalyzer:
         self.client = genai.Client(api_key=api_key)
         self.model_name = model_name or settings.GEMINI_MODEL
 
-        # Cấu hình generate ép kiểu JSON thuần túy
+        # Cấu hình generate ép kiểu JSON thuần túy với Constrained Decoding Schema
         self.config = types.GenerateContentConfig(
             temperature=0.1,
             max_output_tokens=1024,
             response_mime_type="application/json",
+            response_schema=ArticleAnalysisResult,
         )
 
         self.cache = {}  # In-memory cache cho các bài đã phân tích
-        logging.info(f"✅ NewsAnalyzer initialized with Trafilatura + {self.model_name} Direct")
+        logging.info(f"✅ NewsAnalyzer initialized with Trafilatura + {self.model_name} Direct (Constrained Schema)")
 
     def extract_content(self, url: str, fallback_text: str = "") -> Tuple[str, float]:
         """
@@ -270,13 +285,16 @@ CHỈ TRẢ VỀ JSON HỢP LỆ, không kèm lời giải thích nào khác.
         try:
             toxic_match = re.search(r'is_toxic["\s:]+(true|false)', response_text, re.IGNORECASE)
             sentiment_match = re.search(r'sentiment["\s:]+(-?1|0)', response_text)
-            desc_match = re.search(r'description["\s:]+["\'](.*?)["\']\s*[,}\n]', response_text, re.DOTALL)
+            desc_match = re.search(r'description["\s:]+["\']?(.*?)(?:["\']?\s*,\s*["\']?(?:is_toxic|sentiment)|["\']?\s*\})', response_text, re.DOTALL | re.IGNORECASE)
             if not desc_match:
-                desc_match = re.search(r'description["\s:]+["\'](.*)', response_text, re.DOTALL)
+                desc_match = re.search(r'description["\s:]+["\'](.*?)["\']\s*[,}\n]', response_text, re.DOTALL)
+            if not desc_match:
+                desc_match = re.search(r'description["\s:]+["\']?(.*)', response_text, re.DOTALL)
 
             if toxic_match and sentiment_match:
                 desc = desc_match.group(1).strip() if desc_match else ""
                 desc = re.sub(r'[*`"\']+$', '', desc).strip()
+                desc = re.sub(r'^[*`"\']+', '', desc).strip()
                 return {
                     "description": desc,
                     "is_toxic": toxic_match.group(1).lower() == 'true',
