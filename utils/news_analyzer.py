@@ -7,11 +7,11 @@ News Analyzer (Tầng 2 & 3: Trafilatura Direct Extraction + Gemini 2.5 Flash)
 import json
 import logging
 import hashlib
-import re
-from typing import Dict, Optional, Tuple
-from datetime import datetime
+import random
+import time
+from typing import Annotated, Any, Dict, Optional, Tuple
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field, ValidationError
 import trafilatura
 from google import genai
 from google.genai import types
@@ -20,13 +20,17 @@ from config import settings
 
 class ArticleAnalysisResult(BaseModel):
     """Schema ràng buộc cứng định dạng JSON đầu ra của Gemini 2.5 Flash"""
+    # Do not use extra="forbid": Gemini's v1beta Schema rejects additionalProperties.
+    model_config = ConfigDict(strict=True)
+
     description: str = Field(
-        description="Tóm tắt 1-2 câu tiếng Việt từ nội dung thực tế (tối đa 200 ký tự)"
+        min_length=1,
+        description="Tóm tắt 1-2 câu tiếng Việt từ nội dung thực tế (tối đa 200 ký tự)",
     )
     is_toxic: bool = Field(
         description="True nếu độc hại, khiêu dâm 18+, bạo lực phản cảm hoặc tin giả"
     )
-    sentiment: int = Field(
+    sentiment: Annotated[int, Field(ge=-1, le=1)] = Field(
         description="Sắc thái: 1 (Tích cực), 0 (Trung tính / Báo cáo / Cảnh báo an toàn), -1 (Tiêu cực / Bi kịch / Tử vong)"
     )
 
@@ -140,14 +144,21 @@ class NewsAnalyzer:
         return firebase_data
 
     def _call_gemini_direct(self, title: str, content: str) -> Tuple[Optional[Dict], Dict]:
-        """Gọi Gemini API với cơ chế Retry tự động khi gặp 503 và đo metrics"""
-        import time
+        """Gọi Gemini API, validate output schema và retry lỗi tạm thời."""
         prompt = self._create_analysis_prompt(title, content)
-        metrics = {'prompt_tokens': 0, 'candidates_tokens': 0, 'total_tokens': 0, 'llm_time': 0.0}
+        metrics = {
+            'prompt_tokens': 0,
+            'candidates_tokens': 0,
+            'total_tokens': 0,
+            'llm_time': 0.0,
+            'attempts': 0,
+            'retry_count': 0,
+        }
 
         max_retries = 3
         for attempt in range(max_retries):
             try:
+                metrics['attempts'] = attempt + 1
                 start_llm = time.time()
                 response = self.client.models.generate_content(
                     model=self.model_name,
@@ -167,24 +178,43 @@ class NewsAnalyzer:
                     logging.warning(f"⚠️ No candidates in response: {title[:50]}...")
                     return self._get_blocked_content_result(), metrics
 
-                result = self._parse_json_response(response.text)
+                result = self._parse_structured_response(response)
 
-                if self._validate_gemini_result(result):
+                if result:
                     return result, metrics
-                else:
-                    logging.warning(f"⚠️ Invalid Gemini response structure for '{title[:40]}': Parsed={result} | Raw={response.text[:120]}...")
-                    return None, metrics
 
-            except Exception as e:
-                err_str = str(e)
-                if '503' in err_str or 'UNAVAILABLE' in err_str or 'high demand' in err_str.lower():
-                    wait_time = (attempt + 1) * 2
-                    logging.warning(f"⏳ Gemini 503 Busy for '{title[:35]}...'. Retrying in {wait_time}s (Attempt {attempt+1}/{max_retries})...")
+                logging.warning(
+                    "⚠️ Invalid Gemini structured response for '%s' | Raw=%s...",
+                    title[:40],
+                    self._response_text(response)[:120],
+                )
+                if attempt < max_retries - 1:
+                    # A schema-compliant response can still fail local business validation
+                    # (for example, an overlong summary). Regenerate rather than persist it.
+                    wait_time = min(8.0, 2 ** attempt) + random.uniform(0, 0.5)
+                    metrics['retry_count'] += 1
+                    logging.warning(
+                        "⏳ Regenerating invalid structured response for '%s...' in %.2fs.",
+                        title[:35], wait_time,
+                    )
                     time.sleep(wait_time)
                     continue
-                else:
-                    logging.error(f"❌ Gemini API error: {title[:50]}... Error: {e}")
-                    return None, metrics
+                return None, metrics
+
+            except Exception as e:
+                if self._is_retryable_error(e) and attempt < max_retries - 1:
+                    # Exponential backoff with jitter prevents synchronized retries.
+                    wait_time = min(8.0, 2 ** attempt) + random.uniform(0, 0.5)
+                    metrics['retry_count'] += 1
+                    logging.warning(
+                        "⏳ Retryable Gemini error for '%s...' (attempt %d/%d): %s. Retrying in %.2fs.",
+                        title[:35], attempt + 1, max_retries, e, wait_time,
+                    )
+                    time.sleep(wait_time)
+                    continue
+
+                logging.error(f"❌ Gemini API error: {title[:50]}... Error: {e}")
+                return None, metrics
 
         logging.error(f"❌ Failed to analyze '{title[:50]}' after {max_retries} attempts.")
         return None, metrics
@@ -228,14 +258,6 @@ TOXIC (is_toxic = true):
 - Nội dung khiêu dâm 18+, bạo lực phản cảm
 - Tin giả gây hại, ngôn từ tục tĩu
 
-=== YÊU CẦU ĐẦU RA (JSON ONLY) ===
-{{
-    "description": "Tóm tắt 1-2 câu tiếng Việt từ nội dung thực tế (tối đa 200 ký tự, nếu có trích dẫn từ hoặc cụm từ thì dùng dấu nháy đơn '...')",
-    "is_toxic": boolean,
-    "sentiment": integer  // 1, 0, hoặc -1
-}}
-
-CHỈ TRẢ VỀ JSON HỢP LỆ, không kèm lời giải thích nào khác.
 """
 
     def _get_blocked_content_result(self) -> Dict:
@@ -246,82 +268,50 @@ CHỈ TRẢ VỀ JSON HỢP LỆ, không kèm lời giải thích nào khác.
             'sentiment': -1
         }
 
-    def _parse_json_response(self, response_text: str) -> Optional[Dict]:
-        """Trích xuất và parse JSON từ response của Gemini với robust fallback"""
-        if not response_text or not response_text.strip():
+    @staticmethod
+    def _response_text(response: Any) -> str:
+        """Read response text safely; blocked responses may not expose text."""
+        try:
+            return response.text or ""
+        except Exception:
+            return ""
+
+    def _parse_structured_response(self, response: Any) -> Optional[Dict]:
+        """Use the SDK parsed value first, then locally validate the full contract."""
+        raw_result = getattr(response, 'parsed', None)
+        if raw_result is None:
+            response_text = self._response_text(response)
+            if not response_text:
+                return None
+            try:
+                raw_result = json.loads(response_text)
+            except json.JSONDecodeError:
+                return None
+
+        if isinstance(raw_result, dict) and set(raw_result) != set(ArticleAnalysisResult.model_fields):
+            logging.debug("Gemini structured response contains missing or unexpected fields")
             return None
 
-        # 1. Làm sạch các tiền tố/hậu tố bọc ngoài như ***, ```, ```json
-        cleaned = re.sub(r'[*`]+(?:json)?', '', response_text).strip()
-
-        # 2. Parse trực tiếp JSON tiêu chuẩn
         try:
-            return json.loads(cleaned)
-        except Exception:
-            pass
+            result = ArticleAnalysisResult.model_validate(raw_result).model_dump()
+            # Gemini may occasionally exceed maxLength. Preserve the valid analysis
+            # while enforcing the Firebase storage contract deterministically.
+            result['description'] = result['description'][:200]
+            return result
+        except ValidationError as exc:
+            logging.debug("Gemini structured response failed local validation: %s", exc)
+            return None
 
-        # 3. Tự động bọc ngoặc nhọn nếu Gemini sinh thiếu { }
-        try:
-            wrapped = cleaned
-            if not wrapped.startswith('{'):
-                wrapped = '{' + wrapped
-            if not wrapped.endswith('}'):
-                wrapped = wrapped + '}'
-            return json.loads(wrapped)
-        except Exception:
-            pass
-
-        # 4. Tìm khối JSON giữa dấu { đầu tiên và } cuối cùng
-        start_idx = response_text.find('{')
-        end_idx = response_text.rfind('}')
-        if start_idx != -1 and end_idx != -1 and end_idx > start_idx:
-            json_str = response_text[start_idx:end_idx + 1]
-            try:
-                return json.loads(json_str)
-            except Exception:
-                pass
-
-        # 5. Regex Field Extractor siêu linh hoạt (Bóc tách từng trường độc lập)
-        try:
-            toxic_match = re.search(r'is_toxic["\s:]+(true|false)', response_text, re.IGNORECASE)
-            sentiment_match = re.search(r'sentiment["\s:]+(-?1|0)', response_text)
-            desc_match = re.search(r'description["\s:]+["\']?(.*?)(?:["\']?\s*,\s*["\']?(?:is_toxic|sentiment)|["\']?\s*\})', response_text, re.DOTALL | re.IGNORECASE)
-            if not desc_match:
-                desc_match = re.search(r'description["\s:]+["\'](.*?)["\']\s*[,}\n]', response_text, re.DOTALL)
-            if not desc_match:
-                desc_match = re.search(r'description["\s:]+["\']?(.*)', response_text, re.DOTALL)
-
-            if toxic_match and sentiment_match:
-                desc = desc_match.group(1).strip() if desc_match else ""
-                desc = re.sub(r'[*`"\']+$', '', desc).strip()
-                desc = re.sub(r'^[*`"\']+', '', desc).strip()
-                return {
-                    "description": desc,
-                    "is_toxic": toxic_match.group(1).lower() == 'true',
-                    "sentiment": int(sentiment_match.group(1))
-                }
-        except Exception as e:
-            logging.debug(f"Regex extractor failed: {e}")
-
-        logging.error(f"JSON parse error | Text: {response_text[:100]}...")
-        return None
-
-    def _validate_gemini_result(self, result: Dict) -> bool:
-        """Kiểm tra tính hợp lệ của schema trả về từ AI"""
-        if not result or not isinstance(result, dict):
-            return False
-
-        required_fields = ['description', 'is_toxic', 'sentiment']
-        if not all(field in result for field in required_fields):
-            return False
-
-        if result['sentiment'] not in [1, 0, -1]:
-            return False
-
-        if not isinstance(result['is_toxic'], bool):
-            return False
-
-        return True
+    @staticmethod
+    def _is_retryable_error(error: Exception) -> bool:
+        """Return True only for transient provider/network failures."""
+        message = str(error).lower()
+        retryable_markers = (
+            '429', 'resource_exhausted', 'rate limit', 'timeout', 'timed out',
+            'deadline_exceeded', 'connection reset', 'connection aborted',
+            '500', '502', '503', '504', 'unavailable', 'high demand',
+        )
+        return any(marker in message for marker in retryable_markers)
 
     def _transform_to_firebase(self, gemini_result: Dict, rss_data: Dict) -> Dict:
         """Chuẩn hóa dữ liệu sang schema Firestore"""

@@ -8,9 +8,22 @@ nhằm liên tục cập nhật bộ lọc Fast Rule mà không cần can thiệ
 import os
 import json
 import logging
+from datetime import datetime, timezone
 from typing import List, Dict, Optional
+from pydantic import BaseModel, ConfigDict, Field, ValidationError
 from google import genai
 from google.genai import types
+
+
+class KeywordPatternResult(BaseModel):
+    """Structured output contract for one learned negative-content pattern."""
+    # Gemini's v1beta Schema does not accept the additionalProperties keyword.
+    model_config = ConfigDict(strict=True)
+
+    pattern: Optional[str] = Field(
+        default=None,
+        description="Từ khóa/cụm từ tiếng Việt ngắn (2-4 từ) hoặc null",
+    )
 
 class ActiveLearner:
     """Module tự động học từ phản hồi và báo cáo của người dùng"""
@@ -91,7 +104,7 @@ class ActiveLearner:
                 # Đánh dấu đã xử lý
                 doc.reference.update({
                     'processed': True,
-                    'processed_at': types.datetime.datetime.now().isoformat() if hasattr(types, 'datetime') else "PROCESSED"
+                    'processed_at': datetime.now(timezone.utc).isoformat()
                 })
 
             if new_patterns:
@@ -105,11 +118,6 @@ class ActiveLearner:
 
     def _extract_keyword_pattern(self, title: str, reason: str) -> Optional[str]:
         """Sử dụng Gemini để trích xuất cụm từ tiêu cực đặc trưng"""
-        from pydantic import BaseModel, Field
-
-        class KeywordPatternSchema(BaseModel):
-            pattern: Optional[str] = Field(description="Từ khóa/cụm từ tiếng Việt ngắn (2-4 từ) hoặc null")
-
         prompt = f"""
 Bạn là chuyên gia NLP. Người dùng đã báo cáo bài báo sau là tiêu cực/bạo lực hoặc phân loại sai:
 - Tiêu đề: "{title}"
@@ -123,19 +131,23 @@ Nếu không có từ khóa tiêu cực rõ ràng, trả về pattern là null.
                 temperature=0.1,
                 max_output_tokens=256,
                 response_mime_type="application/json",
-                response_schema=KeywordPatternSchema,
+                response_schema=KeywordPatternResult,
             )
             response = self.client.models.generate_content(
                 model=self.model_name,
                 contents=prompt,
                 config=config,
             )
-            if response.text:
-                cleaned = response.text.replace('***', '').strip()
-                res = json.loads(cleaned)
-                pat = res.get('pattern')
+            raw_result = getattr(response, 'parsed', None)
+            if raw_result is None and response.text:
+                raw_result = json.loads(response.text)
+            if raw_result is not None:
+                if isinstance(raw_result, dict) and set(raw_result) != {"pattern"}:
+                    logging.debug("AI Keyword extraction returned unexpected fields")
+                    return None
+                pat = KeywordPatternResult.model_validate(raw_result).pattern
                 if pat and len(pat.strip()) > 2:
                     return pat.strip().lower()
-        except Exception as e:
+        except (json.JSONDecodeError, ValidationError, ValueError) as e:
             logging.debug(f"AI Keyword extraction error: {e}")
         return None
