@@ -220,7 +220,6 @@ def crawl_and_analyze(use_test_collection=False, save_logs=False, max_articles_p
                 try:
                     result = news_analyzer.analyze_and_transform(rss_data)
                     total_analyzed += 1
-                    new_processed_links.append(link)
 
                     # Thu thập metrics
                     if result and '_metrics' in result:
@@ -268,6 +267,7 @@ def crawl_and_analyze(use_test_collection=False, save_logs=False, max_articles_p
                         if should_store:
                             if store_to_firebase(result, collection_name=collection_name):
                                 total_stored += 1
+                                new_processed_links.append(link)
                                 if save_logs:
                                     detailed_logs["stored"] += 1
                                     log_entry["status"] = "STORED"
@@ -277,6 +277,9 @@ def crawl_and_analyze(use_test_collection=False, save_logs=False, max_articles_p
                                     log_entry["status"] = "STORAGE_FAILED"
                                 logging.warning(f"⚠️ Failed to store: {title[:50]}...")
                         else:
+                            # AI-filtered articles are intentionally terminal and should not
+                            # be reconsidered in later crawls.
+                            new_processed_links.append(link)
                             if save_logs:
                                 detailed_logs["filtered_by_ai"] += 1
                                 log_entry["status"] = "FILTERED_BY_AI"
